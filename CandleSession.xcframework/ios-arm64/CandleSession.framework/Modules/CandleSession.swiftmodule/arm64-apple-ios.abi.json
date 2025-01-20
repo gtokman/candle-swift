@@ -1356,7 +1356,7 @@
       "kind": "StringLiteral",
       "offset": 46,
       "length": 29,
-      "value": "\"wss:\/\/v3-0-112.ws.candle.fi\""
+      "value": "\"wss:\/\/v3-0-115.ws.candle.fi\""
     },
     {
       "filePath": "\/Users\/runner\/work\/candle\/candle\/sdk-swift\/Sources\/CandleSession\/Generated\/Types.swift",
