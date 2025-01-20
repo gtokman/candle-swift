@@ -1,0 +1,1964 @@
+{
+  "ABIRoot": {
+    "kind": "Root",
+    "name": "CandleSession",
+    "printedName": "CandleSession",
+    "children": [
+      {
+        "kind": "TypeDecl",
+        "name": "Constants",
+        "printedName": "Constants",
+        "children": [
+          {
+            "kind": "TypeDecl",
+            "name": "API",
+            "printedName": "API",
+            "children": [
+              {
+                "kind": "Var",
+                "name": "authorizationHeaderValuePrefix",
+                "printedName": "authorizationHeaderValuePrefix",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Var",
+                "usr": "s:13CandleSession9ConstantsO3APIO30authorizationHeaderValuePrefixSSvpZ",
+                "mangledName": "$s13CandleSession9ConstantsO3APIO30authorizationHeaderValuePrefixSSvpZ",
+                "moduleName": "CandleSession",
+                "static": true,
+                "declAttributes": [
+                  "HasInitialValue",
+                  "HasStorage",
+                  "AccessControl"
+                ],
+                "isLet": true,
+                "hasStorage": true,
+                "accessors": [
+                  {
+                    "kind": "Accessor",
+                    "name": "Get",
+                    "printedName": "Get()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "declKind": "Accessor",
+                    "usr": "s:13CandleSession9ConstantsO3APIO30authorizationHeaderValuePrefixSSvgZ",
+                    "mangledName": "$s13CandleSession9ConstantsO3APIO30authorizationHeaderValuePrefixSSvgZ",
+                    "moduleName": "CandleSession",
+                    "static": true,
+                    "implicit": true,
+                    "accessorKind": "get"
+                  }
+                ]
+              },
+              {
+                "kind": "Var",
+                "name": "authorizationHeaderName",
+                "printedName": "authorizationHeaderName",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Var",
+                "usr": "s:13CandleSession9ConstantsO3APIO23authorizationHeaderNameSSvpZ",
+                "mangledName": "$s13CandleSession9ConstantsO3APIO23authorizationHeaderNameSSvpZ",
+                "moduleName": "CandleSession",
+                "static": true,
+                "declAttributes": [
+                  "HasInitialValue",
+                  "HasStorage",
+                  "AccessControl"
+                ],
+                "isLet": true,
+                "hasStorage": true,
+                "accessors": [
+                  {
+                    "kind": "Accessor",
+                    "name": "Get",
+                    "printedName": "Get()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "declKind": "Accessor",
+                    "usr": "s:13CandleSession9ConstantsO3APIO23authorizationHeaderNameSSvgZ",
+                    "mangledName": "$s13CandleSession9ConstantsO3APIO23authorizationHeaderNameSSvgZ",
+                    "moduleName": "CandleSession",
+                    "static": true,
+                    "implicit": true,
+                    "accessorKind": "get"
+                  }
+                ]
+              }
+            ],
+            "declKind": "Enum",
+            "usr": "s:13CandleSession9ConstantsO3APIO",
+            "mangledName": "$s13CandleSession9ConstantsO3APIO",
+            "moduleName": "CandleSession",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "conformances": [
+              {
+                "kind": "Conformance",
+                "name": "Copyable",
+                "printedName": "Copyable",
+                "usr": "s:s8CopyableP",
+                "mangledName": "$ss8CopyableP"
+              },
+              {
+                "kind": "Conformance",
+                "name": "Escapable",
+                "printedName": "Escapable",
+                "usr": "s:s9EscapableP",
+                "mangledName": "$ss9EscapableP"
+              }
+            ]
+          }
+        ],
+        "declKind": "Enum",
+        "usr": "s:13CandleSession9ConstantsO",
+        "mangledName": "$s13CandleSession9ConstantsO",
+        "moduleName": "CandleSession",
+        "declAttributes": [
+          "AccessControl"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          }
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Combine",
+        "printedName": "Combine",
+        "declKind": "Import",
+        "moduleName": "CandleSession"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "CandleSession"
+      },
+      {
+        "kind": "Import",
+        "name": "UIKit",
+        "printedName": "UIKit",
+        "declKind": "Import",
+        "moduleName": "CandleSession"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "ConnectionResult",
+        "printedName": "ConnectionResult",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "closed",
+            "printedName": "closed",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(CandleSession.ConnectionResult.Type) -> CandleSession.ConnectionResult",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ConnectionResult",
+                    "printedName": "CandleSession.ConnectionResult",
+                    "usr": "s:13CandleSession16ConnectionResultO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "CandleSession.ConnectionResult.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ConnectionResult",
+                        "printedName": "CandleSession.ConnectionResult",
+                        "usr": "s:13CandleSession16ConnectionResultO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:13CandleSession16ConnectionResultO6closedyA2CmF",
+            "mangledName": "$s13CandleSession16ConnectionResultO6closedyA2CmF",
+            "moduleName": "CandleSession"
+          },
+          {
+            "kind": "Var",
+            "name": "lost",
+            "printedName": "lost",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(CandleSession.ConnectionResult.Type) -> CandleSession.ConnectionResult",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ConnectionResult",
+                    "printedName": "CandleSession.ConnectionResult",
+                    "usr": "s:13CandleSession16ConnectionResultO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "CandleSession.ConnectionResult.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ConnectionResult",
+                        "printedName": "CandleSession.ConnectionResult",
+                        "usr": "s:13CandleSession16ConnectionResultO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:13CandleSession16ConnectionResultO4lostyA2CmF",
+            "mangledName": "$s13CandleSession16ConnectionResultO4lostyA2CmF",
+            "moduleName": "CandleSession"
+          },
+          {
+            "kind": "Function",
+            "name": "==",
+            "printedName": "==(_:_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "ConnectionResult",
+                "printedName": "CandleSession.ConnectionResult",
+                "usr": "s:13CandleSession16ConnectionResultO"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "ConnectionResult",
+                "printedName": "CandleSession.ConnectionResult",
+                "usr": "s:13CandleSession16ConnectionResultO"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:13CandleSession16ConnectionResultO2eeoiySbAC_ACtFZ",
+            "mangledName": "$s13CandleSession16ConnectionResultO2eeoiySbAC_ACtFZ",
+            "moduleName": "CandleSession",
+            "static": true,
+            "implicit": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Var",
+            "name": "hashValue",
+            "printedName": "hashValue",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:13CandleSession16ConnectionResultO9hashValueSivp",
+            "mangledName": "$s13CandleSession16ConnectionResultO9hashValueSivp",
+            "moduleName": "CandleSession",
+            "implicit": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13CandleSession16ConnectionResultO9hashValueSivg",
+                "mangledName": "$s13CandleSession16ConnectionResultO9hashValueSivg",
+                "moduleName": "CandleSession",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Function",
+            "name": "hash",
+            "printedName": "hash(into:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Hasher",
+                "printedName": "Swift.Hasher",
+                "paramValueOwnership": "InOut",
+                "usr": "s:s6HasherV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:13CandleSession16ConnectionResultO4hash4intoys6HasherVz_tF",
+            "mangledName": "$s13CandleSession16ConnectionResultO4hash4intoys6HasherVz_tF",
+            "moduleName": "CandleSession",
+            "implicit": true,
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Enum",
+        "usr": "s:13CandleSession16ConnectionResultO",
+        "mangledName": "$s13CandleSession16ConnectionResultO",
+        "moduleName": "CandleSession",
+        "declAttributes": [
+          "AccessControl"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Error",
+            "printedName": "Error",
+            "usr": "s:s5ErrorP",
+            "mangledName": "$ss5ErrorP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Sendable",
+            "printedName": "Sendable",
+            "usr": "s:s8SendableP",
+            "mangledName": "$ss8SendableP"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "DeviceConnection",
+        "printedName": "DeviceConnection",
+        "children": [
+          {
+            "kind": "Function",
+            "name": "open",
+            "printedName": "open(using:authorizationToken:onClose:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "CandleSession.DeviceConnection?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "DeviceConnection",
+                    "printedName": "CandleSession.DeviceConnection",
+                    "usr": "s:13CandleSession16DeviceConnectionC"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "URLSessionConfiguration",
+                "printedName": "Foundation.URLSessionConfiguration",
+                "usr": "c:objc(cs)NSURLSessionConfiguration"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(CandleSession.ConnectionResult) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ConnectionResult",
+                    "printedName": "CandleSession.ConnectionResult",
+                    "usr": "s:13CandleSession16ConnectionResultO"
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:13CandleSession16DeviceConnectionC4open5using18authorizationToken7onCloseACSgSo25NSURLSessionConfigurationC_SSyAA0D6ResultOYbctYaFZ",
+            "mangledName": "$s13CandleSession16DeviceConnectionC4open5using18authorizationToken7onCloseACSgSo25NSURLSessionConfigurationC_SSyAA0D6ResultOYbctYaFZ",
+            "moduleName": "CandleSession",
+            "static": true,
+            "declAttributes": [
+              "Final",
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Var",
+            "name": "unownedExecutor",
+            "printedName": "unownedExecutor",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "UnownedSerialExecutor",
+                "printedName": "_Concurrency.UnownedSerialExecutor",
+                "usr": "s:Sce"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:13CandleSession16DeviceConnectionC15unownedExecutorScevp",
+            "mangledName": "$s13CandleSession16DeviceConnectionC15unownedExecutorScevp",
+            "moduleName": "CandleSession",
+            "implicit": true,
+            "intro_Macosx": "10.15",
+            "intro_iOS": "13.0",
+            "intro_tvOS": "13.0",
+            "intro_watchOS": "6.0",
+            "declAttributes": [
+              "Available",
+              "Available",
+              "Available",
+              "Available",
+              "Final",
+              "Nonisolated",
+              "Semantics"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UnownedSerialExecutor",
+                    "printedName": "_Concurrency.UnownedSerialExecutor",
+                    "usr": "s:Sce"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13CandleSession16DeviceConnectionC15unownedExecutorScevg",
+                "mangledName": "$s13CandleSession16DeviceConnectionC15unownedExecutorScevg",
+                "moduleName": "CandleSession",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          }
+        ],
+        "declKind": "Class",
+        "usr": "s:13CandleSession16DeviceConnectionC",
+        "mangledName": "$s13CandleSession16DeviceConnectionC",
+        "moduleName": "CandleSession",
+        "declAttributes": [
+          "Final",
+          "AccessControl"
+        ],
+        "hasMissingDesignatedInitializers": true,
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Actor",
+            "printedName": "Actor",
+            "usr": "s:ScA",
+            "mangledName": "$sScA"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Sendable",
+            "printedName": "Sendable",
+            "usr": "s:s8SendableP",
+            "mangledName": "$ss8SendableP"
+          }
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "FinanceKit",
+        "printedName": "FinanceKit",
+        "declKind": "Import",
+        "moduleName": "CandleSession"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "CandleSession"
+      },
+      {
+        "kind": "Import",
+        "name": "FinanceKit",
+        "printedName": "FinanceKit",
+        "declKind": "Import",
+        "moduleName": "CandleSession"
+      },
+      {
+        "kind": "Import",
+        "name": "KeychainSwift",
+        "printedName": "KeychainSwift",
+        "declKind": "Import",
+        "moduleName": "CandleSession"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "CandleSession"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "CandleSession"
+      },
+      {
+        "kind": "Import",
+        "name": "OpenAPIRuntime",
+        "printedName": "OpenAPIRuntime",
+        "declKind": "Import",
+        "moduleName": "CandleSession",
+        "declAttributes": [
+          "SPIAccessControl",
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "CandleSession"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "CandleSession"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "CandleSession"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "LogLevel",
+        "printedName": "LogLevel",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "fatal",
+            "printedName": "fatal",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(CandleSession.LogLevel.Type) -> CandleSession.LogLevel",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "LogLevel",
+                    "printedName": "CandleSession.LogLevel",
+                    "usr": "s:13CandleSession8LogLevelO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "CandleSession.LogLevel.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "LogLevel",
+                        "printedName": "CandleSession.LogLevel",
+                        "usr": "s:13CandleSession8LogLevelO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:13CandleSession8LogLevelO5fatalyA2CmF",
+            "mangledName": "$s13CandleSession8LogLevelO5fatalyA2CmF",
+            "moduleName": "CandleSession"
+          },
+          {
+            "kind": "Var",
+            "name": "error",
+            "printedName": "error",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(CandleSession.LogLevel.Type) -> CandleSession.LogLevel",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "LogLevel",
+                    "printedName": "CandleSession.LogLevel",
+                    "usr": "s:13CandleSession8LogLevelO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "CandleSession.LogLevel.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "LogLevel",
+                        "printedName": "CandleSession.LogLevel",
+                        "usr": "s:13CandleSession8LogLevelO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:13CandleSession8LogLevelO5erroryA2CmF",
+            "mangledName": "$s13CandleSession8LogLevelO5erroryA2CmF",
+            "moduleName": "CandleSession"
+          },
+          {
+            "kind": "Var",
+            "name": "warn",
+            "printedName": "warn",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(CandleSession.LogLevel.Type) -> CandleSession.LogLevel",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "LogLevel",
+                    "printedName": "CandleSession.LogLevel",
+                    "usr": "s:13CandleSession8LogLevelO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "CandleSession.LogLevel.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "LogLevel",
+                        "printedName": "CandleSession.LogLevel",
+                        "usr": "s:13CandleSession8LogLevelO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:13CandleSession8LogLevelO4warnyA2CmF",
+            "mangledName": "$s13CandleSession8LogLevelO4warnyA2CmF",
+            "moduleName": "CandleSession"
+          },
+          {
+            "kind": "Var",
+            "name": "info",
+            "printedName": "info",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(CandleSession.LogLevel.Type) -> CandleSession.LogLevel",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "LogLevel",
+                    "printedName": "CandleSession.LogLevel",
+                    "usr": "s:13CandleSession8LogLevelO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "CandleSession.LogLevel.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "LogLevel",
+                        "printedName": "CandleSession.LogLevel",
+                        "usr": "s:13CandleSession8LogLevelO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:13CandleSession8LogLevelO4infoyA2CmF",
+            "mangledName": "$s13CandleSession8LogLevelO4infoyA2CmF",
+            "moduleName": "CandleSession"
+          },
+          {
+            "kind": "Var",
+            "name": "debug",
+            "printedName": "debug",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(CandleSession.LogLevel.Type) -> CandleSession.LogLevel",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "LogLevel",
+                    "printedName": "CandleSession.LogLevel",
+                    "usr": "s:13CandleSession8LogLevelO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "CandleSession.LogLevel.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "LogLevel",
+                        "printedName": "CandleSession.LogLevel",
+                        "usr": "s:13CandleSession8LogLevelO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:13CandleSession8LogLevelO5debugyA2CmF",
+            "mangledName": "$s13CandleSession8LogLevelO5debugyA2CmF",
+            "moduleName": "CandleSession"
+          },
+          {
+            "kind": "Var",
+            "name": "trace",
+            "printedName": "trace",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(CandleSession.LogLevel.Type) -> CandleSession.LogLevel",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "LogLevel",
+                    "printedName": "CandleSession.LogLevel",
+                    "usr": "s:13CandleSession8LogLevelO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "CandleSession.LogLevel.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "LogLevel",
+                        "printedName": "CandleSession.LogLevel",
+                        "usr": "s:13CandleSession8LogLevelO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:13CandleSession8LogLevelO5traceyA2CmF",
+            "mangledName": "$s13CandleSession8LogLevelO5traceyA2CmF",
+            "moduleName": "CandleSession"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(rawValue:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "CandleSession.LogLevel?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "LogLevel",
+                    "printedName": "CandleSession.LogLevel",
+                    "usr": "s:13CandleSession8LogLevelO"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:13CandleSession8LogLevelO8rawValueACSgSS_tcfc",
+            "mangledName": "$s13CandleSession8LogLevelO8rawValueACSgSS_tcfc",
+            "moduleName": "CandleSession",
+            "implicit": true,
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Var",
+            "name": "rawValue",
+            "printedName": "rawValue",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:13CandleSession8LogLevelO8rawValueSSvp",
+            "mangledName": "$s13CandleSession8LogLevelO8rawValueSSvp",
+            "moduleName": "CandleSession",
+            "implicit": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13CandleSession8LogLevelO8rawValueSSvg",
+                "mangledName": "$s13CandleSession8LogLevelO8rawValueSSvg",
+                "moduleName": "CandleSession",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          }
+        ],
+        "declKind": "Enum",
+        "usr": "s:13CandleSession8LogLevelO",
+        "mangledName": "$s13CandleSession8LogLevelO",
+        "moduleName": "CandleSession",
+        "declAttributes": [
+          "AccessControl",
+          "RawDocComment"
+        ],
+        "enumRawTypeName": "String",
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "RawRepresentable",
+            "printedName": "RawRepresentable",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "RawValue",
+                "printedName": "RawValue",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:SY",
+            "mangledName": "$sSY"
+          }
+        ]
+      },
+      {
+        "kind": "Function",
+        "name": "log",
+        "printedName": "log(_:event:metadata:)",
+        "children": [
+          {
+            "kind": "TypeNominal",
+            "name": "Void",
+            "printedName": "()"
+          },
+          {
+            "kind": "TypeNominal",
+            "name": "LogLevel",
+            "printedName": "CandleSession.LogLevel",
+            "usr": "s:13CandleSession8LogLevelO"
+          },
+          {
+            "kind": "TypeNominal",
+            "name": "String",
+            "printedName": "Swift.String",
+            "usr": "s:SS"
+          },
+          {
+            "kind": "TypeNominal",
+            "name": "Dictionary",
+            "printedName": "[Swift.String : Swift.String]",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "usr": "s:SD"
+          }
+        ],
+        "declKind": "Func",
+        "usr": "s:13CandleSession3log_5event8metadatayAA8LogLevelO_SSSDyS2SGtF",
+        "mangledName": "$s13CandleSession3log_5event8metadatayAA8LogLevelO_SSSDyS2SGtF",
+        "moduleName": "CandleSession",
+        "declAttributes": [
+          "AccessControl"
+        ],
+        "funcSelfKind": "NonMutating"
+      },
+      {
+        "kind": "Import",
+        "name": "CryptoKit",
+        "printedName": "CryptoKit",
+        "declKind": "Import",
+        "moduleName": "CandleSession"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "CandleSession"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "PinnedSessionDelegate",
+        "printedName": "PinnedSessionDelegate",
+        "children": [
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(pinDetails:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "PinnedSessionDelegate",
+                "printedName": "CandleSession.PinnedSessionDelegate",
+                "usr": "c:@M@CandleSession@objc(cs)PinnedSessionDelegate"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "(host: Swift.String, certHash: Swift.String)?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Tuple",
+                    "printedName": "(host: Swift.String, certHash: Swift.String)",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ]
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:13CandleSession06PinnedB8DelegateC10pinDetailsACSS4host_SS8certHashtSg_tcfc",
+            "mangledName": "$s13CandleSession06PinnedB8DelegateC10pinDetailsACSS4host_SS8certHashtSg_tcfc",
+            "moduleName": "CandleSession",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Function",
+            "name": "urlSession",
+            "printedName": "urlSession(_:didReceive:completionHandler:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "URLSession",
+                "printedName": "Foundation.URLSession",
+                "usr": "c:objc(cs)NSURLSession"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "URLAuthenticationChallenge",
+                "printedName": "Foundation.URLAuthenticationChallenge",
+                "usr": "c:objc(cs)NSURLAuthenticationChallenge"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Foundation.URLSession.AuthChallengeDisposition, Foundation.URLCredential?) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Tuple",
+                    "printedName": "(Foundation.URLSession.AuthChallengeDisposition, Foundation.URLCredential?)",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "AuthChallengeDisposition",
+                        "printedName": "Foundation.URLSession.AuthChallengeDisposition",
+                        "usr": "c:@E@NSURLSessionAuthChallengeDisposition"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Optional",
+                        "printedName": "Foundation.URLCredential?",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "URLCredential",
+                            "printedName": "Foundation.URLCredential",
+                            "usr": "c:objc(cs)NSURLCredential"
+                          }
+                        ],
+                        "usr": "s:Sq"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@CandleSession@objc(cs)PinnedSessionDelegate(im)URLSession:didReceiveChallenge:completionHandler:",
+            "mangledName": "$s13CandleSession06PinnedB8DelegateC03urlB0_10didReceive17completionHandlerySo12NSURLSessionC_So28NSURLAuthenticationChallengeCySo0j4AuthL11DispositionV_So15NSURLCredentialCSgtctF",
+            "moduleName": "CandleSession",
+            "objc_name": "URLSession:didReceiveChallenge:completionHandler:",
+            "declAttributes": [
+              "Final",
+              "ObjC",
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "PinnedSessionDelegate",
+                "printedName": "CandleSession.PinnedSessionDelegate",
+                "usr": "c:@M@CandleSession@objc(cs)PinnedSessionDelegate"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@CandleSession@objc(cs)PinnedSessionDelegate(im)init",
+            "mangledName": "$s13CandleSession06PinnedB8DelegateCACycfc",
+            "moduleName": "CandleSession",
+            "overriding": true,
+            "implicit": true,
+            "objc_name": "init",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Override"
+            ],
+            "init_kind": "Designated"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "c:@M@CandleSession@objc(cs)PinnedSessionDelegate",
+        "mangledName": "$s13CandleSession06PinnedB8DelegateC",
+        "moduleName": "CandleSession",
+        "declAttributes": [
+          "Final",
+          "AccessControl",
+          "ObjC"
+        ],
+        "superclassUsr": "c:objc(cs)NSObject",
+        "superclassNames": [
+          "ObjectiveC.NSObject"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObservingPublishing",
+            "printedName": "_KeyValueCodingAndObservingPublishing",
+            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Sendable",
+            "printedName": "Sendable",
+            "usr": "s:s8SendableP",
+            "mangledName": "$ss8SendableP"
+          }
+        ]
+      }
+    ],
+    "json_format_version": 8
+  },
+  "ConstValues": [
+    {
+      "filePath": "\/Users\/runner\/work\/candle\/candle\/sdk-swift\/Sources\/CandleSession\/Constants.swift",
+      "kind": "StringLiteral",
+      "offset": 105,
+      "length": 9,
+      "value": "\"Bearer \""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/candle\/candle\/sdk-swift\/Sources\/CandleSession\/Constants.swift",
+      "kind": "StringLiteral",
+      "offset": 167,
+      "length": 15,
+      "value": "\"Authorization\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/candle\/candle\/sdk-swift\/Sources\/CandleSession\/DeviceConnection\/DeviceConnection.swift",
+      "kind": "StringLiteral",
+      "offset": 4375,
+      "length": 34,
+      "value": "\"Socket Message Validation Failed\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/candle\/candle\/sdk-swift\/Sources\/CandleSession\/DeviceConnection\/DeviceConnection.swift",
+      "kind": "StringLiteral",
+      "offset": 4613,
+      "length": 11,
+      "value": "\"sendError\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/candle\/candle\/sdk-swift\/Sources\/CandleSession\/DeviceConnection\/DeviceConnection.swift",
+      "kind": "Array",
+      "offset": 4889,
+      "length": 2,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/candle\/candle\/sdk-swift\/Sources\/CandleSession\/Generated\/APIConstants.swift",
+      "kind": "StringLiteral",
+      "offset": 46,
+      "length": 29,
+      "value": "\"wss:\/\/v3-0-112.ws.candle.fi\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/candle\/candle\/sdk-swift\/Sources\/CandleSession\/Generated\/Types.swift",
+      "kind": "StringLiteral",
+      "offset": 5067,
+      "length": 22,
+      "value": "\"userMetadataResponse\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/candle\/candle\/sdk-swift\/Sources\/CandleSession\/Generated\/Types.swift",
+      "kind": "StringLiteral",
+      "offset": 9971,
+      "length": 5,
+      "value": "\"ios\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/candle\/candle\/sdk-swift\/Sources\/CandleSession\/Generated\/Types.swift",
+      "kind": "StringLiteral",
+      "offset": 10004,
+      "length": 9,
+      "value": "\"android\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/candle\/candle\/sdk-swift\/Sources\/CandleSession\/Generated\/Types.swift",
+      "kind": "StringLiteral",
+      "offset": 10447,
+      "length": 22,
+      "value": "\"userMetadataReceived\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/candle\/candle\/sdk-swift\/Sources\/CandleSession\/Generated\/Types.swift",
+      "kind": "StringLiteral",
+      "offset": 11942,
+      "length": 16,
+      "value": "\"networkRequest\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/candle\/candle\/sdk-swift\/Sources\/CandleSession\/Generated\/Types.swift",
+      "kind": "StringLiteral",
+      "offset": 20255,
+      "length": 5,
+      "value": "\"GET\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/candle\/candle\/sdk-swift\/Sources\/CandleSession\/Generated\/Types.swift",
+      "kind": "StringLiteral",
+      "offset": 20285,
+      "length": 6,
+      "value": "\"POST\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/candle\/candle\/sdk-swift\/Sources\/CandleSession\/Generated\/Types.swift",
+      "kind": "StringLiteral",
+      "offset": 20315,
+      "length": 5,
+      "value": "\"PUT\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/candle\/candle\/sdk-swift\/Sources\/CandleSession\/Generated\/Types.swift",
+      "kind": "StringLiteral",
+      "offset": 20347,
+      "length": 8,
+      "value": "\"DELETE\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/candle\/candle\/sdk-swift\/Sources\/CandleSession\/Generated\/Types.swift",
+      "kind": "StringLiteral",
+      "offset": 20381,
+      "length": 7,
+      "value": "\"PATCH\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/candle\/candle\/sdk-swift\/Sources\/CandleSession\/Generated\/Types.swift",
+      "kind": "StringLiteral",
+      "offset": 20413,
+      "length": 6,
+      "value": "\"HEAD\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/candle\/candle\/sdk-swift\/Sources\/CandleSession\/Generated\/Types.swift",
+      "kind": "StringLiteral",
+      "offset": 20447,
+      "length": 9,
+      "value": "\"OPTIONS\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/candle\/candle\/sdk-swift\/Sources\/CandleSession\/Generated\/Types.swift",
+      "kind": "StringLiteral",
+      "offset": 20484,
+      "length": 9,
+      "value": "\"CONNECT\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/candle\/candle\/sdk-swift\/Sources\/CandleSession\/Generated\/Types.swift",
+      "kind": "StringLiteral",
+      "offset": 20519,
+      "length": 7,
+      "value": "\"TRACE\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/candle\/candle\/sdk-swift\/Sources\/CandleSession\/Generated\/Types.swift",
+      "kind": "StringLiteral",
+      "offset": 21061,
+      "length": 17,
+      "value": "\"keychainRequest\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/candle\/candle\/sdk-swift\/Sources\/CandleSession\/Generated\/Types.swift",
+      "kind": "StringLiteral",
+      "offset": 25343,
+      "length": 5,
+      "value": "\"get\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/candle\/candle\/sdk-swift\/Sources\/CandleSession\/Generated\/Types.swift",
+      "kind": "StringLiteral",
+      "offset": 25379,
+      "length": 8,
+      "value": "\"delete\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/candle\/candle\/sdk-swift\/Sources\/CandleSession\/Generated\/Types.swift",
+      "kind": "StringLiteral",
+      "offset": 27259,
+      "length": 5,
+      "value": "\"set\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/candle\/candle\/sdk-swift\/Sources\/CandleSession\/Generated\/Types.swift",
+      "kind": "StringLiteral",
+      "offset": 29627,
+      "length": 19,
+      "value": "\"financeKitRequest\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/candle\/candle\/sdk-swift\/Sources\/CandleSession\/Generated\/Types.swift",
+      "kind": "StringLiteral",
+      "offset": 34036,
+      "length": 22,
+      "value": "\"requestAuthorization\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/candle\/candle\/sdk-swift\/Sources\/CandleSession\/Generated\/Types.swift",
+      "kind": "StringLiteral",
+      "offset": 34102,
+      "length": 21,
+      "value": "\"authorizationStatus\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/candle\/candle\/sdk-swift\/Sources\/CandleSession\/Generated\/Types.swift",
+      "kind": "StringLiteral",
+      "offset": 35608,
+      "length": 10,
+      "value": "\"accounts\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/candle\/candle\/sdk-swift\/Sources\/CandleSession\/Generated\/Types.swift",
+      "kind": "StringLiteral",
+      "offset": 35658,
+      "length": 17,
+      "value": "\"accountBalances\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/candle\/candle\/sdk-swift\/Sources\/CandleSession\/Generated\/Types.swift",
+      "kind": "StringLiteral",
+      "offset": 35712,
+      "length": 14,
+      "value": "\"transactions\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/candle\/candle\/sdk-swift\/Sources\/CandleSession\/Generated\/Types.swift",
+      "kind": "StringLiteral",
+      "offset": 39368,
+      "length": 15,
+      "value": "\"responseChunk\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/candle\/candle\/sdk-swift\/Sources\/CandleSession\/Generated\/Types.swift",
+      "kind": "StringLiteral",
+      "offset": 45693,
+      "length": 9,
+      "value": "\"success\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/candle\/candle\/sdk-swift\/Sources\/CandleSession\/Generated\/Types.swift",
+      "kind": "StringLiteral",
+      "offset": 48736,
+      "length": 7,
+      "value": "\"error\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/candle\/candle\/sdk-swift\/Sources\/CandleSession\/Generated\/Types.swift",
+      "kind": "StringLiteral",
+      "offset": 49173,
+      "length": 17,
+      "value": "\"invalid_request\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/candle\/candle\/sdk-swift\/Sources\/CandleSession\/Generated\/Types.swift",
+      "kind": "StringLiteral",
+      "offset": 49225,
+      "length": 13,
+      "value": "\"no_response\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/candle\/candle\/sdk-swift\/Sources\/CandleSession\/Generated\/Types.swift",
+      "kind": "StringLiteral",
+      "offset": 49278,
+      "length": 18,
+      "value": "\"invalid_response\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/candle\/candle\/sdk-swift\/Sources\/CandleSession\/Generated\/Types.swift",
+      "kind": "StringLiteral",
+      "offset": 49331,
+      "length": 12,
+      "value": "\"unexpected\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/candle\/candle\/sdk-swift\/Sources\/CandleSession\/Generated\/Types.swift",
+      "kind": "StringLiteral",
+      "offset": 53369,
+      "length": 5,
+      "value": "\"get\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/candle\/candle\/sdk-swift\/Sources\/CandleSession\/Generated\/Types.swift",
+      "kind": "StringLiteral",
+      "offset": 55295,
+      "length": 5,
+      "value": "\"set\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/candle\/candle\/sdk-swift\/Sources\/CandleSession\/Generated\/Types.swift",
+      "kind": "StringLiteral",
+      "offset": 55331,
+      "length": 8,
+      "value": "\"delete\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/candle\/candle\/sdk-swift\/Sources\/CandleSession\/Generated\/Types.swift",
+      "kind": "StringLiteral",
+      "offset": 56773,
+      "length": 7,
+      "value": "\"error\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/candle\/candle\/sdk-swift\/Sources\/CandleSession\/Generated\/Types.swift",
+      "kind": "StringLiteral",
+      "offset": 57209,
+      "length": 12,
+      "value": "\"unexpected\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/candle\/candle\/sdk-swift\/Sources\/CandleSession\/Generated\/Types.swift",
+      "kind": "StringLiteral",
+      "offset": 62495,
+      "length": 22,
+      "value": "\"requestAuthorization\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/candle\/candle\/sdk-swift\/Sources\/CandleSession\/Generated\/Types.swift",
+      "kind": "StringLiteral",
+      "offset": 62561,
+      "length": 21,
+      "value": "\"authorizationStatus\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/candle\/candle\/sdk-swift\/Sources\/CandleSession\/Generated\/Types.swift",
+      "kind": "StringLiteral",
+      "offset": 64582,
+      "length": 12,
+      "value": "\"authorized\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/candle\/candle\/sdk-swift\/Sources\/CandleSession\/Generated\/Types.swift",
+      "kind": "StringLiteral",
+      "offset": 64621,
+      "length": 8,
+      "value": "\"denied\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/candle\/candle\/sdk-swift\/Sources\/CandleSession\/Generated\/Types.swift",
+      "kind": "StringLiteral",
+      "offset": 64663,
+      "length": 15,
+      "value": "\"notDetermined\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/candle\/candle\/sdk-swift\/Sources\/CandleSession\/Generated\/Types.swift",
+      "kind": "StringLiteral",
+      "offset": 65097,
+      "length": 10,
+      "value": "\"accounts\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/candle\/candle\/sdk-swift\/Sources\/CandleSession\/Generated\/Types.swift",
+      "kind": "StringLiteral",
+      "offset": 68572,
+      "length": 7,
+      "value": "\"asset\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/candle\/candle\/sdk-swift\/Sources\/CandleSession\/Generated\/Types.swift",
+      "kind": "StringLiteral",
+      "offset": 70808,
+      "length": 6,
+      "value": "\"type\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/candle\/candle\/sdk-swift\/Sources\/CandleSession\/Generated\/Types.swift",
+      "kind": "StringLiteral",
+      "offset": 73268,
+      "length": 11,
+      "value": "\"liability\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/candle\/candle\/sdk-swift\/Sources\/CandleSession\/Generated\/Types.swift",
+      "kind": "StringLiteral",
+      "offset": 75914,
+      "length": 6,
+      "value": "\"type\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/candle\/candle\/sdk-swift\/Sources\/CandleSession\/Generated\/Types.swift",
+      "kind": "StringLiteral",
+      "offset": 83541,
+      "length": 17,
+      "value": "\"accountBalances\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/candle\/candle\/sdk-swift\/Sources\/CandleSession\/Generated\/Types.swift",
+      "kind": "StringLiteral",
+      "offset": 90186,
+      "length": 11,
+      "value": "\"available\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/candle\/candle\/sdk-swift\/Sources\/CandleSession\/Generated\/Types.swift",
+      "kind": "StringLiteral",
+      "offset": 91073,
+      "length": 6,
+      "value": "\"type\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/candle\/candle\/sdk-swift\/Sources\/CandleSession\/Generated\/Types.swift",
+      "kind": "StringLiteral",
+      "offset": 94196,
+      "length": 8,
+      "value": "\"credit\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/candle\/candle\/sdk-swift\/Sources\/CandleSession\/Generated\/Types.swift",
+      "kind": "StringLiteral",
+      "offset": 94230,
+      "length": 7,
+      "value": "\"debit\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/candle\/candle\/sdk-swift\/Sources\/CandleSession\/Generated\/Types.swift",
+      "kind": "StringLiteral",
+      "offset": 94619,
+      "length": 8,
+      "value": "\"booked\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/candle\/candle\/sdk-swift\/Sources\/CandleSession\/Generated\/Types.swift",
+      "kind": "StringLiteral",
+      "offset": 95470,
+      "length": 6,
+      "value": "\"type\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/candle\/candle\/sdk-swift\/Sources\/CandleSession\/Generated\/Types.swift",
+      "kind": "StringLiteral",
+      "offset": 96592,
+      "length": 20,
+      "value": "\"availableAndBooked\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/candle\/candle\/sdk-swift\/Sources\/CandleSession\/Generated\/Types.swift",
+      "kind": "StringLiteral",
+      "offset": 97815,
+      "length": 6,
+      "value": "\"type\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/candle\/candle\/sdk-swift\/Sources\/CandleSession\/Generated\/Types.swift",
+      "kind": "StringLiteral",
+      "offset": 99183,
+      "length": 14,
+      "value": "\"transactions\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/candle\/candle\/sdk-swift\/Sources\/CandleSession\/Generated\/Types.swift",
+      "kind": "StringLiteral",
+      "offset": 109899,
+      "length": 9,
+      "value": "\"unknown\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/candle\/candle\/sdk-swift\/Sources\/CandleSession\/Generated\/Types.swift",
+      "kind": "StringLiteral",
+      "offset": 109939,
+      "length": 12,
+      "value": "\"adjustment\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/candle\/candle\/sdk-swift\/Sources\/CandleSession\/Generated\/Types.swift",
+      "kind": "StringLiteral",
+      "offset": 109975,
+      "length": 5,
+      "value": "\"atm\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/candle\/candle\/sdk-swift\/Sources\/CandleSession\/Generated\/Types.swift",
+      "kind": "StringLiteral",
+      "offset": 110012,
+      "length": 13,
+      "value": "\"billPayment\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/candle\/candle\/sdk-swift\/Sources\/CandleSession\/Generated\/Types.swift",
+      "kind": "StringLiteral",
+      "offset": 110051,
+      "length": 7,
+      "value": "\"check\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/candle\/candle\/sdk-swift\/Sources\/CandleSession\/Generated\/Types.swift",
+      "kind": "StringLiteral",
+      "offset": 110086,
+      "length": 9,
+      "value": "\"deposit\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/candle\/candle\/sdk-swift\/Sources\/CandleSession\/Generated\/Types.swift",
+      "kind": "StringLiteral",
+      "offset": 110129,
+      "length": 15,
+      "value": "\"directDeposit\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/candle\/candle\/sdk-swift\/Sources\/CandleSession\/Generated\/Types.swift",
+      "kind": "StringLiteral",
+      "offset": 110173,
+      "length": 10,
+      "value": "\"dividend\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/candle\/candle\/sdk-swift\/Sources\/CandleSession\/Generated\/Types.swift",
+      "kind": "StringLiteral",
+      "offset": 110207,
+      "length": 5,
+      "value": "\"fee\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/candle\/candle\/sdk-swift\/Sources\/CandleSession\/Generated\/Types.swift",
+      "kind": "StringLiteral",
+      "offset": 110241,
+      "length": 10,
+      "value": "\"interest\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/candle\/candle\/sdk-swift\/Sources\/CandleSession\/Generated\/Types.swift",
+      "kind": "StringLiteral",
+      "offset": 110283,
+      "length": 13,
+      "value": "\"pointOfSale\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/candle\/candle\/sdk-swift\/Sources\/CandleSession\/Generated\/Types.swift",
+      "kind": "StringLiteral",
+      "offset": 110325,
+      "length": 10,
+      "value": "\"transfer\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/candle\/candle\/sdk-swift\/Sources\/CandleSession\/Generated\/Types.swift",
+      "kind": "StringLiteral",
+      "offset": 110366,
+      "length": 12,
+      "value": "\"withdrawal\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/candle\/candle\/sdk-swift\/Sources\/CandleSession\/Generated\/Types.swift",
+      "kind": "StringLiteral",
+      "offset": 110412,
+      "length": 15,
+      "value": "\"standingOrder\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/candle\/candle\/sdk-swift\/Sources\/CandleSession\/Generated\/Types.swift",
+      "kind": "StringLiteral",
+      "offset": 110459,
+      "length": 13,
+      "value": "\"directDebit\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/candle\/candle\/sdk-swift\/Sources\/CandleSession\/Generated\/Types.swift",
+      "kind": "StringLiteral",
+      "offset": 110497,
+      "length": 6,
+      "value": "\"loan\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/candle\/candle\/sdk-swift\/Sources\/CandleSession\/Generated\/Types.swift",
+      "kind": "StringLiteral",
+      "offset": 110530,
+      "length": 8,
+      "value": "\"refund\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/candle\/candle\/sdk-swift\/Sources\/CandleSession\/Generated\/Types.swift",
+      "kind": "StringLiteral",
+      "offset": 110751,
+      "length": 12,
+      "value": "\"authorized\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/candle\/candle\/sdk-swift\/Sources\/CandleSession\/Generated\/Types.swift",
+      "kind": "StringLiteral",
+      "offset": 110788,
+      "length": 6,
+      "value": "\"memo\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/candle\/candle\/sdk-swift\/Sources\/CandleSession\/Generated\/Types.swift",
+      "kind": "StringLiteral",
+      "offset": 110822,
+      "length": 9,
+      "value": "\"pending\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/candle\/candle\/sdk-swift\/Sources\/CandleSession\/Generated\/Types.swift",
+      "kind": "StringLiteral",
+      "offset": 110858,
+      "length": 8,
+      "value": "\"booked\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/candle\/candle\/sdk-swift\/Sources\/CandleSession\/Generated\/Types.swift",
+      "kind": "StringLiteral",
+      "offset": 110895,
+      "length": 10,
+      "value": "\"rejected\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/candle\/candle\/sdk-swift\/Sources\/CandleSession\/Generated\/Types.swift",
+      "kind": "StringLiteral",
+      "offset": 111312,
+      "length": 7,
+      "value": "\"error\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/candle\/candle\/sdk-swift\/Sources\/CandleSession\/Generated\/Types.swift",
+      "kind": "StringLiteral",
+      "offset": 113099,
+      "length": 16,
+      "value": "\"unsupported_os\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/candle\/candle\/sdk-swift\/Sources\/CandleSession\/Generated\/Types.swift",
+      "kind": "StringLiteral",
+      "offset": 113146,
+      "length": 12,
+      "value": "\"unexpected\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/candle\/candle\/sdk-swift\/Sources\/CandleSession\/Generated\/Types.swift",
+      "kind": "StringLiteral",
+      "offset": 113190,
+      "length": 14,
+      "value": "\"unknown_case\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/candle\/candle\/sdk-swift\/Sources\/CandleSession\/Generated\/Types.swift",
+      "kind": "StringLiteral",
+      "offset": 113232,
+      "length": 9,
+      "value": "\"unknown\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/candle\/candle\/sdk-swift\/Sources\/CandleSession\/Generated\/Types.swift",
+      "kind": "StringLiteral",
+      "offset": 113281,
+      "length": 23,
+      "value": "\"history_token_invalid\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/candle\/candle\/sdk-swift\/Sources\/CandleSession\/Generated\/Types.swift",
+      "kind": "StringLiteral",
+      "offset": 113345,
+      "length": 24,
+      "value": "\"data_restricted_orders\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/candle\/candle\/sdk-swift\/Sources\/CandleSession\/Generated\/Types.swift",
+      "kind": "StringLiteral",
+      "offset": 113417,
+      "length": 32,
+      "value": "\"data_restricted_financial_data\""
+    }
+  ]
+}

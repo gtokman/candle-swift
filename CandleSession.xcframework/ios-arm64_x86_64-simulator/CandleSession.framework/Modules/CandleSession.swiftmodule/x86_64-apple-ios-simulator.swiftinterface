@@ -1,0 +1,65 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 6.0.3 (swiftlang-6.0.3.1.10 clang-1600.0.30.1)
+// swift-module-flags: -target x86_64-apple-ios16.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 6 -enforce-exclusivity=checked -O -module-name CandleSession -package-name sdk_swift
+// swift-module-flags-ignorable: -no-verify-emitted-module-interface
+import Combine
+import CryptoKit
+import FinanceKit
+import Foundation
+import Foundation/*.Data*/
+import Foundation/*.Date*/
+import Foundation/*.URL*/
+import KeychainSwift
+import OpenAPIRuntime
+import Swift
+import UIKit
+import _Concurrency
+import _StringProcessing
+import _SwiftConcurrencyShims
+public enum Constants {
+  public enum API {
+    public static let authorizationHeaderValuePrefix: Swift.String
+    public static let authorizationHeaderName: Swift.String
+  }
+}
+public enum ConnectionResult : Swift.Error {
+  case closed
+  case lost
+  public static func == (a: CandleSession.ConnectionResult, b: CandleSession.ConnectionResult) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers final public actor DeviceConnection : Swift.Sendable {
+  public static func open(using urlSessionConfiguration: Foundation.URLSessionConfiguration, authorizationToken: Swift.String, onClose: @escaping @Sendable (CandleSession.ConnectionResult) -> Swift.Void) async -> CandleSession.DeviceConnection?
+  @objc deinit
+  @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+  @_semantics("defaultActor") nonisolated final public var unownedExecutor: _Concurrency.UnownedSerialExecutor {
+    get
+  }
+}
+public enum LogLevel : Swift.String {
+  case fatal
+  case error
+  case warn
+  case info
+  case debug
+  case trace
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public func log(_ level: CandleSession.LogLevel, event: Swift.String, metadata: [Swift.String : Swift.String])
+@objc final public class PinnedSessionDelegate : ObjectiveC.NSObject, Foundation.URLSessionDelegate {
+  public init(pinDetails: (host: Swift.String, certHash: Swift.String)? = nil)
+  @objc final public func urlSession(_ session: Foundation.URLSession, didReceive challenge: Foundation.URLAuthenticationChallenge, completionHandler: @escaping (Foundation.URLSession.AuthChallengeDisposition, Foundation.URLCredential?) -> Swift.Void)
+  @objc deinit
+}
+extension CandleSession.ConnectionResult : Swift.Equatable {}
+extension CandleSession.ConnectionResult : Swift.Hashable {}
+extension CandleSession.LogLevel : Swift.Equatable {}
+extension CandleSession.LogLevel : Swift.Hashable {}
+extension CandleSession.LogLevel : Swift.RawRepresentable {}
