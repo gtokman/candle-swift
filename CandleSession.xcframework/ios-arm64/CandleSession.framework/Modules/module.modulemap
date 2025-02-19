@@ -1,6 +1,0 @@
-framework module CandleSession {
-umbrella "Headers"
-export *
-
-module * { export * }
-}

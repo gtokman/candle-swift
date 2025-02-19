@@ -7,27 +7,25 @@ let package = Package(
     products: [
         .library(
             name: "Candle",
-            targets: ["Candle"]
+            targets: ["CandlePublic"]
         )
     ],
     dependencies: [
-        .package(url: "https://github.com/apple/swift-openapi-runtime", exact: "1.7.0"),
         .package(url: "https://github.com/apple/swift-openapi-urlsession", exact: "1.0.2"),
-        .package(url: "https://github.com/evgenyneu/keychain-swift.git", exact: "24.0.0"),
+        .package(url: "https://github.com/candlefinance/swift-security.git", branch: "main"),
     ],
     targets: [
         .target(
-            name: "Candle",
+            name: "CandlePublic",
             dependencies: [
-                .product(name: "OpenAPIRuntime", package: "swift-openapi-runtime"),
-                .product(name: "KeychainSwift", package: "keychain-swift"),
                 .product(name: "OpenAPIURLSession", package: "swift-openapi-urlsession"),
-                "CandleSession",
+                .product(name: "SwiftSecurity", package: "swift-security"),
+                "Candle",
             ]
         ),
         .binaryTarget(
-            name: "CandleSession",
-            path: "./CandleSession.xcframework"
+            name: "Candle",
+            path: "./Candle.xcframework"
         ),
     ]
 )
