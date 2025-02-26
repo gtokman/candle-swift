@@ -55,7 +55,7 @@ extension Candle.Components.Schemas {
   public typealias LinkAccount = Candle.Operations.PostLinkedAccounts
   public typealias UnlinkAccount = Candle.Operations.DeleteLinkedAccount
   public typealias GetLinkedAccounts = Candle.Operations.GetLinkedAccounts
-  public typealias GetFiatAccounts = Candle.Operations.GetLinkedAccountsFiatHoldingAccounts
+  public typealias GetFiatAccounts = Candle.Operations.GetLinkedAccountsFiatAccounts
   public typealias GetActivity = Candle.Operations.GetLinkedAccountsActivity
   public enum SessionError : Swift.Error, Swift.Equatable {
     case openSessionError
@@ -179,16 +179,16 @@ extension Candle.Operations.GetLinkedAccounts {
     public static func == (a: Candle.Operations.GetLinkedAccounts.Error, b: Candle.Operations.GetLinkedAccounts.Error) -> Swift.Bool
   }
 }
-extension Candle.Operations.GetLinkedAccountsFiatHoldingAccounts {
+extension Candle.Operations.GetLinkedAccountsFiatAccounts {
   public enum Error : Swift.Error, Swift.Equatable {
     case networkError(Swift.String)
     case unexpectedStatusCode(Swift.Int)
     case sessionError(Candle.Models.SessionError)
-    case unauthorized(Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.Unauthorized.Body.JsonPayload)
-    case notFound(Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.NotFound.Body.JsonPayload)
-    case unprocessableContent(Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.UnprocessableContent.Body.JsonPayload)
-    case internalServerError(Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.InternalServerError.Body.JsonPayload)
-    public static func == (a: Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Error, b: Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Error) -> Swift.Bool
+    case unauthorized(Candle.Operations.GetLinkedAccountsFiatAccounts.Output.Unauthorized.Body.JsonPayload)
+    case notFound(Candle.Operations.GetLinkedAccountsFiatAccounts.Output.NotFound.Body.JsonPayload)
+    case unprocessableContent(Candle.Operations.GetLinkedAccountsFiatAccounts.Output.UnprocessableContent.Body.JsonPayload)
+    case internalServerError(Candle.Operations.GetLinkedAccountsFiatAccounts.Output.InternalServerError.Body.JsonPayload)
+    public static func == (a: Candle.Operations.GetLinkedAccountsFiatAccounts.Error, b: Candle.Operations.GetLinkedAccountsFiatAccounts.Error) -> Swift.Bool
   }
 }
 extension Candle.Operations.GetLinkedAccountsActivity {
@@ -219,7 +219,7 @@ extension Candle.Components.Schemas.CashAppServiceCredentials {
   public init(username: Candle.Models.CashAppServiceCredentials.UsernamePayload, pin: Candle.Models.Pin)
 }
 extension Candle.Components.Schemas.VenmoServiceCredentials {
-  public init(username: Swift.String, password: Candle.Models.Password)
+  public init(username: Candle.Models.VenmoServiceCredentials.UsernamePayload, password: Candle.Models.Password)
 }
 extension Candle.Components.Schemas.AppleServiceCredentials {
   public init()
@@ -259,7 +259,7 @@ public protocol APIProtocol : Swift.Sendable {
   func getLinkedAccounts(_ input: Candle.Operations.GetLinkedAccounts.Input) async throws -> Candle.Operations.GetLinkedAccounts.Output
   func postLinkedAccounts(_ input: Candle.Operations.PostLinkedAccounts.Input) async throws -> Candle.Operations.PostLinkedAccounts.Output
   func deleteLinkedAccount(_ input: Candle.Operations.DeleteLinkedAccount.Input) async throws -> Candle.Operations.DeleteLinkedAccount.Output
-  func getLinkedAccountsFiatHoldingAccounts(_ input: Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Input) async throws -> Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output
+  func getLinkedAccountsFiatAccounts(_ input: Candle.Operations.GetLinkedAccountsFiatAccounts.Input) async throws -> Candle.Operations.GetLinkedAccountsFiatAccounts.Output
   func getLinkedAccountsActivity(_ input: Candle.Operations.GetLinkedAccountsActivity.Input) async throws -> Candle.Operations.GetLinkedAccountsActivity.Output
 }
 extension Candle.APIProtocol {
@@ -269,7 +269,7 @@ extension Candle.APIProtocol {
   public func getLinkedAccounts(headers: Candle.Operations.GetLinkedAccounts.Input.Headers = .init()) async throws -> Candle.Operations.GetLinkedAccounts.Output
   public func postLinkedAccounts(headers: Candle.Operations.PostLinkedAccounts.Input.Headers = .init(), body: Candle.Operations.PostLinkedAccounts.Input.Body) async throws -> Candle.Operations.PostLinkedAccounts.Output
   public func deleteLinkedAccount(path: Candle.Operations.DeleteLinkedAccount.Input.Path, headers: Candle.Operations.DeleteLinkedAccount.Input.Headers = .init()) async throws -> Candle.Operations.DeleteLinkedAccount.Output
-  public func getLinkedAccountsFiatHoldingAccounts(query: Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Input.Query = .init(), headers: Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Input.Headers = .init()) async throws -> Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output
+  public func getLinkedAccountsFiatAccounts(query: Candle.Operations.GetLinkedAccountsFiatAccounts.Input.Query = .init(), headers: Candle.Operations.GetLinkedAccountsFiatAccounts.Input.Headers = .init()) async throws -> Candle.Operations.GetLinkedAccountsFiatAccounts.Output
   public func getLinkedAccountsActivity(query: Candle.Operations.GetLinkedAccountsActivity.Input.Query = .init(), headers: Candle.Operations.GetLinkedAccountsActivity.Input.Headers = .init()) async throws -> Candle.Operations.GetLinkedAccountsActivity.Output
 }
 public enum Servers {
@@ -624,9 +624,20 @@ public enum Components {
         }
       }
       public var service: Candle.Components.Schemas.VenmoServiceCredentials.ServicePayload
-      public var username: Swift.String
+      @frozen public enum UsernamePayload : Swift.Codable, Swift.Hashable, Swift.Sendable {
+        case USPhoneNumber(Candle.Components.Schemas.USPhoneNumber)
+        case EmailAddress(Candle.Components.Schemas.EmailAddress)
+        public init(from decoder: any Swift.Decoder) throws
+        public func encode(to encoder: any Swift.Encoder) throws
+        public func hash(into hasher: inout Swift.Hasher)
+        public static func == (a: Candle.Components.Schemas.VenmoServiceCredentials.UsernamePayload, b: Candle.Components.Schemas.VenmoServiceCredentials.UsernamePayload) -> Swift.Bool
+        public var hashValue: Swift.Int {
+          get
+        }
+      }
+      public var username: Candle.Components.Schemas.VenmoServiceCredentials.UsernamePayload
       public var password: Candle.Components.Schemas.Password
-      public init(service: Candle.Components.Schemas.VenmoServiceCredentials.ServicePayload, username: Swift.String, password: Candle.Components.Schemas.Password)
+      public init(service: Candle.Components.Schemas.VenmoServiceCredentials.ServicePayload, username: Candle.Components.Schemas.VenmoServiceCredentials.UsernamePayload, password: Candle.Components.Schemas.Password)
       public enum CodingKeys : Swift.String, Swift.CodingKey {
         case service
         case username
@@ -653,6 +664,7 @@ public enum Components {
         get
       }
     }
+    public typealias USPhoneNumber = Swift.String
     public struct CashAppServiceCredentials : Swift.Codable, Swift.Hashable, Swift.Sendable {
       @frozen public enum ServicePayload : Swift.String, Swift.Codable, Swift.Hashable, Swift.Sendable, Swift.CaseIterable {
         case cashApp
@@ -707,7 +719,6 @@ public enum Components {
         get
       }
     }
-    public typealias USPhoneNumber = Swift.String
     public typealias Pin = Swift.String
     public struct AppleServiceCredentials : Swift.Codable, Swift.Hashable, Swift.Sendable {
       @frozen public enum ServicePayload : Swift.String, Swift.Codable, Swift.Hashable, Swift.Sendable, Swift.CaseIterable {
@@ -4955,32 +4966,32 @@ public enum Operations {
       public typealias RawValue = Swift.String
     }
   }
-  public enum GetLinkedAccountsFiatHoldingAccounts {
+  public enum GetLinkedAccountsFiatAccounts {
     public static let id: Swift.String
     public struct Input : Swift.Sendable, Swift.Hashable {
       public struct Query : Swift.Sendable, Swift.Hashable {
         public var linkedAccountIDs: Swift.String?
         public init(linkedAccountIDs: Swift.String? = nil)
         public func hash(into hasher: inout Swift.Hasher)
-        public static func == (a: Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Input.Query, b: Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Input.Query) -> Swift.Bool
+        public static func == (a: Candle.Operations.GetLinkedAccountsFiatAccounts.Input.Query, b: Candle.Operations.GetLinkedAccountsFiatAccounts.Input.Query) -> Swift.Bool
         public var hashValue: Swift.Int {
           get
         }
       }
-      public var query: Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Input.Query
+      public var query: Candle.Operations.GetLinkedAccountsFiatAccounts.Input.Query
       public struct Headers : Swift.Sendable, Swift.Hashable {
-        public var accept: [OpenAPIRuntime.AcceptHeaderContentType<Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.AcceptableContentType>]
-        public init(accept: [OpenAPIRuntime.AcceptHeaderContentType<Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.AcceptableContentType>] = .defaultValues())
+        public var accept: [OpenAPIRuntime.AcceptHeaderContentType<Candle.Operations.GetLinkedAccountsFiatAccounts.AcceptableContentType>]
+        public init(accept: [OpenAPIRuntime.AcceptHeaderContentType<Candle.Operations.GetLinkedAccountsFiatAccounts.AcceptableContentType>] = .defaultValues())
         public func hash(into hasher: inout Swift.Hasher)
-        public static func == (a: Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Input.Headers, b: Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Input.Headers) -> Swift.Bool
+        public static func == (a: Candle.Operations.GetLinkedAccountsFiatAccounts.Input.Headers, b: Candle.Operations.GetLinkedAccountsFiatAccounts.Input.Headers) -> Swift.Bool
         public var hashValue: Swift.Int {
           get
         }
       }
-      public var headers: Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Input.Headers
-      public init(query: Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Input.Query = .init(), headers: Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Input.Headers = .init())
+      public var headers: Candle.Operations.GetLinkedAccountsFiatAccounts.Input.Headers
+      public init(query: Candle.Operations.GetLinkedAccountsFiatAccounts.Input.Query = .init(), headers: Candle.Operations.GetLinkedAccountsFiatAccounts.Input.Headers = .init())
       public func hash(into hasher: inout Swift.Hasher)
-      public static func == (a: Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Input, b: Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Input) -> Swift.Bool
+      public static func == (a: Candle.Operations.GetLinkedAccountsFiatAccounts.Input, b: Candle.Operations.GetLinkedAccountsFiatAccounts.Input) -> Swift.Bool
       public var hashValue: Swift.Int {
         get
       }
@@ -4991,58 +5002,58 @@ public enum Operations {
           @frozen public enum ContentTypePayload : Swift.String, Swift.Codable, Swift.Hashable, Swift.Sendable, Swift.CaseIterable {
             case applicationJson
             public init?(rawValue: Swift.String)
-            public typealias AllCases = [Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.Ok.Headers.ContentTypePayload]
+            public typealias AllCases = [Candle.Operations.GetLinkedAccountsFiatAccounts.Output.Ok.Headers.ContentTypePayload]
             public typealias RawValue = Swift.String
-            nonisolated public static var allCases: [Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.Ok.Headers.ContentTypePayload] {
+            nonisolated public static var allCases: [Candle.Operations.GetLinkedAccountsFiatAccounts.Output.Ok.Headers.ContentTypePayload] {
               get
             }
             public var rawValue: Swift.String {
               get
             }
           }
-          public var contentType: Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.Ok.Headers.ContentTypePayload?
+          public var contentType: Candle.Operations.GetLinkedAccountsFiatAccounts.Output.Ok.Headers.ContentTypePayload?
           @frozen public enum ContentEncodingPayload : Swift.String, Swift.Codable, Swift.Hashable, Swift.Sendable, Swift.CaseIterable {
             case gzip
             public init?(rawValue: Swift.String)
-            public typealias AllCases = [Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.Ok.Headers.ContentEncodingPayload]
+            public typealias AllCases = [Candle.Operations.GetLinkedAccountsFiatAccounts.Output.Ok.Headers.ContentEncodingPayload]
             public typealias RawValue = Swift.String
-            nonisolated public static var allCases: [Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.Ok.Headers.ContentEncodingPayload] {
+            nonisolated public static var allCases: [Candle.Operations.GetLinkedAccountsFiatAccounts.Output.Ok.Headers.ContentEncodingPayload] {
               get
             }
             public var rawValue: Swift.String {
               get
             }
           }
-          public var contentEncoding: Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.Ok.Headers.ContentEncodingPayload?
-          public init(contentType: Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.Ok.Headers.ContentTypePayload? = nil, contentEncoding: Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.Ok.Headers.ContentEncodingPayload? = nil)
+          public var contentEncoding: Candle.Operations.GetLinkedAccountsFiatAccounts.Output.Ok.Headers.ContentEncodingPayload?
+          public init(contentType: Candle.Operations.GetLinkedAccountsFiatAccounts.Output.Ok.Headers.ContentTypePayload? = nil, contentEncoding: Candle.Operations.GetLinkedAccountsFiatAccounts.Output.Ok.Headers.ContentEncodingPayload? = nil)
           public func hash(into hasher: inout Swift.Hasher)
-          public static func == (a: Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.Ok.Headers, b: Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.Ok.Headers) -> Swift.Bool
+          public static func == (a: Candle.Operations.GetLinkedAccountsFiatAccounts.Output.Ok.Headers, b: Candle.Operations.GetLinkedAccountsFiatAccounts.Output.Ok.Headers) -> Swift.Bool
           public var hashValue: Swift.Int {
             get
           }
         }
-        public var headers: Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.Ok.Headers
+        public var headers: Candle.Operations.GetLinkedAccountsFiatAccounts.Output.Ok.Headers
         @frozen public enum Body : Swift.Sendable, Swift.Hashable {
           case json([Candle.Components.Schemas.PrimaryFiatHoldingAccount])
           public var json: [Candle.Components.Schemas.PrimaryFiatHoldingAccount] {
             get throws
           }
           public func hash(into hasher: inout Swift.Hasher)
-          public static func == (a: Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.Ok.Body, b: Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.Ok.Body) -> Swift.Bool
+          public static func == (a: Candle.Operations.GetLinkedAccountsFiatAccounts.Output.Ok.Body, b: Candle.Operations.GetLinkedAccountsFiatAccounts.Output.Ok.Body) -> Swift.Bool
           public var hashValue: Swift.Int {
             get
           }
         }
-        public var body: Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.Ok.Body
-        public init(headers: Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.Ok.Headers = .init(), body: Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.Ok.Body)
+        public var body: Candle.Operations.GetLinkedAccountsFiatAccounts.Output.Ok.Body
+        public init(headers: Candle.Operations.GetLinkedAccountsFiatAccounts.Output.Ok.Headers = .init(), body: Candle.Operations.GetLinkedAccountsFiatAccounts.Output.Ok.Body)
         public func hash(into hasher: inout Swift.Hasher)
-        public static func == (a: Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.Ok, b: Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.Ok) -> Swift.Bool
+        public static func == (a: Candle.Operations.GetLinkedAccountsFiatAccounts.Output.Ok, b: Candle.Operations.GetLinkedAccountsFiatAccounts.Output.Ok) -> Swift.Bool
         public var hashValue: Swift.Int {
           get
         }
       }
-      case ok(Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.Ok)
-      public var ok: Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.Ok {
+      case ok(Candle.Operations.GetLinkedAccountsFiatAccounts.Output.Ok)
+      public var ok: Candle.Operations.GetLinkedAccountsFiatAccounts.Output.Ok {
         get throws
       }
       public struct Unauthorized : Swift.Sendable, Swift.Hashable {
@@ -5050,42 +5061,42 @@ public enum Operations {
           @frozen public enum ContentTypePayload : Swift.String, Swift.Codable, Swift.Hashable, Swift.Sendable, Swift.CaseIterable {
             case applicationJson
             public init?(rawValue: Swift.String)
-            public typealias AllCases = [Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.Unauthorized.Headers.ContentTypePayload]
+            public typealias AllCases = [Candle.Operations.GetLinkedAccountsFiatAccounts.Output.Unauthorized.Headers.ContentTypePayload]
             public typealias RawValue = Swift.String
-            nonisolated public static var allCases: [Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.Unauthorized.Headers.ContentTypePayload] {
+            nonisolated public static var allCases: [Candle.Operations.GetLinkedAccountsFiatAccounts.Output.Unauthorized.Headers.ContentTypePayload] {
               get
             }
             public var rawValue: Swift.String {
               get
             }
           }
-          public var contentType: Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.Unauthorized.Headers.ContentTypePayload?
-          public init(contentType: Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.Unauthorized.Headers.ContentTypePayload? = nil)
+          public var contentType: Candle.Operations.GetLinkedAccountsFiatAccounts.Output.Unauthorized.Headers.ContentTypePayload?
+          public init(contentType: Candle.Operations.GetLinkedAccountsFiatAccounts.Output.Unauthorized.Headers.ContentTypePayload? = nil)
           public func hash(into hasher: inout Swift.Hasher)
-          public static func == (a: Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.Unauthorized.Headers, b: Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.Unauthorized.Headers) -> Swift.Bool
+          public static func == (a: Candle.Operations.GetLinkedAccountsFiatAccounts.Output.Unauthorized.Headers, b: Candle.Operations.GetLinkedAccountsFiatAccounts.Output.Unauthorized.Headers) -> Swift.Bool
           public var hashValue: Swift.Int {
             get
           }
         }
-        public var headers: Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.Unauthorized.Headers
+        public var headers: Candle.Operations.GetLinkedAccountsFiatAccounts.Output.Unauthorized.Headers
         @frozen public enum Body : Swift.Sendable, Swift.Hashable {
           public struct JsonPayload : Swift.Codable, Swift.Hashable, Swift.Sendable {
             @frozen public enum KindPayload : Swift.String, Swift.Codable, Swift.Hashable, Swift.Sendable, Swift.CaseIterable {
               case badAuthorization_user
               public init?(rawValue: Swift.String)
-              public typealias AllCases = [Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.Unauthorized.Body.JsonPayload.KindPayload]
+              public typealias AllCases = [Candle.Operations.GetLinkedAccountsFiatAccounts.Output.Unauthorized.Body.JsonPayload.KindPayload]
               public typealias RawValue = Swift.String
-              nonisolated public static var allCases: [Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.Unauthorized.Body.JsonPayload.KindPayload] {
+              nonisolated public static var allCases: [Candle.Operations.GetLinkedAccountsFiatAccounts.Output.Unauthorized.Body.JsonPayload.KindPayload] {
                 get
               }
               public var rawValue: Swift.String {
                 get
               }
             }
-            public var kind: Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.Unauthorized.Body.JsonPayload.KindPayload
+            public var kind: Candle.Operations.GetLinkedAccountsFiatAccounts.Output.Unauthorized.Body.JsonPayload.KindPayload
             public var message: Swift.String
             public var details: Swift.String?
-            public init(kind: Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.Unauthorized.Body.JsonPayload.KindPayload, message: Swift.String, details: Swift.String? = nil)
+            public init(kind: Candle.Operations.GetLinkedAccountsFiatAccounts.Output.Unauthorized.Body.JsonPayload.KindPayload, message: Swift.String, details: Swift.String? = nil)
             public enum CodingKeys : Swift.String, Swift.CodingKey {
               case kind
               case message
@@ -5106,32 +5117,32 @@ public enum Operations {
             }
             public init(from decoder: any Swift.Decoder) throws
             public func hash(into hasher: inout Swift.Hasher)
-            public static func == (a: Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.Unauthorized.Body.JsonPayload, b: Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.Unauthorized.Body.JsonPayload) -> Swift.Bool
+            public static func == (a: Candle.Operations.GetLinkedAccountsFiatAccounts.Output.Unauthorized.Body.JsonPayload, b: Candle.Operations.GetLinkedAccountsFiatAccounts.Output.Unauthorized.Body.JsonPayload) -> Swift.Bool
             public func encode(to encoder: any Swift.Encoder) throws
             public var hashValue: Swift.Int {
               get
             }
           }
-          case json(Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.Unauthorized.Body.JsonPayload)
-          public var json: Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.Unauthorized.Body.JsonPayload {
+          case json(Candle.Operations.GetLinkedAccountsFiatAccounts.Output.Unauthorized.Body.JsonPayload)
+          public var json: Candle.Operations.GetLinkedAccountsFiatAccounts.Output.Unauthorized.Body.JsonPayload {
             get throws
           }
           public func hash(into hasher: inout Swift.Hasher)
-          public static func == (a: Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.Unauthorized.Body, b: Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.Unauthorized.Body) -> Swift.Bool
+          public static func == (a: Candle.Operations.GetLinkedAccountsFiatAccounts.Output.Unauthorized.Body, b: Candle.Operations.GetLinkedAccountsFiatAccounts.Output.Unauthorized.Body) -> Swift.Bool
           public var hashValue: Swift.Int {
             get
           }
         }
-        public var body: Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.Unauthorized.Body
-        public init(headers: Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.Unauthorized.Headers = .init(), body: Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.Unauthorized.Body)
+        public var body: Candle.Operations.GetLinkedAccountsFiatAccounts.Output.Unauthorized.Body
+        public init(headers: Candle.Operations.GetLinkedAccountsFiatAccounts.Output.Unauthorized.Headers = .init(), body: Candle.Operations.GetLinkedAccountsFiatAccounts.Output.Unauthorized.Body)
         public func hash(into hasher: inout Swift.Hasher)
-        public static func == (a: Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.Unauthorized, b: Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.Unauthorized) -> Swift.Bool
+        public static func == (a: Candle.Operations.GetLinkedAccountsFiatAccounts.Output.Unauthorized, b: Candle.Operations.GetLinkedAccountsFiatAccounts.Output.Unauthorized) -> Swift.Bool
         public var hashValue: Swift.Int {
           get
         }
       }
-      case unauthorized(Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.Unauthorized)
-      public var unauthorized: Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.Unauthorized {
+      case unauthorized(Candle.Operations.GetLinkedAccountsFiatAccounts.Output.Unauthorized)
+      public var unauthorized: Candle.Operations.GetLinkedAccountsFiatAccounts.Output.Unauthorized {
         get throws
       }
       public struct NotFound : Swift.Sendable, Swift.Hashable {
@@ -5139,42 +5150,42 @@ public enum Operations {
           @frozen public enum ContentTypePayload : Swift.String, Swift.Codable, Swift.Hashable, Swift.Sendable, Swift.CaseIterable {
             case applicationJson
             public init?(rawValue: Swift.String)
-            public typealias AllCases = [Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.NotFound.Headers.ContentTypePayload]
+            public typealias AllCases = [Candle.Operations.GetLinkedAccountsFiatAccounts.Output.NotFound.Headers.ContentTypePayload]
             public typealias RawValue = Swift.String
-            nonisolated public static var allCases: [Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.NotFound.Headers.ContentTypePayload] {
+            nonisolated public static var allCases: [Candle.Operations.GetLinkedAccountsFiatAccounts.Output.NotFound.Headers.ContentTypePayload] {
               get
             }
             public var rawValue: Swift.String {
               get
             }
           }
-          public var contentType: Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.NotFound.Headers.ContentTypePayload?
-          public init(contentType: Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.NotFound.Headers.ContentTypePayload? = nil)
+          public var contentType: Candle.Operations.GetLinkedAccountsFiatAccounts.Output.NotFound.Headers.ContentTypePayload?
+          public init(contentType: Candle.Operations.GetLinkedAccountsFiatAccounts.Output.NotFound.Headers.ContentTypePayload? = nil)
           public func hash(into hasher: inout Swift.Hasher)
-          public static func == (a: Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.NotFound.Headers, b: Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.NotFound.Headers) -> Swift.Bool
+          public static func == (a: Candle.Operations.GetLinkedAccountsFiatAccounts.Output.NotFound.Headers, b: Candle.Operations.GetLinkedAccountsFiatAccounts.Output.NotFound.Headers) -> Swift.Bool
           public var hashValue: Swift.Int {
             get
           }
         }
-        public var headers: Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.NotFound.Headers
+        public var headers: Candle.Operations.GetLinkedAccountsFiatAccounts.Output.NotFound.Headers
         @frozen public enum Body : Swift.Sendable, Swift.Hashable {
           public struct JsonPayload : Swift.Codable, Swift.Hashable, Swift.Sendable {
             @frozen public enum KindPayload : Swift.String, Swift.Codable, Swift.Hashable, Swift.Sendable, Swift.CaseIterable {
               case notFound_user
               public init?(rawValue: Swift.String)
-              public typealias AllCases = [Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.NotFound.Body.JsonPayload.KindPayload]
+              public typealias AllCases = [Candle.Operations.GetLinkedAccountsFiatAccounts.Output.NotFound.Body.JsonPayload.KindPayload]
               public typealias RawValue = Swift.String
-              nonisolated public static var allCases: [Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.NotFound.Body.JsonPayload.KindPayload] {
+              nonisolated public static var allCases: [Candle.Operations.GetLinkedAccountsFiatAccounts.Output.NotFound.Body.JsonPayload.KindPayload] {
                 get
               }
               public var rawValue: Swift.String {
                 get
               }
             }
-            public var kind: Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.NotFound.Body.JsonPayload.KindPayload
+            public var kind: Candle.Operations.GetLinkedAccountsFiatAccounts.Output.NotFound.Body.JsonPayload.KindPayload
             public var message: Swift.String
             public var details: Swift.String?
-            public init(kind: Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.NotFound.Body.JsonPayload.KindPayload, message: Swift.String, details: Swift.String? = nil)
+            public init(kind: Candle.Operations.GetLinkedAccountsFiatAccounts.Output.NotFound.Body.JsonPayload.KindPayload, message: Swift.String, details: Swift.String? = nil)
             public enum CodingKeys : Swift.String, Swift.CodingKey {
               case kind
               case message
@@ -5195,32 +5206,32 @@ public enum Operations {
             }
             public init(from decoder: any Swift.Decoder) throws
             public func hash(into hasher: inout Swift.Hasher)
-            public static func == (a: Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.NotFound.Body.JsonPayload, b: Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.NotFound.Body.JsonPayload) -> Swift.Bool
+            public static func == (a: Candle.Operations.GetLinkedAccountsFiatAccounts.Output.NotFound.Body.JsonPayload, b: Candle.Operations.GetLinkedAccountsFiatAccounts.Output.NotFound.Body.JsonPayload) -> Swift.Bool
             public func encode(to encoder: any Swift.Encoder) throws
             public var hashValue: Swift.Int {
               get
             }
           }
-          case json(Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.NotFound.Body.JsonPayload)
-          public var json: Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.NotFound.Body.JsonPayload {
+          case json(Candle.Operations.GetLinkedAccountsFiatAccounts.Output.NotFound.Body.JsonPayload)
+          public var json: Candle.Operations.GetLinkedAccountsFiatAccounts.Output.NotFound.Body.JsonPayload {
             get throws
           }
           public func hash(into hasher: inout Swift.Hasher)
-          public static func == (a: Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.NotFound.Body, b: Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.NotFound.Body) -> Swift.Bool
+          public static func == (a: Candle.Operations.GetLinkedAccountsFiatAccounts.Output.NotFound.Body, b: Candle.Operations.GetLinkedAccountsFiatAccounts.Output.NotFound.Body) -> Swift.Bool
           public var hashValue: Swift.Int {
             get
           }
         }
-        public var body: Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.NotFound.Body
-        public init(headers: Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.NotFound.Headers = .init(), body: Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.NotFound.Body)
+        public var body: Candle.Operations.GetLinkedAccountsFiatAccounts.Output.NotFound.Body
+        public init(headers: Candle.Operations.GetLinkedAccountsFiatAccounts.Output.NotFound.Headers = .init(), body: Candle.Operations.GetLinkedAccountsFiatAccounts.Output.NotFound.Body)
         public func hash(into hasher: inout Swift.Hasher)
-        public static func == (a: Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.NotFound, b: Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.NotFound) -> Swift.Bool
+        public static func == (a: Candle.Operations.GetLinkedAccountsFiatAccounts.Output.NotFound, b: Candle.Operations.GetLinkedAccountsFiatAccounts.Output.NotFound) -> Swift.Bool
         public var hashValue: Swift.Int {
           get
         }
       }
-      case notFound(Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.NotFound)
-      public var notFound: Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.NotFound {
+      case notFound(Candle.Operations.GetLinkedAccountsFiatAccounts.Output.NotFound)
+      public var notFound: Candle.Operations.GetLinkedAccountsFiatAccounts.Output.NotFound {
         get throws
       }
       public struct UnprocessableContent : Swift.Sendable, Swift.Hashable {
@@ -5228,42 +5239,42 @@ public enum Operations {
           @frozen public enum ContentTypePayload : Swift.String, Swift.Codable, Swift.Hashable, Swift.Sendable, Swift.CaseIterable {
             case applicationJson
             public init?(rawValue: Swift.String)
-            public typealias AllCases = [Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.UnprocessableContent.Headers.ContentTypePayload]
+            public typealias AllCases = [Candle.Operations.GetLinkedAccountsFiatAccounts.Output.UnprocessableContent.Headers.ContentTypePayload]
             public typealias RawValue = Swift.String
-            nonisolated public static var allCases: [Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.UnprocessableContent.Headers.ContentTypePayload] {
+            nonisolated public static var allCases: [Candle.Operations.GetLinkedAccountsFiatAccounts.Output.UnprocessableContent.Headers.ContentTypePayload] {
               get
             }
             public var rawValue: Swift.String {
               get
             }
           }
-          public var contentType: Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.UnprocessableContent.Headers.ContentTypePayload?
-          public init(contentType: Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.UnprocessableContent.Headers.ContentTypePayload? = nil)
+          public var contentType: Candle.Operations.GetLinkedAccountsFiatAccounts.Output.UnprocessableContent.Headers.ContentTypePayload?
+          public init(contentType: Candle.Operations.GetLinkedAccountsFiatAccounts.Output.UnprocessableContent.Headers.ContentTypePayload? = nil)
           public func hash(into hasher: inout Swift.Hasher)
-          public static func == (a: Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.UnprocessableContent.Headers, b: Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.UnprocessableContent.Headers) -> Swift.Bool
+          public static func == (a: Candle.Operations.GetLinkedAccountsFiatAccounts.Output.UnprocessableContent.Headers, b: Candle.Operations.GetLinkedAccountsFiatAccounts.Output.UnprocessableContent.Headers) -> Swift.Bool
           public var hashValue: Swift.Int {
             get
           }
         }
-        public var headers: Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.UnprocessableContent.Headers
+        public var headers: Candle.Operations.GetLinkedAccountsFiatAccounts.Output.UnprocessableContent.Headers
         @frozen public enum Body : Swift.Sendable, Swift.Hashable {
           public struct JsonPayload : Swift.Codable, Swift.Hashable, Swift.Sendable {
             @frozen public enum KindPayload : Swift.String, Swift.Codable, Swift.Hashable, Swift.Sendable, Swift.CaseIterable {
               case schemaInvalid_request
               public init?(rawValue: Swift.String)
-              public typealias AllCases = [Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.UnprocessableContent.Body.JsonPayload.KindPayload]
+              public typealias AllCases = [Candle.Operations.GetLinkedAccountsFiatAccounts.Output.UnprocessableContent.Body.JsonPayload.KindPayload]
               public typealias RawValue = Swift.String
-              nonisolated public static var allCases: [Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.UnprocessableContent.Body.JsonPayload.KindPayload] {
+              nonisolated public static var allCases: [Candle.Operations.GetLinkedAccountsFiatAccounts.Output.UnprocessableContent.Body.JsonPayload.KindPayload] {
                 get
               }
               public var rawValue: Swift.String {
                 get
               }
             }
-            public var kind: Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.UnprocessableContent.Body.JsonPayload.KindPayload
+            public var kind: Candle.Operations.GetLinkedAccountsFiatAccounts.Output.UnprocessableContent.Body.JsonPayload.KindPayload
             public var message: Swift.String
             public var details: Swift.String?
-            public init(kind: Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.UnprocessableContent.Body.JsonPayload.KindPayload, message: Swift.String, details: Swift.String? = nil)
+            public init(kind: Candle.Operations.GetLinkedAccountsFiatAccounts.Output.UnprocessableContent.Body.JsonPayload.KindPayload, message: Swift.String, details: Swift.String? = nil)
             public enum CodingKeys : Swift.String, Swift.CodingKey {
               case kind
               case message
@@ -5284,32 +5295,32 @@ public enum Operations {
             }
             public init(from decoder: any Swift.Decoder) throws
             public func hash(into hasher: inout Swift.Hasher)
-            public static func == (a: Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.UnprocessableContent.Body.JsonPayload, b: Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.UnprocessableContent.Body.JsonPayload) -> Swift.Bool
+            public static func == (a: Candle.Operations.GetLinkedAccountsFiatAccounts.Output.UnprocessableContent.Body.JsonPayload, b: Candle.Operations.GetLinkedAccountsFiatAccounts.Output.UnprocessableContent.Body.JsonPayload) -> Swift.Bool
             public func encode(to encoder: any Swift.Encoder) throws
             public var hashValue: Swift.Int {
               get
             }
           }
-          case json(Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.UnprocessableContent.Body.JsonPayload)
-          public var json: Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.UnprocessableContent.Body.JsonPayload {
+          case json(Candle.Operations.GetLinkedAccountsFiatAccounts.Output.UnprocessableContent.Body.JsonPayload)
+          public var json: Candle.Operations.GetLinkedAccountsFiatAccounts.Output.UnprocessableContent.Body.JsonPayload {
             get throws
           }
           public func hash(into hasher: inout Swift.Hasher)
-          public static func == (a: Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.UnprocessableContent.Body, b: Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.UnprocessableContent.Body) -> Swift.Bool
+          public static func == (a: Candle.Operations.GetLinkedAccountsFiatAccounts.Output.UnprocessableContent.Body, b: Candle.Operations.GetLinkedAccountsFiatAccounts.Output.UnprocessableContent.Body) -> Swift.Bool
           public var hashValue: Swift.Int {
             get
           }
         }
-        public var body: Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.UnprocessableContent.Body
-        public init(headers: Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.UnprocessableContent.Headers = .init(), body: Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.UnprocessableContent.Body)
+        public var body: Candle.Operations.GetLinkedAccountsFiatAccounts.Output.UnprocessableContent.Body
+        public init(headers: Candle.Operations.GetLinkedAccountsFiatAccounts.Output.UnprocessableContent.Headers = .init(), body: Candle.Operations.GetLinkedAccountsFiatAccounts.Output.UnprocessableContent.Body)
         public func hash(into hasher: inout Swift.Hasher)
-        public static func == (a: Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.UnprocessableContent, b: Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.UnprocessableContent) -> Swift.Bool
+        public static func == (a: Candle.Operations.GetLinkedAccountsFiatAccounts.Output.UnprocessableContent, b: Candle.Operations.GetLinkedAccountsFiatAccounts.Output.UnprocessableContent) -> Swift.Bool
         public var hashValue: Swift.Int {
           get
         }
       }
-      case unprocessableContent(Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.UnprocessableContent)
-      public var unprocessableContent: Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.UnprocessableContent {
+      case unprocessableContent(Candle.Operations.GetLinkedAccountsFiatAccounts.Output.UnprocessableContent)
+      public var unprocessableContent: Candle.Operations.GetLinkedAccountsFiatAccounts.Output.UnprocessableContent {
         get throws
       }
       public struct InternalServerError : Swift.Sendable, Swift.Hashable {
@@ -5317,42 +5328,42 @@ public enum Operations {
           @frozen public enum ContentTypePayload : Swift.String, Swift.Codable, Swift.Hashable, Swift.Sendable, Swift.CaseIterable {
             case applicationJson
             public init?(rawValue: Swift.String)
-            public typealias AllCases = [Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.InternalServerError.Headers.ContentTypePayload]
+            public typealias AllCases = [Candle.Operations.GetLinkedAccountsFiatAccounts.Output.InternalServerError.Headers.ContentTypePayload]
             public typealias RawValue = Swift.String
-            nonisolated public static var allCases: [Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.InternalServerError.Headers.ContentTypePayload] {
+            nonisolated public static var allCases: [Candle.Operations.GetLinkedAccountsFiatAccounts.Output.InternalServerError.Headers.ContentTypePayload] {
               get
             }
             public var rawValue: Swift.String {
               get
             }
           }
-          public var contentType: Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.InternalServerError.Headers.ContentTypePayload?
-          public init(contentType: Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.InternalServerError.Headers.ContentTypePayload? = nil)
+          public var contentType: Candle.Operations.GetLinkedAccountsFiatAccounts.Output.InternalServerError.Headers.ContentTypePayload?
+          public init(contentType: Candle.Operations.GetLinkedAccountsFiatAccounts.Output.InternalServerError.Headers.ContentTypePayload? = nil)
           public func hash(into hasher: inout Swift.Hasher)
-          public static func == (a: Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.InternalServerError.Headers, b: Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.InternalServerError.Headers) -> Swift.Bool
+          public static func == (a: Candle.Operations.GetLinkedAccountsFiatAccounts.Output.InternalServerError.Headers, b: Candle.Operations.GetLinkedAccountsFiatAccounts.Output.InternalServerError.Headers) -> Swift.Bool
           public var hashValue: Swift.Int {
             get
           }
         }
-        public var headers: Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.InternalServerError.Headers
+        public var headers: Candle.Operations.GetLinkedAccountsFiatAccounts.Output.InternalServerError.Headers
         @frozen public enum Body : Swift.Sendable, Swift.Hashable {
           public struct JsonPayload : Swift.Codable, Swift.Hashable, Swift.Sendable {
             @frozen public enum KindPayload : Swift.String, Swift.Codable, Swift.Hashable, Swift.Sendable, Swift.CaseIterable {
               case unexpected
               public init?(rawValue: Swift.String)
-              public typealias AllCases = [Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.InternalServerError.Body.JsonPayload.KindPayload]
+              public typealias AllCases = [Candle.Operations.GetLinkedAccountsFiatAccounts.Output.InternalServerError.Body.JsonPayload.KindPayload]
               public typealias RawValue = Swift.String
-              nonisolated public static var allCases: [Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.InternalServerError.Body.JsonPayload.KindPayload] {
+              nonisolated public static var allCases: [Candle.Operations.GetLinkedAccountsFiatAccounts.Output.InternalServerError.Body.JsonPayload.KindPayload] {
                 get
               }
               public var rawValue: Swift.String {
                 get
               }
             }
-            public var kind: Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.InternalServerError.Body.JsonPayload.KindPayload
+            public var kind: Candle.Operations.GetLinkedAccountsFiatAccounts.Output.InternalServerError.Body.JsonPayload.KindPayload
             public var message: Swift.String
             public var details: Swift.String?
-            public init(kind: Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.InternalServerError.Body.JsonPayload.KindPayload, message: Swift.String, details: Swift.String? = nil)
+            public init(kind: Candle.Operations.GetLinkedAccountsFiatAccounts.Output.InternalServerError.Body.JsonPayload.KindPayload, message: Swift.String, details: Swift.String? = nil)
             public enum CodingKeys : Swift.String, Swift.CodingKey {
               case kind
               case message
@@ -5373,37 +5384,37 @@ public enum Operations {
             }
             public init(from decoder: any Swift.Decoder) throws
             public func hash(into hasher: inout Swift.Hasher)
-            public static func == (a: Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.InternalServerError.Body.JsonPayload, b: Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.InternalServerError.Body.JsonPayload) -> Swift.Bool
+            public static func == (a: Candle.Operations.GetLinkedAccountsFiatAccounts.Output.InternalServerError.Body.JsonPayload, b: Candle.Operations.GetLinkedAccountsFiatAccounts.Output.InternalServerError.Body.JsonPayload) -> Swift.Bool
             public func encode(to encoder: any Swift.Encoder) throws
             public var hashValue: Swift.Int {
               get
             }
           }
-          case json(Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.InternalServerError.Body.JsonPayload)
-          public var json: Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.InternalServerError.Body.JsonPayload {
+          case json(Candle.Operations.GetLinkedAccountsFiatAccounts.Output.InternalServerError.Body.JsonPayload)
+          public var json: Candle.Operations.GetLinkedAccountsFiatAccounts.Output.InternalServerError.Body.JsonPayload {
             get throws
           }
           public func hash(into hasher: inout Swift.Hasher)
-          public static func == (a: Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.InternalServerError.Body, b: Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.InternalServerError.Body) -> Swift.Bool
+          public static func == (a: Candle.Operations.GetLinkedAccountsFiatAccounts.Output.InternalServerError.Body, b: Candle.Operations.GetLinkedAccountsFiatAccounts.Output.InternalServerError.Body) -> Swift.Bool
           public var hashValue: Swift.Int {
             get
           }
         }
-        public var body: Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.InternalServerError.Body
-        public init(headers: Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.InternalServerError.Headers = .init(), body: Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.InternalServerError.Body)
+        public var body: Candle.Operations.GetLinkedAccountsFiatAccounts.Output.InternalServerError.Body
+        public init(headers: Candle.Operations.GetLinkedAccountsFiatAccounts.Output.InternalServerError.Headers = .init(), body: Candle.Operations.GetLinkedAccountsFiatAccounts.Output.InternalServerError.Body)
         public func hash(into hasher: inout Swift.Hasher)
-        public static func == (a: Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.InternalServerError, b: Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.InternalServerError) -> Swift.Bool
+        public static func == (a: Candle.Operations.GetLinkedAccountsFiatAccounts.Output.InternalServerError, b: Candle.Operations.GetLinkedAccountsFiatAccounts.Output.InternalServerError) -> Swift.Bool
         public var hashValue: Swift.Int {
           get
         }
       }
-      case internalServerError(Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.InternalServerError)
-      public var internalServerError: Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.InternalServerError {
+      case internalServerError(Candle.Operations.GetLinkedAccountsFiatAccounts.Output.InternalServerError)
+      public var internalServerError: Candle.Operations.GetLinkedAccountsFiatAccounts.Output.InternalServerError {
         get throws
       }
       case undocumented(statusCode: Swift.Int, OpenAPIRuntime.UndocumentedPayload)
       public func hash(into hasher: inout Swift.Hasher)
-      public static func == (a: Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output, b: Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output) -> Swift.Bool
+      public static func == (a: Candle.Operations.GetLinkedAccountsFiatAccounts.Output, b: Candle.Operations.GetLinkedAccountsFiatAccounts.Output) -> Swift.Bool
       public var hashValue: Swift.Int {
         get
       }
@@ -5415,10 +5426,10 @@ public enum Operations {
       public var rawValue: Swift.String {
         get
       }
-      public static var allCases: [Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.AcceptableContentType] {
+      public static var allCases: [Candle.Operations.GetLinkedAccountsFiatAccounts.AcceptableContentType] {
         get
       }
-      public typealias AllCases = [Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.AcceptableContentType]
+      public typealias AllCases = [Candle.Operations.GetLinkedAccountsFiatAccounts.AcceptableContentType]
       public typealias RawValue = Swift.String
     }
   }
@@ -5912,9 +5923,9 @@ public enum ConnectionResult : Swift.Error {
 public typealias CandleLinkedAccountAction = (_ linkedAccount: Candle.Models.LinkedAccount) -> Swift.Void
 @available(macOS 14, iOS 17.0, *)
 extension SwiftUICore.View {
-  @_Concurrency.MainActor @preconcurrency public func candleLinkSheet(isPresented: SwiftUICore.Binding<Swift.Bool>, customerName: Swift.String? = nil, cornerRadius: CoreFoundation.CGFloat = 24, showSandbox: Swift.Bool = false, action: @escaping Candle.CandleLinkedAccountAction) -> some SwiftUICore.View
+  @_Concurrency.MainActor @preconcurrency public func candleLinkSheet(isPresented: SwiftUICore.Binding<Swift.Bool>, customerName: Swift.String? = nil, cornerRadius: CoreFoundation.CGFloat = 24, showSandbox: Swift.Bool = false, showDynamicLoading: Swift.Bool = true, action: @escaping Candle.CandleLinkedAccountAction) -> some SwiftUICore.View
   
-  @_Concurrency.MainActor @preconcurrency public func candleLinkSheet(isPresented: SwiftUICore.Binding<Swift.Bool>, service: Candle.Models.SupportedService?, customerName: Swift.String? = nil, cornerRadius: CoreFoundation.CGFloat = 24, showSandbox: Swift.Bool = false, action: @escaping Candle.CandleLinkedAccountAction) -> some SwiftUICore.View
+  @_Concurrency.MainActor @preconcurrency public func candleLinkSheet(isPresented: SwiftUICore.Binding<Swift.Bool>, service: Candle.Models.SupportedService?, customerName: Swift.String? = nil, cornerRadius: CoreFoundation.CGFloat = 24, showSandbox: Swift.Bool = false, showDynamicLoading: Swift.Bool = true, action: @escaping Candle.CandleLinkedAccountAction) -> some SwiftUICore.View
   
 }
 @available(macOS 14, iOS 17.0, *)
@@ -6285,38 +6296,38 @@ extension Candle.Operations.DeleteLinkedAccount.Output.InternalServerError.Body.
 extension Candle.Operations.DeleteLinkedAccount.Output.InternalServerError.Body.JsonPayload.CodingKeys : Swift.Equatable {}
 extension Candle.Operations.DeleteLinkedAccount.Output.InternalServerError.Body.JsonPayload.CodingKeys : Swift.Hashable {}
 extension Candle.Operations.DeleteLinkedAccount.Output.InternalServerError.Body.JsonPayload.CodingKeys : Swift.RawRepresentable {}
-extension Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.Ok.Headers.ContentTypePayload : Swift.RawRepresentable {}
-extension Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.Ok.Headers.ContentTypePayload : Swift.BitwiseCopyable {}
-extension Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.Ok.Headers.ContentEncodingPayload : Swift.RawRepresentable {}
-extension Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.Ok.Headers.ContentEncodingPayload : Swift.BitwiseCopyable {}
-extension Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.Unauthorized.Headers.ContentTypePayload : Swift.RawRepresentable {}
-extension Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.Unauthorized.Headers.ContentTypePayload : Swift.BitwiseCopyable {}
-extension Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.Unauthorized.Body.JsonPayload.KindPayload : Swift.RawRepresentable {}
-extension Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.Unauthorized.Body.JsonPayload.KindPayload : Swift.BitwiseCopyable {}
-extension Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.Unauthorized.Body.JsonPayload.CodingKeys : Swift.Equatable {}
-extension Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.Unauthorized.Body.JsonPayload.CodingKeys : Swift.Hashable {}
-extension Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.Unauthorized.Body.JsonPayload.CodingKeys : Swift.RawRepresentable {}
-extension Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.NotFound.Headers.ContentTypePayload : Swift.RawRepresentable {}
-extension Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.NotFound.Headers.ContentTypePayload : Swift.BitwiseCopyable {}
-extension Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.NotFound.Body.JsonPayload.KindPayload : Swift.RawRepresentable {}
-extension Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.NotFound.Body.JsonPayload.KindPayload : Swift.BitwiseCopyable {}
-extension Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.NotFound.Body.JsonPayload.CodingKeys : Swift.Equatable {}
-extension Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.NotFound.Body.JsonPayload.CodingKeys : Swift.Hashable {}
-extension Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.NotFound.Body.JsonPayload.CodingKeys : Swift.RawRepresentable {}
-extension Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.UnprocessableContent.Headers.ContentTypePayload : Swift.RawRepresentable {}
-extension Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.UnprocessableContent.Headers.ContentTypePayload : Swift.BitwiseCopyable {}
-extension Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.UnprocessableContent.Body.JsonPayload.KindPayload : Swift.RawRepresentable {}
-extension Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.UnprocessableContent.Body.JsonPayload.KindPayload : Swift.BitwiseCopyable {}
-extension Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.UnprocessableContent.Body.JsonPayload.CodingKeys : Swift.Equatable {}
-extension Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.UnprocessableContent.Body.JsonPayload.CodingKeys : Swift.Hashable {}
-extension Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.UnprocessableContent.Body.JsonPayload.CodingKeys : Swift.RawRepresentable {}
-extension Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.InternalServerError.Headers.ContentTypePayload : Swift.RawRepresentable {}
-extension Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.InternalServerError.Headers.ContentTypePayload : Swift.BitwiseCopyable {}
-extension Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.InternalServerError.Body.JsonPayload.KindPayload : Swift.RawRepresentable {}
-extension Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.InternalServerError.Body.JsonPayload.KindPayload : Swift.BitwiseCopyable {}
-extension Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.InternalServerError.Body.JsonPayload.CodingKeys : Swift.Equatable {}
-extension Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.InternalServerError.Body.JsonPayload.CodingKeys : Swift.Hashable {}
-extension Candle.Operations.GetLinkedAccountsFiatHoldingAccounts.Output.InternalServerError.Body.JsonPayload.CodingKeys : Swift.RawRepresentable {}
+extension Candle.Operations.GetLinkedAccountsFiatAccounts.Output.Ok.Headers.ContentTypePayload : Swift.RawRepresentable {}
+extension Candle.Operations.GetLinkedAccountsFiatAccounts.Output.Ok.Headers.ContentTypePayload : Swift.BitwiseCopyable {}
+extension Candle.Operations.GetLinkedAccountsFiatAccounts.Output.Ok.Headers.ContentEncodingPayload : Swift.RawRepresentable {}
+extension Candle.Operations.GetLinkedAccountsFiatAccounts.Output.Ok.Headers.ContentEncodingPayload : Swift.BitwiseCopyable {}
+extension Candle.Operations.GetLinkedAccountsFiatAccounts.Output.Unauthorized.Headers.ContentTypePayload : Swift.RawRepresentable {}
+extension Candle.Operations.GetLinkedAccountsFiatAccounts.Output.Unauthorized.Headers.ContentTypePayload : Swift.BitwiseCopyable {}
+extension Candle.Operations.GetLinkedAccountsFiatAccounts.Output.Unauthorized.Body.JsonPayload.KindPayload : Swift.RawRepresentable {}
+extension Candle.Operations.GetLinkedAccountsFiatAccounts.Output.Unauthorized.Body.JsonPayload.KindPayload : Swift.BitwiseCopyable {}
+extension Candle.Operations.GetLinkedAccountsFiatAccounts.Output.Unauthorized.Body.JsonPayload.CodingKeys : Swift.Equatable {}
+extension Candle.Operations.GetLinkedAccountsFiatAccounts.Output.Unauthorized.Body.JsonPayload.CodingKeys : Swift.Hashable {}
+extension Candle.Operations.GetLinkedAccountsFiatAccounts.Output.Unauthorized.Body.JsonPayload.CodingKeys : Swift.RawRepresentable {}
+extension Candle.Operations.GetLinkedAccountsFiatAccounts.Output.NotFound.Headers.ContentTypePayload : Swift.RawRepresentable {}
+extension Candle.Operations.GetLinkedAccountsFiatAccounts.Output.NotFound.Headers.ContentTypePayload : Swift.BitwiseCopyable {}
+extension Candle.Operations.GetLinkedAccountsFiatAccounts.Output.NotFound.Body.JsonPayload.KindPayload : Swift.RawRepresentable {}
+extension Candle.Operations.GetLinkedAccountsFiatAccounts.Output.NotFound.Body.JsonPayload.KindPayload : Swift.BitwiseCopyable {}
+extension Candle.Operations.GetLinkedAccountsFiatAccounts.Output.NotFound.Body.JsonPayload.CodingKeys : Swift.Equatable {}
+extension Candle.Operations.GetLinkedAccountsFiatAccounts.Output.NotFound.Body.JsonPayload.CodingKeys : Swift.Hashable {}
+extension Candle.Operations.GetLinkedAccountsFiatAccounts.Output.NotFound.Body.JsonPayload.CodingKeys : Swift.RawRepresentable {}
+extension Candle.Operations.GetLinkedAccountsFiatAccounts.Output.UnprocessableContent.Headers.ContentTypePayload : Swift.RawRepresentable {}
+extension Candle.Operations.GetLinkedAccountsFiatAccounts.Output.UnprocessableContent.Headers.ContentTypePayload : Swift.BitwiseCopyable {}
+extension Candle.Operations.GetLinkedAccountsFiatAccounts.Output.UnprocessableContent.Body.JsonPayload.KindPayload : Swift.RawRepresentable {}
+extension Candle.Operations.GetLinkedAccountsFiatAccounts.Output.UnprocessableContent.Body.JsonPayload.KindPayload : Swift.BitwiseCopyable {}
+extension Candle.Operations.GetLinkedAccountsFiatAccounts.Output.UnprocessableContent.Body.JsonPayload.CodingKeys : Swift.Equatable {}
+extension Candle.Operations.GetLinkedAccountsFiatAccounts.Output.UnprocessableContent.Body.JsonPayload.CodingKeys : Swift.Hashable {}
+extension Candle.Operations.GetLinkedAccountsFiatAccounts.Output.UnprocessableContent.Body.JsonPayload.CodingKeys : Swift.RawRepresentable {}
+extension Candle.Operations.GetLinkedAccountsFiatAccounts.Output.InternalServerError.Headers.ContentTypePayload : Swift.RawRepresentable {}
+extension Candle.Operations.GetLinkedAccountsFiatAccounts.Output.InternalServerError.Headers.ContentTypePayload : Swift.BitwiseCopyable {}
+extension Candle.Operations.GetLinkedAccountsFiatAccounts.Output.InternalServerError.Body.JsonPayload.KindPayload : Swift.RawRepresentable {}
+extension Candle.Operations.GetLinkedAccountsFiatAccounts.Output.InternalServerError.Body.JsonPayload.KindPayload : Swift.BitwiseCopyable {}
+extension Candle.Operations.GetLinkedAccountsFiatAccounts.Output.InternalServerError.Body.JsonPayload.CodingKeys : Swift.Equatable {}
+extension Candle.Operations.GetLinkedAccountsFiatAccounts.Output.InternalServerError.Body.JsonPayload.CodingKeys : Swift.Hashable {}
+extension Candle.Operations.GetLinkedAccountsFiatAccounts.Output.InternalServerError.Body.JsonPayload.CodingKeys : Swift.RawRepresentable {}
 extension Candle.Operations.GetLinkedAccountsActivity.Output.Ok.Headers.ContentTypePayload : Swift.RawRepresentable {}
 extension Candle.Operations.GetLinkedAccountsActivity.Output.Ok.Headers.ContentTypePayload : Swift.BitwiseCopyable {}
 extension Candle.Operations.GetLinkedAccountsActivity.Output.Ok.Headers.ContentEncodingPayload : Swift.RawRepresentable {}
