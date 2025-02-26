@@ -1,11 +1,5 @@
 # Candle Swift SDK
 
-[![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fpointfreeco%2Fsharing-grdb%2Fbadge%3Ftype%3Dswift-versions)](https://swiftpackageindex.com/candle/sharing-grdb)
-
-<div align="center">
-[Website](https://www.candle.fi) | [Documentation](https://docs.candle.fi)
-</div>
-
 #### Supported Platforms
 
 <div style="flex-wrap: wrap; display: flex;">
