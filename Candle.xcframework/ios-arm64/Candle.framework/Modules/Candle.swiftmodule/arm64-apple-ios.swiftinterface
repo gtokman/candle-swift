@@ -5920,12 +5920,22 @@ public enum ConnectionResult : Swift.Error {
     get
   }
 }
+@available(macOS 14, iOS 17.0, *)
+public enum PresentationStyle {
+  case fullScreen
+  case sheet
+  public static func == (a: Candle.PresentationStyle, b: Candle.PresentationStyle) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
 public typealias CandleLinkedAccountAction = (_ linkedAccount: Candle.Models.LinkedAccount) -> Swift.Void
 @available(macOS 14, iOS 17.0, *)
 extension SwiftUICore.View {
-  @_Concurrency.MainActor @preconcurrency public func candleLinkSheet(isPresented: SwiftUICore.Binding<Swift.Bool>, customerName: Swift.String? = nil, cornerRadius: CoreFoundation.CGFloat = 24, showSandbox: Swift.Bool = false, showDynamicLoading: Swift.Bool = true, action: @escaping Candle.CandleLinkedAccountAction) -> some SwiftUICore.View
+  @_Concurrency.MainActor @preconcurrency public func candleLinkSheet(isPresented: SwiftUICore.Binding<Swift.Bool>, customerName: Swift.String? = nil, cornerRadius: CoreFoundation.CGFloat = 24, showSandbox: Swift.Bool = false, showDynamicLoading: Swift.Bool = true, presentationStyle: Candle.PresentationStyle = .sheet, presentationBackground: SwiftUICore.AnyShapeStyle? = nil, action: @escaping Candle.CandleLinkedAccountAction) -> some SwiftUICore.View
   
-  @_Concurrency.MainActor @preconcurrency public func candleLinkSheet(isPresented: SwiftUICore.Binding<Swift.Bool>, service: Candle.Models.SupportedService?, customerName: Swift.String? = nil, cornerRadius: CoreFoundation.CGFloat = 24, showSandbox: Swift.Bool = false, showDynamicLoading: Swift.Bool = true, action: @escaping Candle.CandleLinkedAccountAction) -> some SwiftUICore.View
+  @_Concurrency.MainActor @preconcurrency public func candleLinkSheet(isPresented: SwiftUICore.Binding<Swift.Bool>, service: Candle.Models.SupportedService?, customerName: Swift.String? = nil, cornerRadius: CoreFoundation.CGFloat = 24, showSandbox: Swift.Bool = false, showDynamicLoading: Swift.Bool = true, presentationStyle: Candle.PresentationStyle = .sheet, presentationBackground: SwiftUICore.AnyShapeStyle? = nil, action: @escaping Candle.CandleLinkedAccountAction) -> some SwiftUICore.View
   
 }
 @available(macOS 14, iOS 17.0, *)
@@ -6362,3 +6372,7 @@ extension Candle.Operations.GetLinkedAccountsActivity.Output.InternalServerError
 extension Candle.Operations.GetLinkedAccountsActivity.Output.InternalServerError.Body.JsonPayload.CodingKeys : Swift.RawRepresentable {}
 extension Candle.ConnectionResult : Swift.Equatable {}
 extension Candle.ConnectionResult : Swift.Hashable {}
+@available(macOS 14, iOS 17.0, *)
+extension Candle.PresentationStyle : Swift.Equatable {}
+@available(macOS 14, iOS 17.0, *)
+extension Candle.PresentationStyle : Swift.Hashable {}

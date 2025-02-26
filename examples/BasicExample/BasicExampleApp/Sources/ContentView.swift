@@ -111,7 +111,9 @@ struct ContentView: View {
         .candleLinkSheet(
             isPresented: $showLinkSheet,
             customerName: "Acme Inc.",
-            showSandbox: true
+            showSandbox: true,
+            presentationStyle: .fullScreen,
+            presentationBackground: AnyShapeStyle(.thickMaterial)
         ) { account in
             // STEP 5: 🎉
             self.isDataStale = true
