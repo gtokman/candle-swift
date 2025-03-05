@@ -42,6 +42,8 @@ import _SwiftConcurrencyShims
   #if compiler(>=5.3) && $TypedThrows
   @_Concurrency.MainActor public func getActivity(query: Candle.Models.GetActivity.Input.Query = .init()) async throws(Candle.Models.GetActivity.Error) -> [Candle.Models.PortfolioActivityItem]
   #endif
+  @_Concurrency.MainActor public func getAvailableTools() -> [[Swift.String : Any]]
+  @_Concurrency.MainActor public func executeTool(tool: any Candle.ToolCallRequest) async -> Swift.String
   @objc deinit
 }
 @available(macOS 14, iOS 17.0, *)
@@ -57,12 +59,14 @@ extension Candle.Components.Schemas {
   public typealias GetLinkedAccounts = Candle.Operations.GetLinkedAccounts
   public typealias GetFiatAccounts = Candle.Operations.GetLinkedAccountsFiatAccounts
   public typealias GetActivity = Candle.Operations.GetLinkedAccountsActivity
-  public enum SessionError : Swift.Error, Swift.Equatable {
+  public enum SessionError : Swift.Error, Swift.Equatable, Swift.Codable {
     case openSessionError
     case keychainError
     case createUserError(Candle.Models.CreateUser.Error)
     case updateUserError(Candle.Models.UpdateUser.Error)
     public static func == (a: Candle.Components.Schemas.SessionError, b: Candle.Components.Schemas.SessionError) -> Swift.Bool
+    public func encode(to encoder: any Swift.Encoder) throws
+    public init(from decoder: any Swift.Decoder) throws
   }
 }
 extension Candle.Components.Schemas.PrimaryFiatHoldingAccount : Swift.Identifiable {
@@ -96,7 +100,7 @@ extension Candle.Components.Schemas.LinkedAccount : Swift.Identifiable {
   public typealias ID = Swift.String
 }
 extension Candle.Operations.PostUsers {
-  public enum Error : Swift.Error, Swift.Equatable {
+  public enum Error : Swift.Error, Swift.Equatable, Swift.Codable {
     case networkError(Swift.String)
     case unexpectedStatusCode(Swift.Int)
     case missingAuthorizationToken
@@ -108,10 +112,12 @@ extension Candle.Operations.PostUsers {
     case tooManyRequests(Candle.Operations.PostUsers.Output.TooManyRequests.Body.JsonPayload)
     case internalServerError(Candle.Operations.PostUsers.Output.InternalServerError.Body.JsonPayload)
     public static func == (a: Candle.Operations.PostUsers.Error, b: Candle.Operations.PostUsers.Error) -> Swift.Bool
+    public func encode(to encoder: any Swift.Encoder) throws
+    public init(from decoder: any Swift.Decoder) throws
   }
 }
 extension Candle.Operations.PutUsers {
-  public enum Error : Swift.Error, Swift.Equatable {
+  public enum Error : Swift.Error, Swift.Equatable, Swift.Codable {
     case networkError(Swift.String)
     case unexpectedStatusCode(Swift.Int)
     case unauthorized(Candle.Operations.PutUsers.Output.Unauthorized.Body.JsonPayload)
@@ -121,10 +127,12 @@ extension Candle.Operations.PutUsers {
     case unprocessableContent(Candle.Operations.PutUsers.Output.UnprocessableContent.Body.JsonPayload)
     case internalServerError(Candle.Operations.PutUsers.Output.InternalServerError.Body.JsonPayload)
     public static func == (a: Candle.Operations.PutUsers.Error, b: Candle.Operations.PutUsers.Error) -> Swift.Bool
+    public func encode(to encoder: any Swift.Encoder) throws
+    public init(from decoder: any Swift.Decoder) throws
   }
 }
 extension Candle.Operations.DeleteUsers {
-  public enum Error : Swift.Error, Swift.Equatable {
+  public enum Error : Swift.Error, Swift.Equatable, Swift.Codable {
     case networkError(Swift.String)
     case unexpectedStatusCode(Swift.Int)
     case sessionError(Candle.Models.SessionError)
@@ -134,6 +142,8 @@ extension Candle.Operations.DeleteUsers {
     case unprocessableContent(Candle.Operations.DeleteUsers.Output.UnprocessableContent.Body.JsonPayload)
     case internalServerError(Candle.Operations.DeleteUsers.Output.InternalServerError.Body.JsonPayload)
     public static func == (a: Candle.Operations.DeleteUsers.Error, b: Candle.Operations.DeleteUsers.Error) -> Swift.Bool
+    public func encode(to encoder: any Swift.Encoder) throws
+    public init(from decoder: any Swift.Decoder) throws
   }
 }
 extension Candle.Operations.PostLinkedAccounts {
@@ -142,7 +152,7 @@ extension Candle.Operations.PostLinkedAccounts {
     case mfaRequired(Candle.Models.MFARequest)
     public static func == (a: Candle.Operations.PostLinkedAccounts.Result, b: Candle.Operations.PostLinkedAccounts.Result) -> Swift.Bool
   }
-  public enum Error : Swift.Error, Swift.Equatable {
+  public enum Error : Swift.Error, Swift.Equatable, Swift.Codable {
     case networkError(Swift.String)
     case unexpectedStatusCode(Swift.Int)
     case sessionError(Candle.Models.SessionError)
@@ -152,10 +162,12 @@ extension Candle.Operations.PostLinkedAccounts {
     case unprocessableContent(Candle.Operations.PostLinkedAccounts.Output.UnprocessableContent.Body.JsonPayload)
     case internalServerError(Candle.Operations.PostLinkedAccounts.Output.InternalServerError.Body.JsonPayload)
     public static func == (a: Candle.Operations.PostLinkedAccounts.Error, b: Candle.Operations.PostLinkedAccounts.Error) -> Swift.Bool
+    public func encode(to encoder: any Swift.Encoder) throws
+    public init(from decoder: any Swift.Decoder) throws
   }
 }
 extension Candle.Operations.DeleteLinkedAccount {
-  public enum Error : Swift.Error, Swift.Equatable {
+  public enum Error : Swift.Error, Swift.Equatable, Swift.Codable {
     case networkError(Swift.String)
     case unexpectedStatusCode(Swift.Int)
     case sessionError(Candle.Models.SessionError)
@@ -165,10 +177,12 @@ extension Candle.Operations.DeleteLinkedAccount {
     case unprocessableContent(Candle.Operations.DeleteLinkedAccount.Output.UnprocessableContent.Body.JsonPayload)
     case internalServerError(Candle.Operations.DeleteLinkedAccount.Output.InternalServerError.Body.JsonPayload)
     public static func == (a: Candle.Operations.DeleteLinkedAccount.Error, b: Candle.Operations.DeleteLinkedAccount.Error) -> Swift.Bool
+    public func encode(to encoder: any Swift.Encoder) throws
+    public init(from decoder: any Swift.Decoder) throws
   }
 }
 extension Candle.Operations.GetLinkedAccounts {
-  public enum Error : Swift.Error, Swift.Equatable {
+  public enum Error : Swift.Error, Swift.Equatable, Swift.Codable {
     case networkError(Swift.String)
     case unexpectedStatusCode(Swift.Int)
     case sessionError(Candle.Models.SessionError)
@@ -177,10 +191,12 @@ extension Candle.Operations.GetLinkedAccounts {
     case unprocessableContent(Candle.Operations.GetLinkedAccounts.Output.UnprocessableContent.Body.JsonPayload)
     case internalServerError(Candle.Operations.GetLinkedAccounts.Output.InternalServerError.Body.JsonPayload)
     public static func == (a: Candle.Operations.GetLinkedAccounts.Error, b: Candle.Operations.GetLinkedAccounts.Error) -> Swift.Bool
+    public func encode(to encoder: any Swift.Encoder) throws
+    public init(from decoder: any Swift.Decoder) throws
   }
 }
 extension Candle.Operations.GetLinkedAccountsFiatAccounts {
-  public enum Error : Swift.Error, Swift.Equatable {
+  public enum Error : Swift.Error, Swift.Equatable, Swift.Codable {
     case networkError(Swift.String)
     case unexpectedStatusCode(Swift.Int)
     case sessionError(Candle.Models.SessionError)
@@ -189,10 +205,12 @@ extension Candle.Operations.GetLinkedAccountsFiatAccounts {
     case unprocessableContent(Candle.Operations.GetLinkedAccountsFiatAccounts.Output.UnprocessableContent.Body.JsonPayload)
     case internalServerError(Candle.Operations.GetLinkedAccountsFiatAccounts.Output.InternalServerError.Body.JsonPayload)
     public static func == (a: Candle.Operations.GetLinkedAccountsFiatAccounts.Error, b: Candle.Operations.GetLinkedAccountsFiatAccounts.Error) -> Swift.Bool
+    public func encode(to encoder: any Swift.Encoder) throws
+    public init(from decoder: any Swift.Decoder) throws
   }
 }
 extension Candle.Operations.GetLinkedAccountsActivity {
-  public enum Error : Swift.Error, Swift.Equatable {
+  public enum Error : Swift.Error, Swift.Equatable, Swift.Codable {
     case networkError(Swift.String)
     case unexpectedStatusCode(Swift.Int)
     case sessionError(Candle.Models.SessionError)
@@ -201,6 +219,8 @@ extension Candle.Operations.GetLinkedAccountsActivity {
     case unprocessableContent(Candle.Operations.GetLinkedAccountsActivity.Output.UnprocessableContent.Body.JsonPayload)
     case internalServerError(Candle.Operations.GetLinkedAccountsActivity.Output.InternalServerError.Body.JsonPayload)
     public static func == (a: Candle.Operations.GetLinkedAccountsActivity.Error, b: Candle.Operations.GetLinkedAccountsActivity.Error) -> Swift.Bool
+    public func encode(to encoder: any Swift.Encoder) throws
+    public init(from decoder: any Swift.Decoder) throws
   }
 }
 extension Candle.Components.Schemas.ServiceCredentialsRequest {
@@ -5919,6 +5939,10 @@ public enum ConnectionResult : Swift.Error {
   @_semantics("defaultActor") nonisolated final public var unownedExecutor: _Concurrency.UnownedSerialExecutor {
     get
   }
+}
+public protocol ToolCallRequest : Swift.Decodable, Swift.Encodable {
+  var name: Swift.String { get }
+  var arguments: Swift.String { get }
 }
 @available(macOS 14, iOS 17.0, *)
 public enum PresentationStyle {
