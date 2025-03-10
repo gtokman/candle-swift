@@ -263,6 +263,9 @@ extension Candle.Components.Schemas.SupportedService {
   public var name: Swift.String {
     get
   }
+  public var tint: SwiftUICore.Color {
+    get
+  }
 }
 extension Candle.Components.Schemas.Service {
   public var logoURL: Foundation.URL? {
