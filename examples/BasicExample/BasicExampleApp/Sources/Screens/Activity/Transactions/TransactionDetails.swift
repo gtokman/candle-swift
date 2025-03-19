@@ -49,24 +49,47 @@ struct TransactionDetailsView: View {
             ),
         ]
 
-        if let location = transaction.counterparty.location {
+        switch transaction.counterparty.details {
+        case .TransactionMerchantCounterpartyDetails(let merchantDetails):
+            if let location = merchantDetails.location {
+                items.append(contentsOf: [
+                    DetailItem(
+                        label: "Counterparty Type",
+                        value: "Merchant",
+                        iconName: "person.circle"
+                    ),
+                    DetailItem(
+                        label: "Country",
+                        value: location.countryCode,
+                        iconName: "globe"
+                    ),
+                    DetailItem(
+                        label: "Country Subdivision",
+                        value: location.countrySubdivisionCode,
+                        iconName: "mappin.and.ellipse"
+                    ),
+                    DetailItem(
+                        label: "Locality Name",
+                        value: location.localityName,
+                        iconName: "building.columns"
+                    ),
+                ])
+            }
+            break
+        case .TransactionUserCounterpartyDetails(let userDetails):
             items.append(contentsOf: [
                 DetailItem(
-                    label: "Country",
-                    value: location.countryCode,
-                    iconName: "globe"
+                    label: "Counterparty Type",
+                    value: "User",
+                    iconName: "person.circle"
                 ),
                 DetailItem(
-                    label: "Country Subdivision",
-                    value: location.countrySubdivisionCode,
-                    iconName: "mappin.and.ellipse"
-                ),
-                DetailItem(
-                    label: "Locality Name",
-                    value: location.localityName,
-                    iconName: "building.columns"
+                    label: "Username",
+                    value: userDetails.username,
+                    iconName: "person.circle"
                 ),
             ])
+            break
         }
 
         items.append(
@@ -104,13 +127,18 @@ struct TransactionDetailsView: View {
                 amount: 400,
                 counterparty: .init(
                     name: "Blue Bottle",
-                    location: .init(
-                        countryCode: "US",
-                        countrySubdivisionCode: "NY",
-                        localityName: "New York"
-                    ),
-                    logoURL: "https://institution-logos.s3.us-east-1.amazonaws.com/robinhood.png"
-                ),
+                    logoURL: "https://institution-logos.s3.us-east-1.amazonaws.com/robinhood.png",
+                    details: Models.TransactionCounterparty.DetailsPayload
+                        .TransactionMerchantCounterpartyDetails(
+                            .init(
+                                kind: Models.TransactionMerchantCounterpartyDetails.KindPayload
+                                    .merchant,
+                                location: .init(
+                                    countryCode: "US",
+                                    countrySubdivisionCode: "NY",
+                                    localityName: "New York"
+                                ))
+                        )),
                 linkedAccountID: UUID().uuidString,
                 service: .robinhood
             )

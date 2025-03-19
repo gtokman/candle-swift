@@ -1371,7 +1371,7 @@ public enum Components {
         }
       }
       public var activityKind: Candle.Components.Schemas.TransactionActivityItem.ActivityKindPayload
-      public var serviceTransactionID: Swift.String
+      public var serviceTransactionID: Candle.Components.Schemas.ServiceTransactionID
       public var dateTime: Swift.String
       @frozen public enum StatePayload : Swift.String, Swift.Codable, Swift.Hashable, Swift.Sendable, Swift.CaseIterable {
         case success
@@ -1392,7 +1392,7 @@ public enum Components {
       public var counterparty: Candle.Components.Schemas.TransactionCounterparty
       public var linkedAccountID: Candle.Components.Schemas.LinkedAccountID
       public var service: Candle.Components.Schemas.SupportedService
-      public init(activityKind: Candle.Components.Schemas.TransactionActivityItem.ActivityKindPayload, serviceTransactionID: Swift.String, dateTime: Swift.String, state: Candle.Components.Schemas.TransactionActivityItem.StatePayload, amount: Swift.Double, counterparty: Candle.Components.Schemas.TransactionCounterparty, linkedAccountID: Candle.Components.Schemas.LinkedAccountID, service: Candle.Components.Schemas.SupportedService)
+      public init(activityKind: Candle.Components.Schemas.TransactionActivityItem.ActivityKindPayload, serviceTransactionID: Candle.Components.Schemas.ServiceTransactionID, dateTime: Swift.String, state: Candle.Components.Schemas.TransactionActivityItem.StatePayload, amount: Swift.Double, counterparty: Candle.Components.Schemas.TransactionCounterparty, linkedAccountID: Candle.Components.Schemas.LinkedAccountID, service: Candle.Components.Schemas.SupportedService)
       public enum CodingKeys : Swift.String, Swift.CodingKey {
         case activityKind
         case serviceTransactionID
@@ -1424,15 +1424,27 @@ public enum Components {
         get
       }
     }
+    public typealias ServiceTransactionID = Swift.String
     public struct TransactionCounterparty : Swift.Codable, Swift.Hashable, Swift.Sendable {
       public var name: Swift.String
-      public var location: Candle.Components.Schemas.TransactionLocation?
       public var logoURL: Swift.String
-      public init(name: Swift.String, location: Candle.Components.Schemas.TransactionLocation? = nil, logoURL: Swift.String)
+      @frozen public enum DetailsPayload : Swift.Codable, Swift.Hashable, Swift.Sendable {
+        case TransactionMerchantCounterpartyDetails(Candle.Components.Schemas.TransactionMerchantCounterpartyDetails)
+        case TransactionUserCounterpartyDetails(Candle.Components.Schemas.TransactionUserCounterpartyDetails)
+        public init(from decoder: any Swift.Decoder) throws
+        public func encode(to encoder: any Swift.Encoder) throws
+        public func hash(into hasher: inout Swift.Hasher)
+        public static func == (a: Candle.Components.Schemas.TransactionCounterparty.DetailsPayload, b: Candle.Components.Schemas.TransactionCounterparty.DetailsPayload) -> Swift.Bool
+        public var hashValue: Swift.Int {
+          get
+        }
+      }
+      public var details: Candle.Components.Schemas.TransactionCounterparty.DetailsPayload
+      public init(name: Swift.String, logoURL: Swift.String, details: Candle.Components.Schemas.TransactionCounterparty.DetailsPayload)
       public enum CodingKeys : Swift.String, Swift.CodingKey {
         case name
-        case location
         case logoURL
+        case details
         public init?(rawValue: Swift.String)
         public init?(stringValue: Swift.String)
         public init?(intValue: Swift.Int)
@@ -1450,6 +1462,47 @@ public enum Components {
       public init(from decoder: any Swift.Decoder) throws
       public func hash(into hasher: inout Swift.Hasher)
       public static func == (a: Candle.Components.Schemas.TransactionCounterparty, b: Candle.Components.Schemas.TransactionCounterparty) -> Swift.Bool
+      public func encode(to encoder: any Swift.Encoder) throws
+      public var hashValue: Swift.Int {
+        get
+      }
+    }
+    public struct TransactionMerchantCounterpartyDetails : Swift.Codable, Swift.Hashable, Swift.Sendable {
+      @frozen public enum KindPayload : Swift.String, Swift.Codable, Swift.Hashable, Swift.Sendable, Swift.CaseIterable {
+        case merchant
+        public init?(rawValue: Swift.String)
+        public typealias AllCases = [Candle.Components.Schemas.TransactionMerchantCounterpartyDetails.KindPayload]
+        public typealias RawValue = Swift.String
+        nonisolated public static var allCases: [Candle.Components.Schemas.TransactionMerchantCounterpartyDetails.KindPayload] {
+          get
+        }
+        public var rawValue: Swift.String {
+          get
+        }
+      }
+      public var kind: Candle.Components.Schemas.TransactionMerchantCounterpartyDetails.KindPayload
+      public var location: Candle.Components.Schemas.TransactionLocation?
+      public init(kind: Candle.Components.Schemas.TransactionMerchantCounterpartyDetails.KindPayload, location: Candle.Components.Schemas.TransactionLocation? = nil)
+      public enum CodingKeys : Swift.String, Swift.CodingKey {
+        case kind
+        case location
+        public init?(rawValue: Swift.String)
+        public init?(stringValue: Swift.String)
+        public init?(intValue: Swift.Int)
+        public typealias RawValue = Swift.String
+        public var intValue: Swift.Int? {
+          get
+        }
+        public var rawValue: Swift.String {
+          get
+        }
+        public var stringValue: Swift.String {
+          get
+        }
+      }
+      public init(from decoder: any Swift.Decoder) throws
+      public func hash(into hasher: inout Swift.Hasher)
+      public static func == (a: Candle.Components.Schemas.TransactionMerchantCounterpartyDetails, b: Candle.Components.Schemas.TransactionMerchantCounterpartyDetails) -> Swift.Bool
       public func encode(to encoder: any Swift.Encoder) throws
       public var hashValue: Swift.Int {
         get
@@ -1481,6 +1534,47 @@ public enum Components {
       public init(from decoder: any Swift.Decoder) throws
       public func hash(into hasher: inout Swift.Hasher)
       public static func == (a: Candle.Components.Schemas.TransactionLocation, b: Candle.Components.Schemas.TransactionLocation) -> Swift.Bool
+      public func encode(to encoder: any Swift.Encoder) throws
+      public var hashValue: Swift.Int {
+        get
+      }
+    }
+    public struct TransactionUserCounterpartyDetails : Swift.Codable, Swift.Hashable, Swift.Sendable {
+      @frozen public enum KindPayload : Swift.String, Swift.Codable, Swift.Hashable, Swift.Sendable, Swift.CaseIterable {
+        case user
+        public init?(rawValue: Swift.String)
+        public typealias AllCases = [Candle.Components.Schemas.TransactionUserCounterpartyDetails.KindPayload]
+        public typealias RawValue = Swift.String
+        nonisolated public static var allCases: [Candle.Components.Schemas.TransactionUserCounterpartyDetails.KindPayload] {
+          get
+        }
+        public var rawValue: Swift.String {
+          get
+        }
+      }
+      public var kind: Candle.Components.Schemas.TransactionUserCounterpartyDetails.KindPayload
+      public var username: Swift.String
+      public init(kind: Candle.Components.Schemas.TransactionUserCounterpartyDetails.KindPayload, username: Swift.String)
+      public enum CodingKeys : Swift.String, Swift.CodingKey {
+        case kind
+        case username
+        public init?(rawValue: Swift.String)
+        public init?(stringValue: Swift.String)
+        public init?(intValue: Swift.Int)
+        public typealias RawValue = Swift.String
+        public var intValue: Swift.Int? {
+          get
+        }
+        public var rawValue: Swift.String {
+          get
+        }
+        public var stringValue: Swift.String {
+          get
+        }
+      }
+      public init(from decoder: any Swift.Decoder) throws
+      public func hash(into hasher: inout Swift.Hasher)
+      public static func == (a: Candle.Components.Schemas.TransactionUserCounterpartyDetails, b: Candle.Components.Schemas.TransactionUserCounterpartyDetails) -> Swift.Bool
       public func encode(to encoder: any Swift.Encoder) throws
       public var hashValue: Swift.Int {
         get
@@ -6084,9 +6178,19 @@ extension Candle.Components.Schemas.TransactionActivityItem.CodingKeys : Swift.R
 extension Candle.Components.Schemas.TransactionCounterparty.CodingKeys : Swift.Equatable {}
 extension Candle.Components.Schemas.TransactionCounterparty.CodingKeys : Swift.Hashable {}
 extension Candle.Components.Schemas.TransactionCounterparty.CodingKeys : Swift.RawRepresentable {}
+extension Candle.Components.Schemas.TransactionMerchantCounterpartyDetails.KindPayload : Swift.RawRepresentable {}
+extension Candle.Components.Schemas.TransactionMerchantCounterpartyDetails.KindPayload : Swift.BitwiseCopyable {}
+extension Candle.Components.Schemas.TransactionMerchantCounterpartyDetails.CodingKeys : Swift.Equatable {}
+extension Candle.Components.Schemas.TransactionMerchantCounterpartyDetails.CodingKeys : Swift.Hashable {}
+extension Candle.Components.Schemas.TransactionMerchantCounterpartyDetails.CodingKeys : Swift.RawRepresentable {}
 extension Candle.Components.Schemas.TransactionLocation.CodingKeys : Swift.Equatable {}
 extension Candle.Components.Schemas.TransactionLocation.CodingKeys : Swift.Hashable {}
 extension Candle.Components.Schemas.TransactionLocation.CodingKeys : Swift.RawRepresentable {}
+extension Candle.Components.Schemas.TransactionUserCounterpartyDetails.KindPayload : Swift.RawRepresentable {}
+extension Candle.Components.Schemas.TransactionUserCounterpartyDetails.KindPayload : Swift.BitwiseCopyable {}
+extension Candle.Components.Schemas.TransactionUserCounterpartyDetails.CodingKeys : Swift.Equatable {}
+extension Candle.Components.Schemas.TransactionUserCounterpartyDetails.CodingKeys : Swift.Hashable {}
+extension Candle.Components.Schemas.TransactionUserCounterpartyDetails.CodingKeys : Swift.RawRepresentable {}
 extension Candle.Components.Schemas.OrderActivityItem.ActivityKindPayload : Swift.RawRepresentable {}
 extension Candle.Components.Schemas.OrderActivityItem.ActivityKindPayload : Swift.BitwiseCopyable {}
 extension Candle.Components.Schemas.OrderActivityItem.CodingKeys : Swift.Equatable {}

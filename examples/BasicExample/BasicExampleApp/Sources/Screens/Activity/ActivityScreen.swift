@@ -1,6 +1,17 @@
 import Candle
 import SwiftUI
 
+extension Models.TransactionCounterparty.DetailsPayload {
+    fileprivate var subtitle: String {
+        switch self {
+        case .TransactionMerchantCounterpartyDetails(let merchant):
+            return merchant.location?.localityName ?? "No Location"
+        case .TransactionUserCounterpartyDetails(let customer):
+            return customer.username
+        }
+    }
+}
+
 struct ActivityScreen: View {
 
     @Environment(CandleClient.self) private var client
@@ -53,8 +64,7 @@ struct ActivityScreen: View {
                             ) {
                                 ItemRow(
                                     title: transaction.counterparty.name,
-                                    subtitle: transaction.counterparty.location?.localityName
-                                        ?? "No Location",
+                                    subtitle: transaction.counterparty.details.subtitle,
                                     value: transaction.amount.usd,
                                     logoURL: URL(string: transaction.counterparty.logoURL)
                                 )
