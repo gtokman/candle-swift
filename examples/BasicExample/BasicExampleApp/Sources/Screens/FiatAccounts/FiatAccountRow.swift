@@ -7,7 +7,7 @@ struct FiatAccountRow: View {
     private var service: String {
         switch account.details {
         case .LinkFiatHoldingAccountDetails(let details):
-            return details.service.name
+            return details.service?.name ?? "unknown"
         case .OwnerFiatHoldingAccountDetails(let details):
             return details.service.name
         }
@@ -16,7 +16,7 @@ struct FiatAccountRow: View {
     private var logoURL: URL? {
         switch account.details {
         case .LinkFiatHoldingAccountDetails(let details):
-            return details.service.logoURL
+            return details.service?.logoURL ?? URL(fileURLWithPath: "https://candle.fi/error")
         case .OwnerFiatHoldingAccountDetails(let details):
             return details.service.logoURL
         }
@@ -124,7 +124,7 @@ struct FiatAccountRow: View {
             items.append(
                 .init(
                     label: "Service",
-                    value: details.service.rawValue,
+                    value: details.service?.rawValue ?? "unknown",
                     iconName: "line.3.horizontal.decrease.circle"
                 ))
         case .OwnerFiatHoldingAccountDetails(let details):

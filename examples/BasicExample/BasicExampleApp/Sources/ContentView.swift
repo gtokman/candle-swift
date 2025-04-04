@@ -111,7 +111,7 @@ struct ContentView: View {
         .candleLinkSheet(
             isPresented: $showLinkSheet,
             customerName: "Acme Inc.",
-            showSandbox: true,
+            services: .supported + [.demo],
             presentationStyle: .fullScreen,
             presentationBackground: AnyShapeStyle(.thickMaterial)
         ) { account in

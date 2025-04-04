@@ -43,31 +43,37 @@ struct LinkedAccountRow: View {
             if let details = linkedAccount.activeDetails {
                 return [
                     DetailItem(
-                        label: "Username",
-                        value: details.username,
-                        iconName: "person",
+                        label: "State",
+                        value: "Active",
+                        iconName: "checkmark.circle",
                         showBackground: false),
                     DetailItem(
                         label: "Legal Name",
                         value: details.legalName,
                         iconName: "person.crop.circle",
                         showBackground: true),
-                    DetailItem(
-                        label: "Email Address",
-                        value: details.emailAddress ?? "Inactive",
-                        iconName: "envelope",
-                        showBackground: false),
-                    DetailItem(
-                        label: "Account Opened",
-                        value: details.accountOpened.formattedToCustomDate,
-                        iconName: "calendar",
-                        showBackground: true),
-                    DetailItem(
-                        label: "State",
-                        value: "Active",
-                        iconName: "checkmark.circle",
-                        showBackground: false),
-                ]
+                    details.username.map {
+                        DetailItem(
+                            label: "Username",
+                            value: $0,
+                            iconName: "person",
+                            showBackground: false)
+                    },
+                    details.emailAddress.map {
+                        DetailItem(
+                            label: "Email Address",
+                            value: $0,
+                            iconName: "envelope",
+                            showBackground: false)
+                    },
+                    details.accountOpened.map {
+                        DetailItem(
+                            label: "Account Opened",
+                            value: $0.formattedToCustomDate,
+                            iconName: "calendar",
+                            showBackground: true)
+                    },
+                ].compactMap { $0 }
             } else {
                 return [
                     DetailItem(
