@@ -97,7 +97,8 @@ struct LinkedAccountRow: View {
             )
         ) {
             ItemRow(
-                title: formattedName(linkedAccount.activeDetails?.legalName ?? "N/A"),
+                title: linkedAccount.activeDetails.map { formattedName($0.legalName) }
+                    ?? "Inactive",
                 subtitle: linkedAccount.service.name,
                 value: "",
                 logoURL: logoURL

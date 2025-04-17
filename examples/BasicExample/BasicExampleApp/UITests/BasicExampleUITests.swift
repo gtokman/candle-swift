@@ -5,7 +5,8 @@ import XCTest
 class MyTest: XCTestCase {
 
     private func testLogin(
-        application: XCUIApplication, username: String, mfa: (placeholder: String, value: String)?,
+        application: XCUIApplication, username: String,
+        challenge: (placeholder: String, value: String)?,
         userID: String
     ) async {
         // Tap to login
@@ -30,16 +31,16 @@ class MyTest: XCTestCase {
         XCTAssert(submitButton.exists)
         submitButton.tap()
 
-        if let mfa = mfa {
-            // Wait for MFA request
-            XCTAssert(application.staticTexts["MFA Response"].waitForExistence(timeout: 30))
+        if let challenge = challenge {
+            // Wait for Challenge request
+            XCTAssert(application.staticTexts["Challenge Response"].waitForExistence(timeout: 30))
 
-            // Enter MFA response
-            let mfaResponseTextField = application.textFields[mfa.placeholder]
-            XCTAssert(mfaResponseTextField.exists)
-            mfaResponseTextField.tap()
-            mfaResponseTextField.tap()  // NOTE: This is necessary for some reason
-            mfaResponseTextField.typeText(mfa.value)
+            // Enter Challenge response
+            let challengeResponseTextField = application.textFields[challenge.placeholder]
+            XCTAssert(challengeResponseTextField.exists)
+            challengeResponseTextField.tap()
+            challengeResponseTextField.tap()  // NOTE: This is necessary for some reason
+            challengeResponseTextField.typeText(challenge.value)
 
             // Tap to submit
             let submitButton = application.buttons["Submit"]
@@ -75,17 +76,17 @@ class MyTest: XCTestCase {
         await testLogin(
             application: application,
             username: "Antonette",
-            mfa: nil,
+            challenge: nil,
             userID: "user_2")
         await testLogin(
             application: application,
             username: "Kamren",
-            mfa: (placeholder: "Login Code (from app)", value: "625342"),
+            challenge: (placeholder: "Login Code (from app)", value: "625342"),
             userID: "user_5")
         await testLogin(
             application: application,
             username: "Delphine",
-            mfa: (placeholder: "Magic Link (copy from sms/email)", value: "conrad.com"),
+            challenge: (placeholder: "Magic Link (copy from sms/email)", value: "conrad.com"),
             userID: "user_9")
     }
 
