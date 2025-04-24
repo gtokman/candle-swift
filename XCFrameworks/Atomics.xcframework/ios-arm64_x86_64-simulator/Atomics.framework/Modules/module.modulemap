@@ -1,0 +1,5 @@
+framework module Atomics {
+    header "Atomics-Swift.h"
+    export *
+    link framework "_AtomicsShims"
+}

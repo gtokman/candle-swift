@@ -18,7 +18,7 @@ struct ContentViewMenu: View {
                 Label("Delete User", systemImage: "person.fill.xmark")
             }
         } label: {
-            Label("Filter", systemImage: "ellipsis.circle")
+            Label("Settings", systemImage: "ellipsis.circle")
         }
     }
 }

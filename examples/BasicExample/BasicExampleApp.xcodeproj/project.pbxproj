@@ -7,41 +7,38 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		034D2D96530C0A4E79684772 /* LinkedAccountRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0484D180FE80EC259342BC /* LinkedAccountRow.swift */; };
 		0E775ED5B7061B3FBFE69817 /* AppearanceEffectRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB15058CF5CE1ABF5D77990 /* AppearanceEffectRenderer.swift */; };
 		0E9C9429E58C8560D707ACE2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4719413741CE0EA8806F20FA /* Preview Assets.xcassets */; };
+		181A6959902358015A5D0F58 /* TradeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398DA3523C679969855469B6 /* TradeViewModel.swift */; };
 		216AB2217466111C01B5C9CB /* String++.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65430C4FC03AE1651BF9B425 /* String++.swift */; };
+		2632DA97C68E553CC8581E5A /* Pasteboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0488C0D103A6CE044A6DB240 /* Pasteboard.swift */; };
 		2B6522DFE12A2449C04C7336 /* ItemPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DDF1E6D6C6960E9AC328358 /* ItemPhoto.swift */; };
-		3356E9AFA96D5FF3E7A47D39 /* LinkedAccountsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5488ED2BE7B5C8E632E271 /* LinkedAccountsScreen.swift */; };
 		375CA8500D126A5C114D3290 /* DetailRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA3C76B0C6C9C2B7B1800D2 /* DetailRow.swift */; };
-		40E647A39B86E4074E0683CC /* OrderDetails++.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC4C6C57099FF2146F7DE7D /* OrderDetails++.swift */; };
-		4478BA04D7A10BD16898B9FA /* ActivityScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97B1CE04C65C815792F48514 /* ActivityScreen.swift */; };
-		51624AA405C60FE1B8DED2F5 /* FiatAccountRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FD837965EA2B444592E31B6 /* FiatAccountRow.swift */; };
+		4B498D4DB811A0EBB536AF3A /* LinkedAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1129AFC8235650CC5316AF5 /* LinkedAccountViewModel.swift */; };
 		6092323FDBDE5F7DC4F52DC5 /* AsyncImageWithPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23323E8948A39AB8A426FF97 /* AsyncImageWithPlaceholder.swift */; };
-		7012F3F8CF68BD4F91CBDC25 /* Double++.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BB3275890D44D31C3F8C34 /* Double++.swift */; };
+		6ABACC9EBFE5DEFCCE63AEFE /* AssetAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8306F6D930F412366E153C /* AssetAccountViewModel.swift */; };
 		7146DD51A7D529A71587AC79 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0B8897B8E9B8AE8FE52737 /* App.swift */; };
 		73C8934D72DBBCB11C06B44E /* CandleSecondaryButtonModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4DA2ADA53FDA2A1183B438 /* CandleSecondaryButtonModifier.swift */; };
-		74D77E8B88525C44977FA94D /* OrderDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CBE8BDB19AB3066435A1046 /* OrderDetails.swift */; };
 		7874A2927D6D4F253BE5BD49 /* ItemRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48117F7EFE2749B1AAB5C479 /* ItemRow.swift */; };
-		7925DC1F68EEB88016C49591 /* TransactionDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C117BD2BA7DB81F3AEF654 /* TransactionDetails.swift */; };
 		7C75373786A97A8E45A72A1B /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7207DE27EF243DA298D0D8F /* DetailView.swift */; };
 		88441339319FFA31BEBDD24D /* TuistAssets+BasicExampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD58CA05707E9E877604202F /* TuistAssets+BasicExampleApp.swift */; };
+		93D8F76D9DF5A24B70FC4597 /* EnumMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8BFFE7D5EC2D30DF2419CC /* EnumMenu.swift */; };
 		93E31923EAE07FC97B277B36 /* CGFloat++.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB10B4A8AAE6BC8D56DE607 /* CGFloat++.swift */; };
+		94BC150807A74F302A4EAEC2 /* AssetAccountsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903DF84ECBFBE1830EC8CBED /* AssetAccountsScreen.swift */; };
 		9E1299FAE1F928603DF5C28F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 16756FED00B842BAC5FE0EE2 /* Assets.xcassets */; };
-		9F37AA3E8A59216C8ADA69D9 /* LinkedAccountsMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25B009AD9C2B719368C1023 /* LinkedAccountsMenu.swift */; };
 		A426180B1EBE39E3570505BF /* BasicExampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1924E6F9864418459C71374B /* BasicExampleUITests.swift */; };
 		A64BCF617FDDE3E0558B0238 /* CandlePrimaryButtonModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5176FA18CF2FC1E55E6CDE8 /* CandlePrimaryButtonModifier.swift */; };
-		B93A5404E9BF902A83F0B59B /* SpanMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7970B864CCE9E2C7A15A23C /* SpanMenu.swift */; };
+		AD6EDAFF22C8E9DF8A67D194 /* TradesScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352617F5CB23ACDA48782EF2 /* TradesScreen.swift */; };
 		BD6585DC0DEFF71D09398756 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6DDD7BE742269E96E7FB410 /* LaunchScreen.storyboard */; };
-		BF27E83B4E1D99903CE9DDB6 /* AssetKindMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FA1E9D336044D1C2866BA1 /* AssetKindMenu.swift */; };
 		C190A0F6FF8CBAFEAB00E643 /* DetailItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E879DD84758D5EF7AA560C05 /* DetailItem.swift */; };
 		C55FF512F855BDB6F4AFE637 /* LinkedAccount++.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10B3927B5DF4E4910D3F388 /* LinkedAccount++.swift */; };
 		C580E924A2860C34584C95A1 /* TextTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FF88CB884650672DBBACF6 /* TextTransition.swift */; };
 		C69A754F627F604A48EE6BF2 /* Candle in Frameworks */ = {isa = PBXBuildFile; productRef = 0E4207EAC4C668B610637734 /* Candle */; };
 		D84EACEA6E784B54C0CC596A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9120D4F2AB338FD10DC5D6D7 /* ContentView.swift */; };
 		D87D9DE9C2B09B0F3601B130 /* ContentViewMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7226031ACEAB1A6EB4332D1F /* ContentViewMenu.swift */; };
+		D9CDBB75A60C65044A236E18 /* LinkedAccountsMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554FC63D2C9C434F9B06EFD1 /* LinkedAccountsMenu.swift */; };
 		DBB18361ADC40DD9E0335DD6 /* TuistBundle+BasicExampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E256EFD0418F3ED1CA238D8 /* TuistBundle+BasicExampleApp.swift */; };
-		E3DCB4268F92A6D64008FFAB /* FiatAccountsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A383D60DF60D24DCC576B0F /* FiatAccountsScreen.swift */; };
+		E623A072B457345C06F412F3 /* LinkedAccountsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D1DCEAF3560F15BDCDAB822 /* LinkedAccountsScreen.swift */; };
 		FBE070EE5C5291CC2B9F614D /* OnboardingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3840526FD2F4907B1BC60AAE /* OnboardingScreen.swift */; };
 /* End PBXBuildFile section */
 
@@ -79,46 +76,43 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0488C0D103A6CE044A6DB240 /* Pasteboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pasteboard.swift; sourceTree = "<group>"; };
 		0AA3C76B0C6C9C2B7B1800D2 /* DetailRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRow.swift; sourceTree = "<group>"; };
+		0D1DCEAF3560F15BDCDAB822 /* LinkedAccountsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkedAccountsScreen.swift; sourceTree = "<group>"; };
 		16756FED00B842BAC5FE0EE2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1924E6F9864418459C71374B /* BasicExampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicExampleUITests.swift; sourceTree = "<group>"; };
 		23323E8948A39AB8A426FF97 /* AsyncImageWithPlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImageWithPlaceholder.swift; sourceTree = "<group>"; };
-		28C117BD2BA7DB81F3AEF654 /* TransactionDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDetails.swift; sourceTree = "<group>"; };
 		2DDF1E6D6C6960E9AC328358 /* ItemPhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemPhoto.swift; sourceTree = "<group>"; };
 		2E256EFD0418F3ED1CA238D8 /* TuistBundle+BasicExampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TuistBundle+BasicExampleApp.swift"; sourceTree = "<group>"; };
-		36BB3275890D44D31C3F8C34 /* Double++.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double++.swift"; sourceTree = "<group>"; };
+		2E8BFFE7D5EC2D30DF2419CC /* EnumMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumMenu.swift; sourceTree = "<group>"; };
+		352617F5CB23ACDA48782EF2 /* TradesScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradesScreen.swift; sourceTree = "<group>"; };
 		3840526FD2F4907B1BC60AAE /* OnboardingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingScreen.swift; sourceTree = "<group>"; };
+		398DA3523C679969855469B6 /* TradeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeViewModel.swift; sourceTree = "<group>"; };
+		3A8306F6D930F412366E153C /* AssetAccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetAccountViewModel.swift; sourceTree = "<group>"; };
 		4719413741CE0EA8806F20FA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		48117F7EFE2749B1AAB5C479 /* ItemRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemRow.swift; sourceTree = "<group>"; };
-		49FA1E9D336044D1C2866BA1 /* AssetKindMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetKindMenu.swift; sourceTree = "<group>"; };
-		5A383D60DF60D24DCC576B0F /* FiatAccountsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiatAccountsScreen.swift; sourceTree = "<group>"; };
-		5B0484D180FE80EC259342BC /* LinkedAccountRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkedAccountRow.swift; sourceTree = "<group>"; };
+		554FC63D2C9C434F9B06EFD1 /* LinkedAccountsMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkedAccountsMenu.swift; sourceTree = "<group>"; };
 		610B0270C7296FA8F8021052 /* candle */ = {isa = PBXFileReference; lastKnownFileType = folder; name = candle; path = ../..; sourceTree = "<group>"; };
 		65430C4FC03AE1651BF9B425 /* String++.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String++.swift"; sourceTree = "<group>"; };
-		6CBE8BDB19AB3066435A1046 /* OrderDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetails.swift; sourceTree = "<group>"; };
 		6DB10B4A8AAE6BC8D56DE607 /* CGFloat++.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat++.swift"; sourceTree = "<group>"; };
-		6FD837965EA2B444592E31B6 /* FiatAccountRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiatAccountRow.swift; sourceTree = "<group>"; };
 		7226031ACEAB1A6EB4332D1F /* ContentViewMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewMenu.swift; sourceTree = "<group>"; };
 		743E0CB2CF606A046D061CDB /* BasicExampleApp-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "BasicExampleApp-Info.plist"; sourceTree = "<group>"; };
 		7A5B3D8479F9D89E75E4A09D /* BasicExampleUITests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "BasicExampleUITests-Info.plist"; sourceTree = "<group>"; };
 		8B0B8897B8E9B8AE8FE52737 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		8EB15058CF5CE1ABF5D77990 /* AppearanceEffectRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceEffectRenderer.swift; sourceTree = "<group>"; };
+		903DF84ECBFBE1830EC8CBED /* AssetAccountsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetAccountsScreen.swift; sourceTree = "<group>"; };
 		9120D4F2AB338FD10DC5D6D7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		97B1CE04C65C815792F48514 /* ActivityScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityScreen.swift; sourceTree = "<group>"; };
 		9AFFFC8E8EAEB8EA156E4669 /* BasicExampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BasicExampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A1129AFC8235650CC5316AF5 /* LinkedAccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkedAccountViewModel.swift; sourceTree = "<group>"; };
 		A7207DE27EF243DA298D0D8F /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
-		A7970B864CCE9E2C7A15A23C /* SpanMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpanMenu.swift; sourceTree = "<group>"; };
 		AD58CA05707E9E877604202F /* TuistAssets+BasicExampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TuistAssets+BasicExampleApp.swift"; sourceTree = "<group>"; };
 		B5176FA18CF2FC1E55E6CDE8 /* CandlePrimaryButtonModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandlePrimaryButtonModifier.swift; sourceTree = "<group>"; };
 		C10B3927B5DF4E4910D3F388 /* LinkedAccount++.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LinkedAccount++.swift"; sourceTree = "<group>"; };
-		C25B009AD9C2B719368C1023 /* LinkedAccountsMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkedAccountsMenu.swift; sourceTree = "<group>"; };
 		C9FF88CB884650672DBBACF6 /* TextTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextTransition.swift; sourceTree = "<group>"; };
-		CD5488ED2BE7B5C8E632E271 /* LinkedAccountsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkedAccountsScreen.swift; sourceTree = "<group>"; };
 		DAD015669B1935B39AD93044 /* BasicExampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BasicExampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE4DA2ADA53FDA2A1183B438 /* CandleSecondaryButtonModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandleSecondaryButtonModifier.swift; sourceTree = "<group>"; };
 		E6DDD7BE742269E96E7FB410 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E879DD84758D5EF7AA560C05 /* DetailItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailItem.swift; sourceTree = "<group>"; };
-		EAC4C6C57099FF2146F7DE7D /* OrderDetails++.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OrderDetails++.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,20 +156,9 @@
 			isa = PBXGroup;
 			children = (
 				E879DD84758D5EF7AA560C05 /* DetailItem.swift */,
+				0488C0D103A6CE044A6DB240 /* Pasteboard.swift */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		4913E6A11219073A1FB09FA7 /* Activity */ = {
-			isa = PBXGroup;
-			children = (
-				DA50F252E601D82B97876C76 /* Orders */,
-				CCEEE64F9EE4E3C85EE35B6D /* Transactions */,
-				97B1CE04C65C815792F48514 /* ActivityScreen.swift */,
-				49FA1E9D336044D1C2866BA1 /* AssetKindMenu.swift */,
-				A7970B864CCE9E2C7A15A23C /* SpanMenu.swift */,
-			);
-			path = Activity;
 			sourceTree = "<group>";
 		};
 		4C3DDB7930007819AAC60423 /* Packages */ = {
@@ -197,14 +180,25 @@
 			path = Onboarding;
 			sourceTree = "<group>";
 		};
+		80B0625E32E6B45BFFC810E8 /* Menus */ = {
+			isa = PBXGroup;
+			children = (
+				2E8BFFE7D5EC2D30DF2419CC /* EnumMenu.swift */,
+				554FC63D2C9C434F9B06EFD1 /* LinkedAccountsMenu.swift */,
+			);
+			path = Menus;
+			sourceTree = "<group>";
+		};
 		8A2ABC0130B61F9F5328FF88 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
 				B52B03D16E3F91CEAA58F1C7 /* Extensions */,
+				80B0625E32E6B45BFFC810E8 /* Menus */,
 				403E6A17B670E9FC95774892 /* Models */,
 				3EF65425EEABD1F5EDEE4DF0 /* Modifiers */,
 				B1C06A76A07ED6663182303B /* Screens */,
 				B9E8C3AA55D17F93E74643F0 /* SubViews */,
+				B0AE04D7698A11317B1741CA /* ViewModels */,
 				8B0B8897B8E9B8AE8FE52737 /* App.swift */,
 				9120D4F2AB338FD10DC5D6D7 /* ContentView.swift */,
 			);
@@ -228,23 +222,23 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		AC298493BE16038FA3894183 /* FiatAccounts */ = {
+		B0AE04D7698A11317B1741CA /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				6FD837965EA2B444592E31B6 /* FiatAccountRow.swift */,
-				5A383D60DF60D24DCC576B0F /* FiatAccountsScreen.swift */,
-				C25B009AD9C2B719368C1023 /* LinkedAccountsMenu.swift */,
+				3A8306F6D930F412366E153C /* AssetAccountViewModel.swift */,
+				A1129AFC8235650CC5316AF5 /* LinkedAccountViewModel.swift */,
+				398DA3523C679969855469B6 /* TradeViewModel.swift */,
 			);
-			path = FiatAccounts;
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		B1C06A76A07ED6663182303B /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				4913E6A11219073A1FB09FA7 /* Activity */,
-				AC298493BE16038FA3894183 /* FiatAccounts */,
-				C6C7CC71392BB2307A5DB316 /* LinkedAccounts */,
 				6FFA19E618FB5ABE801EAD73 /* Onboarding */,
+				903DF84ECBFBE1830EC8CBED /* AssetAccountsScreen.swift */,
+				0D1DCEAF3560F15BDCDAB822 /* LinkedAccountsScreen.swift */,
+				352617F5CB23ACDA48782EF2 /* TradesScreen.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -261,9 +255,7 @@
 			isa = PBXGroup;
 			children = (
 				6DB10B4A8AAE6BC8D56DE607 /* CGFloat++.swift */,
-				36BB3275890D44D31C3F8C34 /* Double++.swift */,
 				C10B3927B5DF4E4910D3F388 /* LinkedAccount++.swift */,
-				EAC4C6C57099FF2146F7DE7D /* OrderDetails++.swift */,
 				65430C4FC03AE1651BF9B425 /* String++.swift */,
 			);
 			path = Extensions;
@@ -307,31 +299,6 @@
 				48117F7EFE2749B1AAB5C479 /* ItemRow.swift */,
 			);
 			path = SubViews;
-			sourceTree = "<group>";
-		};
-		C6C7CC71392BB2307A5DB316 /* LinkedAccounts */ = {
-			isa = PBXGroup;
-			children = (
-				5B0484D180FE80EC259342BC /* LinkedAccountRow.swift */,
-				CD5488ED2BE7B5C8E632E271 /* LinkedAccountsScreen.swift */,
-			);
-			path = LinkedAccounts;
-			sourceTree = "<group>";
-		};
-		CCEEE64F9EE4E3C85EE35B6D /* Transactions */ = {
-			isa = PBXGroup;
-			children = (
-				28C117BD2BA7DB81F3AEF654 /* TransactionDetails.swift */,
-			);
-			path = Transactions;
-			sourceTree = "<group>";
-		};
-		DA50F252E601D82B97876C76 /* Orders */ = {
-			isa = PBXGroup;
-			children = (
-				6CBE8BDB19AB3066435A1046 /* OrderDetails.swift */,
-			);
-			path = Orders;
 			sourceTree = "<group>";
 		};
 		E98018A3B700DCF1D9CCF515 /* Project */ = {
@@ -467,32 +434,29 @@
 				7146DD51A7D529A71587AC79 /* App.swift in Sources */,
 				D84EACEA6E784B54C0CC596A /* ContentView.swift in Sources */,
 				93E31923EAE07FC97B277B36 /* CGFloat++.swift in Sources */,
-				7012F3F8CF68BD4F91CBDC25 /* Double++.swift in Sources */,
 				C55FF512F855BDB6F4AFE637 /* LinkedAccount++.swift in Sources */,
-				40E647A39B86E4074E0683CC /* OrderDetails++.swift in Sources */,
 				216AB2217466111C01B5C9CB /* String++.swift in Sources */,
+				93D8F76D9DF5A24B70FC4597 /* EnumMenu.swift in Sources */,
+				D9CDBB75A60C65044A236E18 /* LinkedAccountsMenu.swift in Sources */,
 				C190A0F6FF8CBAFEAB00E643 /* DetailItem.swift in Sources */,
+				2632DA97C68E553CC8581E5A /* Pasteboard.swift in Sources */,
 				A64BCF617FDDE3E0558B0238 /* CandlePrimaryButtonModifier.swift in Sources */,
 				73C8934D72DBBCB11C06B44E /* CandleSecondaryButtonModifier.swift in Sources */,
-				4478BA04D7A10BD16898B9FA /* ActivityScreen.swift in Sources */,
-				BF27E83B4E1D99903CE9DDB6 /* AssetKindMenu.swift in Sources */,
-				74D77E8B88525C44977FA94D /* OrderDetails.swift in Sources */,
-				B93A5404E9BF902A83F0B59B /* SpanMenu.swift in Sources */,
-				7925DC1F68EEB88016C49591 /* TransactionDetails.swift in Sources */,
-				51624AA405C60FE1B8DED2F5 /* FiatAccountRow.swift in Sources */,
-				E3DCB4268F92A6D64008FFAB /* FiatAccountsScreen.swift in Sources */,
-				9F37AA3E8A59216C8ADA69D9 /* LinkedAccountsMenu.swift in Sources */,
-				034D2D96530C0A4E79684772 /* LinkedAccountRow.swift in Sources */,
-				3356E9AFA96D5FF3E7A47D39 /* LinkedAccountsScreen.swift in Sources */,
+				94BC150807A74F302A4EAEC2 /* AssetAccountsScreen.swift in Sources */,
+				E623A072B457345C06F412F3 /* LinkedAccountsScreen.swift in Sources */,
 				0E775ED5B7061B3FBFE69817 /* AppearanceEffectRenderer.swift in Sources */,
 				2B6522DFE12A2449C04C7336 /* ItemPhoto.swift in Sources */,
 				FBE070EE5C5291CC2B9F614D /* OnboardingScreen.swift in Sources */,
 				C580E924A2860C34584C95A1 /* TextTransition.swift in Sources */,
+				AD6EDAFF22C8E9DF8A67D194 /* TradesScreen.swift in Sources */,
 				6092323FDBDE5F7DC4F52DC5 /* AsyncImageWithPlaceholder.swift in Sources */,
 				D87D9DE9C2B09B0F3601B130 /* ContentViewMenu.swift in Sources */,
 				375CA8500D126A5C114D3290 /* DetailRow.swift in Sources */,
 				7C75373786A97A8E45A72A1B /* DetailView.swift in Sources */,
 				7874A2927D6D4F253BE5BD49 /* ItemRow.swift in Sources */,
+				6ABACC9EBFE5DEFCCE63AEFE /* AssetAccountViewModel.swift in Sources */,
+				4B498D4DB811A0EBB536AF3A /* LinkedAccountViewModel.swift in Sources */,
+				181A6959902358015A5D0F58 /* TradeViewModel.swift in Sources */,
 				88441339319FFA31BEBDD24D /* TuistAssets+BasicExampleApp.swift in Sources */,
 				DBB18361ADC40DD9E0335DD6 /* TuistBundle+BasicExampleApp.swift in Sources */,
 			);
@@ -640,7 +604,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = fi.candle.ios.example;
+				PRODUCT_BUNDLE_IDENTIFIER = com.trycandle.candle.uitests;
 				PRODUCT_NAME = BasicExampleUITests;
 				SDKROOT = iphoneos;
 				SUPPORTS_MACCATALYST = NO;
@@ -658,6 +622,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GENERATE_ASSET_SYMBOLS = YES;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "Derived/InfoPlists/BasicExampleApp-Info.plist";
@@ -666,7 +632,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = fi.candle.ios.example;
+				PRODUCT_BUNDLE_IDENTIFIER = com.trycandle.candle;
 				PRODUCT_NAME = BasicExampleApp;
 				SDKROOT = iphoneos;
 				SUPPORTS_MACCATALYST = NO;
@@ -683,6 +649,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GENERATE_ASSET_SYMBOLS = YES;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "Derived/InfoPlists/BasicExampleApp-Info.plist";
@@ -691,7 +659,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = fi.candle.ios.example;
+				PRODUCT_BUNDLE_IDENTIFIER = com.trycandle.candle;
 				PRODUCT_NAME = BasicExampleApp;
 				SDKROOT = iphoneos;
 				SUPPORTS_MACCATALYST = NO;
@@ -718,7 +686,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = fi.candle.ios.example;
+				PRODUCT_BUNDLE_IDENTIFIER = com.trycandle.candle.uitests;
 				PRODUCT_NAME = BasicExampleUITests;
 				SDKROOT = iphoneos;
 				SUPPORTS_MACCATALYST = NO;

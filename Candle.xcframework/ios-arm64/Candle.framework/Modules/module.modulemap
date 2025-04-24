@@ -1,6 +1,0 @@
-framework module Candle {
-umbrella "Headers"
-export *
-
-module * { export * }
-}

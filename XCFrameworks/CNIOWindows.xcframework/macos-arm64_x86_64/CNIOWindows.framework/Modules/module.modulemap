@@ -1,0 +1,4 @@
+framework module CNIOWindows {
+  header "CNIOWindows.h"
+  export *
+}

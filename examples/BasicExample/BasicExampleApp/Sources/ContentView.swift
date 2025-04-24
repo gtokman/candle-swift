@@ -9,8 +9,8 @@ struct ContentView: View {
 
     // STEP 2: Create state to show link sheet
     @State var showLinkSheet = false
-    @State var showActivity = false
-    @State var showFiatAccounts = false
+    @State var showTrades = false
+    @State var showAssetAccounts = false
     @State var showDeleteConfirmation = false
     @State var linkedAccounts: [Models.LinkedAccount] = []
     @State var isDataStale = true
@@ -21,16 +21,15 @@ struct ContentView: View {
     @ViewBuilder
     func actionButtons() -> some View {
         Button(
-            action: { showActivity = true },
+            action: { showAssetAccounts = true },
             label: {
-                Text("Show Activity")
+                Text("Get Asset Accounts")
                     .candleSecondaryButtonStyle()
             })
-
         Button(
-            action: { showFiatAccounts = true },
+            action: { showTrades = true },
             label: {
-                Text("Show Fiat Accounts")
+                Text("Get Trades")
                     .candleSecondaryButtonStyle()
             })
     }
@@ -82,11 +81,11 @@ struct ContentView: View {
         } message: {
             Text("Proceed with caution! This action is permanent and cannot be reverted.")
         }
-        .sheet(isPresented: $showActivity) {
-            ActivityScreen(linkedAccounts: linkedAccounts)
+        .sheet(isPresented: $showTrades) {
+            TradesScreen(linkedAccounts: linkedAccounts)
         }
-        .sheet(isPresented: $showFiatAccounts) {
-            FiatAccountsScreen(linkedAccounts: linkedAccounts)
+        .sheet(isPresented: $showAssetAccounts) {
+            AssetAccountsScreen(linkedAccounts: linkedAccounts)
         }
         .fullScreenCover(isPresented: $showOnboarding) {
             OnboardingScreen(
@@ -119,8 +118,8 @@ struct ContentView: View {
             self.isDataStale = true
         }
         .sensoryFeedback(.selection, trigger: showOnboarding)
-        .sensoryFeedback(.selection, trigger: showFiatAccounts)
-        .sensoryFeedback(.selection, trigger: showActivity)
+        .sensoryFeedback(.selection, trigger: showAssetAccounts)
+        .sensoryFeedback(.selection, trigger: showTrades)
     }
 
     private func deleteUser() {

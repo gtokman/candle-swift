@@ -1,22 +1,19 @@
 import SwiftUI
 
-struct DetailRow: View {
-    let label: String
-    let value: String
-    let iconName: String
-    let showBackground: Bool
+struct DetailRowView: View {
+    let visualDetailItem: VisualDetailItem
 
     var body: some View {
         HStack {
-            Image(systemName: iconName)
+            Image(systemName: visualDetailItem.iconName)
                 .font(.system(size: 17))
                 .opacity(0.75)
-            Text(label)
+            Text(visualDetailItem.label)
                 .font(.system(size: 17))
                 .fontWeight(.semibold)
                 .opacity(0.75)
             Spacer()
-            Text(value)
+            Text(visualDetailItem.value)
                 .font(.subheadline)
                 .foregroundColor(.gray)
                 .textSelection(.enabled)
@@ -24,7 +21,7 @@ struct DetailRow: View {
         .padding(.medium)
         .background(
             RoundedRectangle(cornerRadius: .medium, style: .continuous)
-                .fill(showBackground ? Color.gray.opacity(0.1) : Color.clear)
+                .fill(visualDetailItem.showBackground ? Color.gray.opacity(0.1) : Color.clear)
         )
         .frame(height: .huge)
     }
