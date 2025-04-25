@@ -4,7 +4,7 @@ import SwiftUI
 struct TradesScreen: View {
 
     // FIXME: Support dynamic span values like the SDK
-    enum SupportedSpan: String, CaseIterable, Identifiable {
+    private enum SupportedSpan: String, CaseIterable, Identifiable {
         case pt3h = "PT3H"
         case pt6h = "PT6H"
         case pt12h = "PT12H"

@@ -66,7 +66,7 @@ struct LinkedAccountsScreen: View {
                 ContentUnavailableView(
                     "No Linked Accounts",
                     systemImage: "exclamationmark.magnifyingglass",
-                    description: Text("Tap \"Link Account\" to get started.")
+                    description: Text("Link an account to get started.")
                 )
             }
         }

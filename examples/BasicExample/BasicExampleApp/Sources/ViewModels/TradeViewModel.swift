@@ -18,7 +18,7 @@ struct TradeViewModel {
         let lostAssetNames: [String]
         switch trade.lost {
         case .MarketTradeAsset(let marketTradeAsset):
-            lostAssetNames = [marketTradeAsset.symbol]  // TODO: Add name
+            lostAssetNames = [marketTradeAsset.symbol]  // FIXME: Add name
         case .FiatAsset, .TransportAsset, .OtherAsset, .NothingAsset:
             lostAssetNames = []
         }
@@ -26,7 +26,7 @@ struct TradeViewModel {
         let gainedAssetNames: [String]
         switch trade.gained {
         case .MarketTradeAsset(let marketTradeAsset):
-            gainedAssetNames = [marketTradeAsset.symbol]  // TODO: Add name
+            gainedAssetNames = [marketTradeAsset.symbol]  // FIXME: Add name
         case .FiatAsset, .TransportAsset, .OtherAsset, .NothingAsset:
             gainedAssetNames = []
         }

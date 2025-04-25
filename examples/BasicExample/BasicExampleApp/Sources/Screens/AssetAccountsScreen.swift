@@ -71,7 +71,7 @@ struct AssetAccountsScreen: View {
                             "No Asset Accounts",
                             systemImage: "exclamationmark.magnifyingglass",
                             description: Text(
-                                "Please pull to refresh or try changing your filters."
+                                "Try changing your filters or linking more accounts."
                             )
                         )
                     }

@@ -1,0 +1,166 @@
+import Candle
+import SwiftUI
+
+struct TradeQuotesScreen: View {
+    private enum TradeQuoteAssetKind: String, Codable, Hashable, Sendable, CaseIterable {
+        case fiat, stock, crypto, transport
+    }
+
+    @Environment(CandleClient.self) private var client
+
+    @State private var errorMessage: String? = nil
+    @State private var tradeQuotes = [TradeQuoteViewModel]()
+    @State private var isLoading = false
+
+    @State private var textInput1: String = ""
+    @State private var textInput2: String = ""
+    @State private var textInput3: String = ""
+    @State private var textInput4: String = ""
+
+    // FIXME: Add these back
+    //    @State private var lostAssetQuoteRequest: Models.TradeAssetQuoteRequest = .FiatAssetQuoteRequest(.init(assetKind: .fiat))
+    @State private var gainedAssetKind: TradeQuoteAssetKind? = nil
+    //    @State private var counterpartyKind: Models.GetTrades.Input.Query.CounterpartyKindPayload? = nil
+
+    @State private var selectedLinkedAccounts: [Models.LinkedAccount] = []
+
+    let linkedAccounts: [Models.LinkedAccount]
+
+    var gainedAssetQuoteRequest: Models.TradeAssetQuoteRequest {
+        switch gainedAssetKind {
+        case .transport:
+            return .TransportAssetQuoteRequest(
+                .init(
+                    assetKind: .transport,
+                    originCoordinates: Double(textInput1).flatMap { latitude in
+                        Double(textInput2).map { longitude in
+                            Models.Coordinates(latitude: latitude, longitude: longitude)
+                        }
+                    },
+                    destinationCoordinates: Double(textInput3).flatMap { latitude in
+                        Double(textInput4).map { longitude in
+                            Models.Coordinates(latitude: latitude, longitude: longitude)
+                        }
+                    }
+                ))
+        case .fiat:
+            return .FiatAssetQuoteRequest(
+                .init(assetKind: .fiat, currencyCode: textInput1, amount: Double(textInput2)))
+        case .stock:
+            return .MarketAssetQuoteRequest(
+                .init(assetKind: .stock, symbol: textInput1, amount: Double(textInput2)))
+        case .crypto:
+            return .MarketAssetQuoteRequest(
+                .init(assetKind: .crypto, symbol: textInput1, amount: Double(textInput2)))
+        case .none:
+            return .NothingAssetQuoteRequest(.init(assetKind: .nothing))
+        }
+    }
+
+    var tradeQuoteRequest: Models.TradeQuoteRequest {
+        .init(
+            linkedAccountIDs: selectedLinkedAccounts.isEmpty
+                ? nil : selectedLinkedAccounts.map { $0.id }.joined(separator: ","),
+            gained: gainedAssetQuoteRequest
+        )
+    }
+
+    var body: some View {
+        NavigationStack {
+            if isLoading {
+                Spacer()
+                ProgressView {
+                    Text("Loading...")
+                }
+                Spacer()
+            } else {
+                // FIXME: Set placeholder dynamically based on selected asset kinds
+                TextField("Origin Latitude/Currency Code/Symbol", text: $textInput1)
+                TextField("Origin Longitude/Amount", text: $textInput2)
+                TextField("Destination Latitude", text: $textInput3)
+                TextField("Destination Longitude", text: $textInput4)
+                List {
+                    ForEach(tradeQuotes) { tradeQuote in
+                        NavigationLink(
+                            destination: DetailsView(
+                                title: tradeQuote.title,
+                                logoURL: tradeQuote.logoURL,
+                                detailItems: tradeQuote.detailItems)
+                        ) {
+                            ItemRow(
+                                title: tradeQuote.title,
+                                subtitle: tradeQuote.subtitle,
+                                value: tradeQuote.value,
+                                logoURL: tradeQuote.logoURL
+                            )
+                        }
+                    }
+                }
+                .overlay {
+                    if tradeQuotes.isEmpty {
+                        ContentUnavailableView(
+                            "No Trade Quotes",
+                            systemImage: "exclamationmark.magnifyingglass",
+                            description: Text("Try changing your request or linking more accounts.")
+                        )
+                    }
+                }
+                .navigationTitle("Trade Quotes")
+                .refreshable {
+                    await loadTradeQuotes(request: tradeQuoteRequest, showLoading: false)
+                }
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Menu {
+                            // FIXME: Add these back
+                            //                            EnumMenu(name: "Lost Asset Kind", selectedCase: $lostAssetKind)
+                            EnumMenu(
+                                name: "Gained Asset Kind", selectedCase: $gainedAssetKind)
+                            //                            EnumMenu(
+                            //                                name: "Counterparty Kind", selectedCase: $counterpartyKind)
+                            LinkedAccountsMenu(
+                                linkedAccounts: linkedAccounts,
+                                selectedLinkedAccounts: $selectedLinkedAccounts
+                            )
+                        } label: {
+                            Label("Filters", systemImage: "line.horizontal.3.decrease.circle")
+                        }
+                    }
+                }
+            }
+        }
+        .alert(isPresented: .constant(errorMessage != nil)) {
+            Alert(
+                title: Text("Error"), message: Text(errorMessage ?? "No Message"),
+                dismissButton: .cancel(Text("OK"), action: { errorMessage = nil }))
+        }
+        /// FIXME: Add this back
+        //        .task(id: tradeQuoteRequest) {
+        //            await loadTradeQuotes(request: tradeQuoteRequest)
+        //        }
+        .sensoryFeedback(.error, trigger: errorMessage) { $1 != nil }
+        .presentationDragIndicator(.visible)
+        .presentationCornerRadius(.extraLarge)
+    }
+
+    private func loadTradeQuotes(
+        request: Models.TradeQuoteRequest, showLoading: Bool = true
+    ) async {
+        guard !isLoading else { return }
+        isLoading = showLoading
+        defer { isLoading = false }
+        do {
+            tradeQuotes = try await client.getTradeQuotes(request: request).map {
+                TradeQuoteViewModel(tradeQuote: $0)
+            }
+        } catch {
+            errorMessage = String(describing: error)
+        }
+    }
+}
+
+#Preview {
+    TradesScreen(linkedAccounts: [])
+        .environment(
+            CandleClient(appUser: .init(appKey: "DEBUG_APP_KEY", appSecret: "DEBUG_APP_SECRET")))
+}

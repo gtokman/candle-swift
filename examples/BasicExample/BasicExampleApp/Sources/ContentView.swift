@@ -11,6 +11,7 @@ struct ContentView: View {
     @State var showLinkSheet = false
     @State var showTrades = false
     @State var showAssetAccounts = false
+    @State var showTradeQuotes = false
     @State var showDeleteConfirmation = false
     @State var linkedAccounts: [Models.LinkedAccount] = []
     @State var isDataStale = true
@@ -30,6 +31,12 @@ struct ContentView: View {
             action: { showTrades = true },
             label: {
                 Text("Get Trades")
+                    .candleSecondaryButtonStyle()
+            })
+        Button(
+            action: { showTradeQuotes = true },
+            label: {
+                Text("Get Trade Quotes")
                     .candleSecondaryButtonStyle()
             })
     }
@@ -81,11 +88,14 @@ struct ContentView: View {
         } message: {
             Text("Proceed with caution! This action is permanent and cannot be reverted.")
         }
+        .sheet(isPresented: $showAssetAccounts) {
+            AssetAccountsScreen(linkedAccounts: linkedAccounts)
+        }
         .sheet(isPresented: $showTrades) {
             TradesScreen(linkedAccounts: linkedAccounts)
         }
-        .sheet(isPresented: $showAssetAccounts) {
-            AssetAccountsScreen(linkedAccounts: linkedAccounts)
+        .sheet(isPresented: $showTradeQuotes) {
+            TradeQuotesScreen(linkedAccounts: linkedAccounts)
         }
         .fullScreenCover(isPresented: $showOnboarding) {
             OnboardingScreen(

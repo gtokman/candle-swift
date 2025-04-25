@@ -14,13 +14,16 @@
 		2632DA97C68E553CC8581E5A /* Pasteboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0488C0D103A6CE044A6DB240 /* Pasteboard.swift */; };
 		2B6522DFE12A2449C04C7336 /* ItemPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DDF1E6D6C6960E9AC328358 /* ItemPhoto.swift */; };
 		375CA8500D126A5C114D3290 /* DetailRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA3C76B0C6C9C2B7B1800D2 /* DetailRow.swift */; };
+		3F4732050D50C355EC0DFBBE /* TradeQuotesScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA4C33E33BC21D53CA76CC5 /* TradeQuotesScreen.swift */; };
 		4B498D4DB811A0EBB536AF3A /* LinkedAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1129AFC8235650CC5316AF5 /* LinkedAccountViewModel.swift */; };
 		6092323FDBDE5F7DC4F52DC5 /* AsyncImageWithPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23323E8948A39AB8A426FF97 /* AsyncImageWithPlaceholder.swift */; };
+		686DB51CABD28D11A3422BB7 /* TradeAssetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1462E00250AFC2EAED019384 /* TradeAssetViewModel.swift */; };
 		6ABACC9EBFE5DEFCCE63AEFE /* AssetAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8306F6D930F412366E153C /* AssetAccountViewModel.swift */; };
 		7146DD51A7D529A71587AC79 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0B8897B8E9B8AE8FE52737 /* App.swift */; };
 		73C8934D72DBBCB11C06B44E /* CandleSecondaryButtonModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4DA2ADA53FDA2A1183B438 /* CandleSecondaryButtonModifier.swift */; };
 		7874A2927D6D4F253BE5BD49 /* ItemRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48117F7EFE2749B1AAB5C479 /* ItemRow.swift */; };
 		7C75373786A97A8E45A72A1B /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7207DE27EF243DA298D0D8F /* DetailView.swift */; };
+		8594B3001529A76BE354DBA0 /* TradeQuoteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0F7D369D9DE47ECAE30076 /* TradeQuoteViewModel.swift */; };
 		88441339319FFA31BEBDD24D /* TuistAssets+BasicExampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD58CA05707E9E877604202F /* TuistAssets+BasicExampleApp.swift */; };
 		93D8F76D9DF5A24B70FC4597 /* EnumMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8BFFE7D5EC2D30DF2419CC /* EnumMenu.swift */; };
 		93E31923EAE07FC97B277B36 /* CGFloat++.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB10B4A8AAE6BC8D56DE607 /* CGFloat++.swift */; };
@@ -79,9 +82,11 @@
 		0488C0D103A6CE044A6DB240 /* Pasteboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pasteboard.swift; sourceTree = "<group>"; };
 		0AA3C76B0C6C9C2B7B1800D2 /* DetailRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRow.swift; sourceTree = "<group>"; };
 		0D1DCEAF3560F15BDCDAB822 /* LinkedAccountsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkedAccountsScreen.swift; sourceTree = "<group>"; };
+		1462E00250AFC2EAED019384 /* TradeAssetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeAssetViewModel.swift; sourceTree = "<group>"; };
 		16756FED00B842BAC5FE0EE2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1924E6F9864418459C71374B /* BasicExampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicExampleUITests.swift; sourceTree = "<group>"; };
 		23323E8948A39AB8A426FF97 /* AsyncImageWithPlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImageWithPlaceholder.swift; sourceTree = "<group>"; };
+		2BA4C33E33BC21D53CA76CC5 /* TradeQuotesScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeQuotesScreen.swift; sourceTree = "<group>"; };
 		2DDF1E6D6C6960E9AC328358 /* ItemPhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemPhoto.swift; sourceTree = "<group>"; };
 		2E256EFD0418F3ED1CA238D8 /* TuistBundle+BasicExampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TuistBundle+BasicExampleApp.swift"; sourceTree = "<group>"; };
 		2E8BFFE7D5EC2D30DF2419CC /* EnumMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumMenu.swift; sourceTree = "<group>"; };
@@ -89,6 +94,7 @@
 		3840526FD2F4907B1BC60AAE /* OnboardingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingScreen.swift; sourceTree = "<group>"; };
 		398DA3523C679969855469B6 /* TradeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeViewModel.swift; sourceTree = "<group>"; };
 		3A8306F6D930F412366E153C /* AssetAccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetAccountViewModel.swift; sourceTree = "<group>"; };
+		3F0F7D369D9DE47ECAE30076 /* TradeQuoteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeQuoteViewModel.swift; sourceTree = "<group>"; };
 		4719413741CE0EA8806F20FA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		48117F7EFE2749B1AAB5C479 /* ItemRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemRow.swift; sourceTree = "<group>"; };
 		554FC63D2C9C434F9B06EFD1 /* LinkedAccountsMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkedAccountsMenu.swift; sourceTree = "<group>"; };
@@ -227,6 +233,8 @@
 			children = (
 				3A8306F6D930F412366E153C /* AssetAccountViewModel.swift */,
 				A1129AFC8235650CC5316AF5 /* LinkedAccountViewModel.swift */,
+				1462E00250AFC2EAED019384 /* TradeAssetViewModel.swift */,
+				3F0F7D369D9DE47ECAE30076 /* TradeQuoteViewModel.swift */,
 				398DA3523C679969855469B6 /* TradeViewModel.swift */,
 			);
 			path = ViewModels;
@@ -238,6 +246,7 @@
 				6FFA19E618FB5ABE801EAD73 /* Onboarding */,
 				903DF84ECBFBE1830EC8CBED /* AssetAccountsScreen.swift */,
 				0D1DCEAF3560F15BDCDAB822 /* LinkedAccountsScreen.swift */,
+				2BA4C33E33BC21D53CA76CC5 /* TradeQuotesScreen.swift */,
 				352617F5CB23ACDA48782EF2 /* TradesScreen.swift */,
 			);
 			path = Screens;
@@ -448,6 +457,7 @@
 				2B6522DFE12A2449C04C7336 /* ItemPhoto.swift in Sources */,
 				FBE070EE5C5291CC2B9F614D /* OnboardingScreen.swift in Sources */,
 				C580E924A2860C34584C95A1 /* TextTransition.swift in Sources */,
+				3F4732050D50C355EC0DFBBE /* TradeQuotesScreen.swift in Sources */,
 				AD6EDAFF22C8E9DF8A67D194 /* TradesScreen.swift in Sources */,
 				6092323FDBDE5F7DC4F52DC5 /* AsyncImageWithPlaceholder.swift in Sources */,
 				D87D9DE9C2B09B0F3601B130 /* ContentViewMenu.swift in Sources */,
@@ -456,6 +466,8 @@
 				7874A2927D6D4F253BE5BD49 /* ItemRow.swift in Sources */,
 				6ABACC9EBFE5DEFCCE63AEFE /* AssetAccountViewModel.swift in Sources */,
 				4B498D4DB811A0EBB536AF3A /* LinkedAccountViewModel.swift in Sources */,
+				686DB51CABD28D11A3422BB7 /* TradeAssetViewModel.swift in Sources */,
+				8594B3001529A76BE354DBA0 /* TradeQuoteViewModel.swift in Sources */,
 				181A6959902358015A5D0F58 /* TradeViewModel.swift in Sources */,
 				88441339319FFA31BEBDD24D /* TuistAssets+BasicExampleApp.swift in Sources */,
 				DBB18361ADC40DD9E0335DD6 /* TuistBundle+BasicExampleApp.swift in Sources */,
