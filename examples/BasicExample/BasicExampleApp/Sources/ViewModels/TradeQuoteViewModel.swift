@@ -28,16 +28,16 @@ struct TradeQuoteViewModel {
     var subtitle: String {
         switch tradeQuote.gained {
         case .TransportAsset(let transportAsset):
-            return transportAsset.description
+            return transportAsset.service.name
         case .MarketTradeAsset(let marketAsset):
-            return marketAsset.symbol
+            return marketAsset.service.name
 
         case .FiatAsset, .NothingAsset, .OtherAsset:
             switch tradeQuote.lost {
             case .TransportAsset(let transportAsset):
-                return transportAsset.description
+                return transportAsset.service.name
             case .MarketTradeAsset(let marketAsset):
-                return marketAsset.symbol
+                return marketAsset.service.name
 
             case .FiatAsset, .NothingAsset, .OtherAsset:
                 return "—"  // FIXME: Display something in these cases

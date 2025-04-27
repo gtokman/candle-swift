@@ -8,7 +8,7 @@ struct AsyncImageWithPlaceholder: View {
     var body: some View {
         AsyncImage(url: logoURL) { phase in
             if let image = phase.image {
-                image.resizable()
+                image.resizable().scaledToFit()
             } else if phase.error != nil {
                 Image(systemName: "photo.badge.exclamationmark")
                     .font(.system(size: .extraLarge))
