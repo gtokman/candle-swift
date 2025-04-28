@@ -93,6 +93,13 @@ struct TradeQuotesScreen: View {
                                 value: tradeQuote.value,
                                 logoURL: tradeQuote.logoURL
                             )
+                        }.swipeActions {
+                            Button("Execute") {
+                                Task {
+                                    await executeTrade(context: tradeQuote.context)
+                                }
+                            }
+                            .tint(.green)
                         }
                     }
                 }
@@ -153,6 +160,20 @@ struct TradeQuotesScreen: View {
             tradeQuotes = try await client.getTradeQuotes(request: request).map {
                 TradeQuoteViewModel(tradeQuote: $0)
             }
+        } catch {
+            errorMessage = String(describing: error)
+        }
+    }
+
+    private func executeTrade(
+        context: Models.TradeQuoteContext, showLoading: Bool = true
+    ) async {
+        guard !isLoading else { return }
+        isLoading = showLoading
+        defer { isLoading = false }
+        do {
+            let trade = try await client.executeTrade(context: context)
+            _ = TradeViewModel(trade: trade)  // TODO
         } catch {
             errorMessage = String(describing: error)
         }

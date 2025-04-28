@@ -76,6 +76,29 @@ struct TradeQuoteViewModel {
         }
     }
 
+    var context: Models.TradeQuoteContext {
+        let linkedAccountID: String
+        switch tradeQuote.gained {
+        case .TransportAsset(let transportAsset):
+            linkedAccountID = transportAsset.linkedAccountID
+        case .MarketTradeAsset(let marketAsset):
+            linkedAccountID = marketAsset.linkedAccountID
+
+        case .FiatAsset, .NothingAsset, .OtherAsset:
+            switch tradeQuote.lost {
+            case .TransportAsset(let transportAsset):
+                linkedAccountID = transportAsset.linkedAccountID
+            case .MarketTradeAsset(let marketAsset):
+                linkedAccountID = marketAsset.linkedAccountID
+
+            case .FiatAsset, .NothingAsset, .OtherAsset:
+                linkedAccountID = "FIXME"  // FIXME: Do something in these cases
+            }
+        }
+
+        return .init(linkedAccountID: linkedAccountID, context: tradeQuote.context)
+    }
+
     var detailItems: [DetailItem] {
         return TradeAssetViewModel(tradeAsset: tradeQuote.lost).detailItems.map {
             DetailItem(label: "Lost: " + $0.label, value: $0.value, iconName: $0.iconName)
