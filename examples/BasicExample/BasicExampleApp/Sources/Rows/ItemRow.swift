@@ -1,24 +1,21 @@
 import SwiftUI
 
 struct ItemRow: View {
-    let title: String
-    let subtitle: String
-    let value: String
-    let logoURL: URL?
+    let viewModel: ItemViewModel
 
     var body: some View {
         HStack(spacing: .large) {
             AsyncImageWithPlaceholder(
-                logoURL: logoURL, size: .init(width: .extraHuge, height: .extraHuge))
+                logoURL: viewModel.logoURL, size: .init(width: .extraHuge, height: .extraHuge))
             VStack(alignment: .leading) {
-                Text(title)
+                Text(viewModel.title)
                     .lineLimit(1)
                     .font(.headline)
-                Text(subtitle)
+                Text(viewModel.subtitle)
                     .font(.subheadline)
             }
             Spacer()
-            Text(value)
+            Text(viewModel.value)
         }
     }
 }

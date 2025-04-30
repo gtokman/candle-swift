@@ -76,18 +76,8 @@ struct TradesScreen: View {
             } else {
                 List {
                     ForEach(filteredTrades) { trade in
-                        NavigationLink(
-                            destination: DetailsView(
-                                title: trade.title,
-                                logoURL: trade.logoURL,
-                                detailItems: trade.detailItems)
-                        ) {
-                            ItemRow(
-                                title: trade.title,
-                                subtitle: trade.subtitle,
-                                value: trade.value,
-                                logoURL: trade.logoURL
-                            )
+                        NavigationLink(destination: ItemScreen(viewModel: trade)) {
+                            ItemRow(viewModel: trade)
                         }
                     }
                 }
@@ -96,7 +86,7 @@ struct TradesScreen: View {
                         ContentUnavailableView.search(text: searchText)
                     }
                 }
-                .searchable(text: $searchText, prompt: Text("Search by name"))
+                .searchable(text: $searchText, prompt: Text("Search by asset or counterparty"))
                 .navigationTitle("Trades")
                 .refreshable {
                     await loadTrades(query: tradesQuery, showLoading: false)
@@ -141,7 +131,9 @@ struct TradesScreen: View {
         isLoading = showLoading
         defer { isLoading = false }
         do {
-            trades = try await client.getTrades(query: query).map { TradeViewModel(trade: $0) }
+            trades = try await client.getTrades(query: query).map {
+                TradeViewModel(client: client, trade: $0)
+            }
         } catch {
             errorMessage = String(describing: error)
         }

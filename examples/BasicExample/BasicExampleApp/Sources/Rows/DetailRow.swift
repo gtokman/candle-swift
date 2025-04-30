@@ -1,19 +1,19 @@
 import SwiftUI
 
-struct DetailRowView: View {
-    let visualDetailItem: VisualDetailItem
+struct DetailRow: View {
+    let viewModel: DetailViewModel
 
     var body: some View {
         HStack {
-            Image(systemName: visualDetailItem.iconName)
+            Image(systemName: viewModel.iconName)
                 .font(.system(size: 17))
                 .opacity(0.75)
-            Text(visualDetailItem.label)
+            Text(viewModel.label)
                 .font(.system(size: 17))
                 .fontWeight(.semibold)
                 .opacity(0.75)
             Spacer()
-            Text(visualDetailItem.value)
+            Text(viewModel.value)
                 .font(.subheadline)
                 .foregroundColor(.gray)
                 .textSelection(.enabled)
@@ -21,7 +21,7 @@ struct DetailRowView: View {
         .padding(.medium)
         .background(
             RoundedRectangle(cornerRadius: .medium, style: .continuous)
-                .fill(visualDetailItem.showBackground ? Color.gray.opacity(0.1) : Color.clear)
+                .fill(viewModel.showBackground ? Color.gray.opacity(0.1) : Color.clear)
         )
         .frame(height: .huge)
     }

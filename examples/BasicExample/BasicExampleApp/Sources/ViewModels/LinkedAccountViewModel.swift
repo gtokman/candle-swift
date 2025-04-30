@@ -2,8 +2,11 @@ import Candle
 import SwiftUI
 
 struct LinkedAccountViewModel {
-    let linkedAccount: Models.LinkedAccount
+    let client: CandleClient
+    var linkedAccount: Models.LinkedAccount
+}
 
+extension LinkedAccountViewModel: ItemViewModel {
     var title: String {
         linkedAccount.service.name
     }
@@ -20,33 +23,33 @@ struct LinkedAccountViewModel {
         linkedAccount.service.logoURL
     }
 
-    var detailItems: [DetailItem] {
-        let detailsItems: [DetailItem]
+    var details: [Detail] {
+        let detailsItems: [Detail]
         switch linkedAccount.details {
         case .ActiveLinkedAccountDetails(let activeDetails):
             detailsItems = [
-                DetailItem(
+                Detail(
                     label: "State",
                     value: activeDetails.state.rawValue,
                     iconName: "checkmark.circle"),
-                DetailItem(
+                Detail(
                     label: "Legal Name",
                     value: activeDetails.legalName,
                     iconName: "person.crop.circle"),
                 activeDetails.username.map {
-                    DetailItem(
+                    Detail(
                         label: "Username",
                         value: $0,
                         iconName: "person")
                 },
                 activeDetails.emailAddress.map {
-                    DetailItem(
+                    Detail(
                         label: "Email Address",
                         value: $0,
                         iconName: "envelope")
                 },
                 activeDetails.accountOpened.map {
-                    DetailItem(
+                    Detail(
                         label: "Account Opened",
                         value: $0.formattedToCustomDate,
                         iconName: "calendar")
@@ -54,7 +57,7 @@ struct LinkedAccountViewModel {
             ].compactMap { $0 }
         case .InactiveLinkedAccountDetails(let inactiveDetails):
             detailsItems = [
-                DetailItem(
+                Detail(
                     label: "State",
                     value: inactiveDetails.state.rawValue,
                     iconName: "xmark.circle")
@@ -62,23 +65,63 @@ struct LinkedAccountViewModel {
         }
 
         return [
-            DetailItem(
+            Detail(
                 label: "Linked Account ID",
                 value: linkedAccount.linkedAccountID,
                 iconName: "link"),
-            DetailItem(
+            Detail(
                 label: "Service User ID",
                 value: linkedAccount.serviceUserID,
                 iconName: "number"),
-            DetailItem(
+            Detail(
                 label: "Service",
                 value: linkedAccount.service.rawValue,
                 iconName: "line.3.horizontal.decrease.circle"),
         ]
             + detailsItems.map {
-                DetailItem(
+                Detail(
                     label: "Details: " + $0.label, value: $0.value, iconName: $0.iconName)
             }
+    }
+
+    mutating func reload() async throws(ItemReloadError) {
+        do {
+            linkedAccount = try await client.getLinkedAccount(ref: linkedAccount.ref)
+        } catch {
+            switch error {
+            case .notFound(let payload):
+                switch payload.kind {
+                case .notFound_user:
+                    throw .init(title: "User Not Found", description: payload.message)
+                case .notFound_linkedAccount:
+                    throw .init(title: "Linked Account Not Found", description: payload.message)
+                }
+            case .unprocessableContent(let payload):
+                switch payload.kind {
+                case .schemaInvalid_request:
+                    throw .init(title: "Request Schema Invalid", description: payload.message)
+                }
+            case .unauthorized(let payload):
+                switch payload.kind {
+                case .badAuthorization_user:
+                    throw .init(title: "Bad User Authorization", description: payload.message)
+                }
+            case .internalServerError(let payload):
+                switch payload.kind {
+                case .unexpected:
+                    throw .init(title: "Internal Server Error", description: payload.message)
+                }
+            case .unexpectedStatusCode(let statusCode):
+                throw .init(
+                    title: "Unexpected Status Code",
+                    description: "Received response with status code \(statusCode)")
+            case .sessionError(let sessionError):
+                // FIXME: Switch on session errors
+                throw .init(title: "Session Error", description: String(describing: sessionError))
+            case .networkError(let errorDescription):
+                throw .init(title: "Network Error", description: errorDescription)
+            }
+        }
     }
 }
 

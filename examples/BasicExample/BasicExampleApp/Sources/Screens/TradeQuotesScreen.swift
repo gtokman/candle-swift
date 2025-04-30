@@ -81,18 +81,8 @@ struct TradeQuotesScreen: View {
                 TextField("Destination Longitude", text: $textInput4)
                 List {
                     ForEach(tradeQuotes) { tradeQuote in
-                        NavigationLink(
-                            destination: DetailsView(
-                                title: tradeQuote.title,
-                                logoURL: tradeQuote.logoURL,
-                                detailItems: tradeQuote.detailItems)
-                        ) {
-                            ItemRow(
-                                title: tradeQuote.title,
-                                subtitle: tradeQuote.subtitle,
-                                value: tradeQuote.value,
-                                logoURL: tradeQuote.logoURL
-                            )
+                        NavigationLink(destination: ItemScreen(viewModel: tradeQuote)) {
+                            ItemRow(viewModel: tradeQuote)
                         }.swipeActions {
                             Button("Execute") {
                                 Task {
@@ -173,7 +163,7 @@ struct TradeQuotesScreen: View {
         defer { isLoading = false }
         do {
             let trade = try await client.executeTrade(context: context)
-            _ = TradeViewModel(trade: trade)  // TODO
+            _ = TradeViewModel(client: client, trade: trade)  // TODO
         } catch {
             errorMessage = String(describing: error)
         }

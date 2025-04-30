@@ -2,8 +2,11 @@ import Candle
 import SwiftUI
 
 struct AssetAccountViewModel {
-    let assetAccount: Models.AssetAccount
+    let client: CandleClient
+    var assetAccount: Models.AssetAccount
+}
 
+extension AssetAccountViewModel: ItemViewModel {
     var title: String {
         assetAccount.nickname
     }
@@ -37,12 +40,12 @@ struct AssetAccountViewModel {
         }
     }
 
-    var detailItems: [DetailItem] {
-        let detailsItems: [DetailItem]
+    var details: [Detail] {
+        let detailsItems: [Detail]
         switch assetAccount.details {
         case .FiatAccountDetails(let fiatAccountDetails):
             let wireItems =
-                fiatAccountDetails.wire.map { wire -> [DetailItem] in
+                fiatAccountDetails.wire.map { wire -> [Detail] in
                     [
                         .init(
                             label: "Routing Number",
@@ -58,7 +61,7 @@ struct AssetAccountViewModel {
                 } ?? []
 
             let achItems =
-                fiatAccountDetails.ach.map { ach -> [DetailItem] in
+                fiatAccountDetails.ach.map { ach -> [Detail] in
                     [
                         .init(
                             label: "Account Kind",
@@ -118,11 +121,11 @@ struct AssetAccountViewModel {
                     //                ),
                 ].compactMap { $0 }
                 + wireItems.map {
-                    DetailItem(
+                    Detail(
                         label: "Wire: " + $0.label, value: $0.value, iconName: $0.iconName)
                 }
                 + achItems.map {
-                    DetailItem(
+                    Detail(
                         label: "ACH: " + $0.label, value: $0.value, iconName: $0.iconName)
                 }
         case .MarketAccountDetails(let marketAccountDetails):
@@ -157,11 +160,50 @@ struct AssetAccountViewModel {
             ),
         ]
             + detailsItems.map {
-                DetailItem(
+                Detail(
                     label: "Details: " + $0.label, value: $0.value, iconName: $0.iconName)
             }
     }
 
+    mutating func reload() async throws(ItemReloadError) {
+        do {
+            assetAccount = try await client.getAssetAccount(ref: assetAccount.ref)
+        } catch {
+            switch error {
+            case .notFound(let payload):
+                switch payload.kind {
+                case .notFound_user:
+                    throw .init(title: "User Not Found", description: payload.message)
+                case .notFound_assetAccount:
+                    throw .init(title: "Asset Account Not Found", description: payload.message)
+                }
+            case .unprocessableContent(let payload):
+                switch payload.kind {
+                case .schemaInvalid_request:
+                    throw .init(title: "Request Schema Invalid", description: payload.message)
+                }
+            case .unauthorized(let payload):
+                switch payload.kind {
+                case .badAuthorization_user:
+                    throw .init(title: "Bad User Authorization", description: payload.message)
+                }
+            case .internalServerError(let payload):
+                switch payload.kind {
+                case .unexpected:
+                    throw .init(title: "Internal Server Error", description: payload.message)
+                }
+            case .unexpectedStatusCode(let statusCode):
+                throw .init(
+                    title: "Unexpected Status Code",
+                    description: "Received response with status code \(statusCode)")
+            case .sessionError(let sessionError):
+                // FIXME: Switch on session errors
+                throw .init(title: "Session Error", description: String(describing: sessionError))
+            case .networkError(let errorDescription):
+                throw .init(title: "Network Error", description: errorDescription)
+            }
+        }
+    }
 }
 
 extension AssetAccountViewModel: Identifiable {

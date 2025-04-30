@@ -35,20 +35,8 @@ struct AssetAccountsScreen: View {
             } else {
                 List {
                     ForEach(assetAccounts) { assetAccount in
-                        NavigationLink(
-                            destination:
-                                DetailsView(
-                                    title: assetAccount.title,
-                                    logoURL: assetAccount.logoURL,
-                                    detailItems: assetAccount.detailItems
-                                )
-                        ) {
-                            ItemRow(
-                                title: assetAccount.title,
-                                subtitle: assetAccount.subtitle,
-                                value: assetAccount.value,
-                                logoURL: assetAccount.logoURL
-                            )
+                        NavigationLink(destination: ItemScreen(viewModel: assetAccount)) {
+                            ItemRow(viewModel: assetAccount)
                         }
                     }
                 }
@@ -97,7 +85,7 @@ struct AssetAccountsScreen: View {
         do {
             isLoading = true
             assetAccounts = try await client.getAssetAccounts(query: query).map {
-                AssetAccountViewModel(assetAccount: $0)
+                AssetAccountViewModel(client: client, assetAccount: $0)
             }
         } catch {
             errorMessage = String(describing: error)

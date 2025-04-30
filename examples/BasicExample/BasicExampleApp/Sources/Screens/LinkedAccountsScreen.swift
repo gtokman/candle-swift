@@ -17,25 +17,14 @@ struct LinkedAccountsScreen: View {
     }
 
     var viewModels: [LinkedAccountViewModel] {
-        linkedAccounts.map { LinkedAccountViewModel(linkedAccount: $0) }
+        linkedAccounts.map { LinkedAccountViewModel(client: client, linkedAccount: $0) }
     }
 
     var body: some View {
         List {
             ForEach(viewModels) { linkedAccount in
-                NavigationLink(
-                    destination: DetailsView(
-                        title: linkedAccount.title,
-                        logoURL: linkedAccount.logoURL,
-                        detailItems: linkedAccount.detailItems
-                    )
-                ) {
-                    ItemRow(
-                        title: linkedAccount.title,
-                        subtitle: linkedAccount.subtitle,
-                        value: linkedAccount.value,
-                        logoURL: linkedAccount.logoURL
-                    )
+                NavigationLink(destination: ItemScreen(viewModel: linkedAccount)) {
+                    ItemRow(viewModel: linkedAccount)
                 }.swipeActions {
                     Button("Unlink") {
                         accountToUnlink = linkedAccount
@@ -107,7 +96,7 @@ struct LinkedAccountsScreen: View {
             do {
                 isLoading = true
                 linkedAccounts = []
-                try await client.unlinkAccount(linkedAccountID: linkedAccount.id)
+                try await client.unlinkAccount(path: .init(linkedAccountID: linkedAccount.id))
                 linkedAccounts = try await client.getLinkedAccounts()
             } catch {
                 errorMessage = String(describing: error)

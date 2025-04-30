@@ -3,7 +3,9 @@ import Foundation
 
 struct TradeQuoteViewModel {
     let tradeQuote: Models.TradeQuote
+}
 
+extension TradeQuoteViewModel: ItemViewModel {
     var title: String {
         switch tradeQuote.gained {
         case .TransportAsset(let transportAsset):
@@ -99,13 +101,17 @@ struct TradeQuoteViewModel {
         return .init(linkedAccountID: linkedAccountID, context: tradeQuote.context)
     }
 
-    var detailItems: [DetailItem] {
-        return TradeAssetViewModel(tradeAsset: tradeQuote.lost).detailItems.map {
-            DetailItem(label: "Lost: " + $0.label, value: $0.value, iconName: $0.iconName)
+    var details: [Detail] {
+        return TradeAssetViewModel(tradeAsset: tradeQuote.lost).details.map {
+            Detail(label: "Lost: " + $0.label, value: $0.value, iconName: $0.iconName)
         }
-            + TradeAssetViewModel(tradeAsset: tradeQuote.gained).detailItems.map {
-                DetailItem(label: "Gained: " + $0.label, value: $0.value, iconName: $0.iconName)
+            + TradeAssetViewModel(tradeAsset: tradeQuote.gained).details.map {
+                Detail(label: "Gained: " + $0.label, value: $0.value, iconName: $0.iconName)
             }
+    }
+
+    func reload() async throws(ItemReloadError) {
+        // FIXME: Implement this or throw error somehow
     }
 }
 
