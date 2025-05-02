@@ -12,10 +12,10 @@ struct TradeQuotesScreen: View {
     @State private var tradeQuotes = [TradeQuoteViewModel]()
     @State private var isLoading = false
 
-    @State private var textInput1: String = ""
-    @State private var textInput2: String = ""
-    @State private var textInput3: String = ""
-    @State private var textInput4: String = ""
+    @State private var textInput1: String = "40.7223"
+    @State private var textInput2: String = "-73.9754"
+    @State private var textInput3: String = "40.7505"
+    @State private var textInput4: String = "-73.9935"
 
     // FIXME: Add these back
     //    @State private var lostAssetQuoteRequest: Models.TradeAssetQuoteRequest = .FiatAssetQuoteRequest(.init(assetKind: .fiat))
