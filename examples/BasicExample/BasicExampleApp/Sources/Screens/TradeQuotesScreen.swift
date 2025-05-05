@@ -2,20 +2,24 @@ import Candle
 import SwiftUI
 
 struct TradeQuotesScreen: View {
+
+    @Environment(\.dismiss) var dismiss
+
     private enum TradeQuoteAssetKind: String, Codable, Hashable, Sendable, CaseIterable {
         case fiat, stock, crypto, transport
     }
 
     @Environment(CandleClient.self) private var client
 
+    @State private var locationViewModel = LocationViewModel()
     @State private var errorMessage: String? = nil
-    @State private var tradeQuotes = [TradeQuoteViewModel]()
+    @State private var tradeQuoteViewModels = [TradeQuoteViewModel]()
+    @State private var selectedTradeQuote: Models.TradeQuote?
     @State private var isLoading = false
-
-    @State private var textInput1: String = "40.7223"
-    @State private var textInput2: String = "-73.9754"
-    @State private var textInput3: String = "40.7505"
-    @State private var textInput4: String = "-73.9935"
+    @State private var textInput1: String = "37.78987530841216"
+    @State private var textInput2: String = "-122.40188454602102"
+    @State private var textInput3: String = "37.78407609709455"
+    @State private var textInput4: String = "-122.40862257776425"
 
     // FIXME: Add these back
     //    @State private var lostAssetQuoteRequest: Models.TradeAssetQuoteRequest = .FiatAssetQuoteRequest(.init(assetKind: .fiat))
@@ -80,21 +84,19 @@ struct TradeQuotesScreen: View {
                 TextField("Destination Latitude", text: $textInput3)
                 TextField("Destination Longitude", text: $textInput4)
                 List {
-                    ForEach(tradeQuotes) { tradeQuote in
-                        NavigationLink(destination: ItemScreen(viewModel: tradeQuote)) {
-                            ItemRow(viewModel: tradeQuote)
+                    ForEach(tradeQuoteViewModels) { tradeQuoteViewModel in
+                        NavigationLink(destination: ItemScreen(viewModel: tradeQuoteViewModel)) {
+                            ItemRow(viewModel: tradeQuoteViewModel)
                         }.swipeActions {
                             Button("Execute") {
-                                Task {
-                                    await executeTrade(context: tradeQuote.context)
-                                }
+                                selectedTradeQuote = tradeQuoteViewModel.tradeQuote
                             }
                             .tint(.green)
                         }
                     }
                 }
                 .overlay {
-                    if tradeQuotes.isEmpty {
+                    if tradeQuoteViewModels.isEmpty {
                         ContentUnavailableView(
                             "No Trade Quotes",
                             systemImage: "exclamationmark.magnifyingglass",
@@ -123,7 +125,20 @@ struct TradeQuotesScreen: View {
                             Label("Filters", systemImage: "line.horizontal.3.decrease.circle")
                         }
                     }
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        Button("Done") {
+                            dismiss()
+                        }
+                    }
                 }
+            }
+        }
+        .candleTradeExecutionSheet(item: $selectedTradeQuote) { result in
+            switch result {
+            case .success(let trade):
+                print("success", trade)
+            case .failure(let error):
+                print("error", error)
             }
         }
         .alert(isPresented: .constant(errorMessage != nil)) {
@@ -138,6 +153,13 @@ struct TradeQuotesScreen: View {
         .sensoryFeedback(.error, trigger: errorMessage) { $1 != nil }
         .presentationDragIndicator(.visible)
         .presentationCornerRadius(.extraLarge)
+        .onAppear { locationViewModel.requestLocation() }
+        .onChange(of: locationViewModel.coordinate) { _, coordinate in
+            if let coordinate {
+                textInput1 = "\(coordinate.latitude)"
+                textInput2 = "\(coordinate.longitude)"
+            }
+        }
     }
 
     private func loadTradeQuotes(
@@ -147,23 +169,9 @@ struct TradeQuotesScreen: View {
         isLoading = showLoading
         defer { isLoading = false }
         do {
-            tradeQuotes = try await client.getTradeQuotes(request: request).map {
+            tradeQuoteViewModels = try await client.getTradeQuotes(request: request).map {
                 TradeQuoteViewModel(tradeQuote: $0)
             }
-        } catch {
-            errorMessage = String(describing: error)
-        }
-    }
-
-    private func executeTrade(
-        context: Models.TradeQuoteContext, showLoading: Bool = true
-    ) async {
-        guard !isLoading else { return }
-        isLoading = showLoading
-        defer { isLoading = false }
-        do {
-            let trade = try await client.executeTrade(context: context)
-            _ = TradeViewModel(client: client, trade: trade)  // TODO
         } catch {
             errorMessage = String(describing: error)
         }

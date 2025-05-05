@@ -34,6 +34,7 @@
 		A426180B1EBE39E3570505BF /* BasicExampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1924E6F9864418459C71374B /* BasicExampleUITests.swift */; };
 		A64BCF617FDDE3E0558B0238 /* CandlePrimaryButtonModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5176FA18CF2FC1E55E6CDE8 /* CandlePrimaryButtonModifier.swift */; };
 		AD6EDAFF22C8E9DF8A67D194 /* TradesScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352617F5CB23ACDA48782EF2 /* TradesScreen.swift */; };
+		B56C68C8E54DECC0A52F1FAD /* LocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C5912105660C065A61A683 /* LocationViewModel.swift */; };
 		BD6585DC0DEFF71D09398756 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6DDD7BE742269E96E7FB410 /* LaunchScreen.storyboard */; };
 		C190A0F6FF8CBAFEAB00E643 /* DetailItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E879DD84758D5EF7AA560C05 /* DetailItem.swift */; };
 		C55FF512F855BDB6F4AFE637 /* LinkedAccount++.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10B3927B5DF4E4910D3F388 /* LinkedAccount++.swift */; };
@@ -117,6 +118,7 @@
 		9AFFFC8E8EAEB8EA156E4669 /* BasicExampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BasicExampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1129AFC8235650CC5316AF5 /* LinkedAccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkedAccountViewModel.swift; sourceTree = "<group>"; };
 		AD58CA05707E9E877604202F /* TuistAssets+BasicExampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TuistAssets+BasicExampleApp.swift"; sourceTree = "<group>"; };
+		B4C5912105660C065A61A683 /* LocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewModel.swift; sourceTree = "<group>"; };
 		B5176FA18CF2FC1E55E6CDE8 /* CandlePrimaryButtonModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandlePrimaryButtonModifier.swift; sourceTree = "<group>"; };
 		C10B3927B5DF4E4910D3F388 /* LinkedAccount++.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LinkedAccount++.swift"; sourceTree = "<group>"; };
 		C9FF88CB884650672DBBACF6 /* TextTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextTransition.swift; sourceTree = "<group>"; };
@@ -252,6 +254,7 @@
 				4859CE56563283ED2890F403 /* DetailViewModel.swift */,
 				D462D168E2B5A2D0D43B0BD0 /* ItemViewModel.swift */,
 				A1129AFC8235650CC5316AF5 /* LinkedAccountViewModel.swift */,
+				B4C5912105660C065A61A683 /* LocationViewModel.swift */,
 				1462E00250AFC2EAED019384 /* TradeAssetViewModel.swift */,
 				3F0F7D369D9DE47ECAE30076 /* TradeQuoteViewModel.swift */,
 				398DA3523C679969855469B6 /* TradeViewModel.swift */,
@@ -486,6 +489,7 @@
 				95B61DAA4BE378EB6742BA05 /* DetailViewModel.swift in Sources */,
 				62B5CD9B78D883BAE89C5E5E /* ItemViewModel.swift in Sources */,
 				4B498D4DB811A0EBB536AF3A /* LinkedAccountViewModel.swift in Sources */,
+				B56C68C8E54DECC0A52F1FAD /* LocationViewModel.swift in Sources */,
 				686DB51CABD28D11A3422BB7 /* TradeAssetViewModel.swift in Sources */,
 				8594B3001529A76BE354DBA0 /* TradeQuoteViewModel.swift in Sources */,
 				181A6959902358015A5D0F58 /* TradeViewModel.swift in Sources */,

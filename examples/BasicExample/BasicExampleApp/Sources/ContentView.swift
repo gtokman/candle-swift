@@ -94,7 +94,7 @@ struct ContentView: View {
         .sheet(isPresented: $showTrades) {
             TradesScreen(linkedAccounts: linkedAccounts)
         }
-        .sheet(isPresented: $showTradeQuotes) {
+        .fullScreenCover(isPresented: $showTradeQuotes) {
             TradeQuotesScreen(linkedAccounts: linkedAccounts)
         }
         .fullScreenCover(isPresented: $showOnboarding) {
